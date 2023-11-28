@@ -1,5 +1,3 @@
-import "/src/App.css"
-
 /* Functional JSX component. Name must start with capital letter */
 function ResultDetailsView(props){
     return(
