@@ -120,34 +120,36 @@ function BrowsingView(props) {
         };
 
         return (
-            <Draggable
-                axis="x"
-                handle=".handle"
-                defaultPosition={{ x: 0, y: 0 }}
-                position={null}
-                grid={[25, 25]}
-                scale={1}
-                onStop={handleStop}
-            >
-                <div className="swipe-card handle">
-                    <div className="profile-content">
-                        {/* Your card content goes here */}
-                        <img src={profile.image} alt={profile.name} />
-                        <h3>{profile.name}</h3>
+            <div>
+                <button onClick={()=>window.location.hash="#/result-details"}>Browsing Results</button>
+                <Draggable
+                    axis="x"
+                    handle=".handle"
+                    defaultPosition={{ x: 0, y: 0 }}
+                    position={null}
+                    grid={[25, 25]}
+                    scale={1}
+                    onStop={handleStop}
+                >
+                    <div className="swipe-card handle">
+                        <div className="profile-content">
+                            {/* Your card content goes here */}
+                            <img src={profile.image} alt={profile.name} />
+                            <h3>{profile.name}</h3>
+                        </div>
                     </div>
-                </div>
-            </Draggable>
+                </Draggable>
+            </div>
         );
     }
 
     return (
         <div className="app">
-            {profiles.map((profile, index) => (
+            {profiles.slice(currentIndex, currentIndex + 1).map((profile) => (
                 <SwipeCard
                     key={profile.id}
                     profile={profile}
                     onSwipe={handleSwipe}
-                    style={{ display: index === currentIndex ? 'block' : 'none' }}
                 />
             ))}
         </div>
