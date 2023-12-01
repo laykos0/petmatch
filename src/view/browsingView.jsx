@@ -1,10 +1,9 @@
 // import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
 import React, { useState } from 'react';
+import {motion} from "framer-motion"
 import Draggable from 'react-draggable';
-
 import "../index.css"
 
-/* Functional JSX component. Name must start with capital letter */
 function BrowsingView(props){
     // return(
     // <div>
@@ -17,7 +16,6 @@ function BrowsingView(props){
         { id: 2, name: 'ohn oe', image: 'ohn.jpg' },
         { id: 3, name: 'h oe', image: 'hn.jpg' },
         { id: 4, name: 'n Doe', image: 'n.jpg' },
-        // Add more profiles as needed
     ]);
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,7 +32,7 @@ function BrowsingView(props){
     };
 
     function SwipeCard({ profile, onSwipe }) {
-        const handleStop = (event, data) => {
+        function handleStop(event, data){
             const threshold = 100;
 
             if (Math.abs(data.x) > threshold) {
@@ -45,24 +43,35 @@ function BrowsingView(props){
 
         return (
             <div>
-                <button onClick={()=>window.location.hash="#/result-details"}>Browsing Results</button>
-                <Draggable
-                    axis="x"
-                    handle=".handle"
-                    defaultPosition={{ x: 0, y: 0 }}
-                    position={null}
-                    grid={[25, 25]}
-                    scale={1}
-                    onStop={handleStop}
+                <motion.button className='browsing-results-btn' onClick={()=>window.location.hash="#/result-details"}
+                whileHover={{scale:1.2, }}
                 >
-                    <div className="swipe-card handle">
-                        <div className="profile-content">
-                            {/* Your card content goes here */}
-                            <img src={profile.image} alt={profile.name} />
-                            <h3>{profile.name}</h3>
+                    Browsing Results
+                </motion.button>
+                <motion.button className='welcome-btn' onClick={()=>window.location.hash="#/"}
+                whileHover={{scale:1.2, }}
+                >
+                    Back to Home Page
+                </motion.button>
+                <motion.div animate = {{scale: 1}} initial = {{scale: 0.25}}>
+                    <Draggable
+                        axis="x"
+                        handle=".handle"
+                        defaultPosition={{ x: 0, y: 0 }}
+                        position={null}
+                        grid={[25, 25]}
+                        scale={1}
+                        onStop={handleStop}
+                    >
+                        <div className="swipe-card handle">
+                            <div className="profile-content">
+                                {/* Card content goes here */}
+                                <img src={profile.image} alt={profile.name} />
+                                <h3>{profile.name}</h3>
+                            </div>
                         </div>
-                    </div>
-                </Draggable>
+                    </Draggable>
+                </motion.div>
             </div>
         );
     }
