@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import ReactRoot from "./presenter/ReactRoot.jsx";
 
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, signInWithRedirect, GoogleAuthProvider, onAuthStateChanged, signOut} from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getDatabase } from 'firebase/database';
 import firebaseConfig from './firebaseConfig.js';
 
