@@ -5,7 +5,7 @@ import ReactRoot from "./presenter/ReactRoot.jsx";
 
 import { initializeApp } from "firebase/app";
 import { getDatabase } from 'firebase/database';
-import firebaseConfig from '../firebaseConfig.js';
+import firebaseConfig from './firebaseConfig.js';
 
 
 const app = initializeApp(firebaseConfig);
