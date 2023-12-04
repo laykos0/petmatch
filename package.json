@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "firebase": "^9.23.0",
+    "framer": "^2.4.1",
+    "framer-motion": "^10.16.9",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "mobx": "^6.12.0",
