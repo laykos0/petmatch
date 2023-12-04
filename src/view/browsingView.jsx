@@ -1,8 +1,7 @@
-// import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
 import React, { useState } from 'react';
 import {motion} from "framer-motion"
 import Draggable from 'react-draggable';
-import "../index.css"
+import "../browsing.css"
 
 function BrowsingView(props){
     // return(
@@ -43,7 +42,7 @@ function BrowsingView(props){
 
         return (
             <div>
-                <motion.button className='browsing-results-btn' onClick={()=>window.location.hash="#/result-details"}
+                {/* <motion.button className='browsing-results-btn' onClick={()=>window.location.hash="#/result-details"}
                 whileHover={{scale:1.2, }}
                 >
                     Browsing Results
@@ -52,7 +51,7 @@ function BrowsingView(props){
                 whileHover={{scale:1.2, }}
                 >
                     Back to Home Page
-                </motion.button>
+                </motion.button> */}
                 <motion.div animate = {{scale: 1}} initial = {{scale: 0.25}}>
                     <Draggable
                         axis="x"
