@@ -2,7 +2,7 @@ import Browsing from "./browsingPresenter.jsx"
 import ResultDetails from "./resultDetailsPresenter.jsx"
 import ResultsSummary from "./resultsSummaryPresenter.jsx";
 import Welcome from "./welcomePresenter.jsx";
-import NavBar from '../Components/NavigationBar';
+import Navigation from '../Components/NavigationBar';
 import {observer} from "mobx-react-lite"
 
 import { createHashRouter, RouterProvider } from "react-router-dom";
@@ -32,7 +32,7 @@ export default observer (function ReactRoot(){
     ])
     }
     return ( <div>
-        <NavBar/>
+        <Navigation/>
         <RouterProvider router={makeRouter()} />
         </div> );
 }
