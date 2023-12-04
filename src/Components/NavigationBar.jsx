@@ -1,6 +1,5 @@
 import {React, useState } from "react";
-import ChevronIcon from "../assets/chevron.svg?react"
-
+import './Navbar.css'; 
 
 function Navigation(){
     const dropDownOptions = [
@@ -21,41 +20,24 @@ function Navigation(){
             title: "Results Summary Page"
         },
     ];
+    const [isDropDownOpen, setDropDownOpen] = useState(false);
 
-    function NavBar(){
-        return(
+    return (
             <nav className="navbar">
-                <ul className="navbar-nav">props.children</ul>
+              <div className="nav-item dropdown" onClick={()=>{setDropDownOpen(!isDropDownOpen)}}>
+                <span>Menu</span>
+                {isDropDownOpen && (
+                  <div className="dropdown-menu">
+                    <a href="/result-details">Result Details Page</a>
+                    <a href="/results-summary">Results Summary Page</a>
+                    <a href="/">Welcome Page</a>
+                  </div>
+                )}
+              </div>
             </nav>
-        )
-    }
-    
-    function NavItem(props){
-        const [open, setOpen] = useState(false);
-    
-        return(
-            <li className="nav-item">
-                <a href="#/browsing" className="option-button" onClick={()=>setOpen(!open)}>
-                    {props.item}
-                </a>
-                {open && props.children}
-            </li>
-        );
-    }
-
-    function DropDownMenu(){
-        return(<></>);
-    }
-
-    function DropDownItem(props){
-
-    }
-
-    return(
-        <NavBar>
-            <NavItem item = {<ChevronIcon/>}></NavItem>
-        </NavBar>
-    )
+          );
 }
 
 export default Navigation;
+
+
