@@ -30,7 +30,9 @@ export default observer (function ReactRoot(){
         
     ])
     }
-    return ( <div><RouterProvider router={makeRouter()} /></div> );
+    return ( <div>
+        <RouterProvider router={makeRouter()} />
+        </div> );
 }
 )
 
