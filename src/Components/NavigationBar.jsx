@@ -6,7 +6,7 @@ function Navbar(){
     return (
             <nav className="navbar">
               <div className="nav-item dropdown" onClick={()=>{setDropDownOpen(!isDropDownOpen)}}>
-                <span>Menu</span>
+                <span><button>Menu</button></span>
                 {isDropDownOpen && (
                   <div className="dropdown-menu">
                     <a href="#/">Welcome Page</a>
