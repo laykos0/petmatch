@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import { React, useState } from 'react';
 import {motion} from "framer-motion"
 import Draggable from 'react-draggable';
 import "../browsing.css"
 
 function BrowsingView(props){
-    // return(
-    // <div>
-    //     I'm the browsing view
-    // </div>
-    // );    
-
     const [profiles, setProfiles] = useState([
         { id: 1, name: 'John Doe', image: 'john.jpg' },
         { id: 2, name: 'ohn oe', image: 'ohn.jpg' },
@@ -42,16 +36,6 @@ function BrowsingView(props){
 
         return (
             <div>
-                {/* <motion.button className='browsing-results-btn' onClick={()=>window.location.hash="#/result-details"}
-                whileHover={{scale:1.2, }}
-                >
-                    Browsing Results
-                </motion.button>
-                <motion.button className='welcome-btn' onClick={()=>window.location.hash="#/"}
-                whileHover={{scale:1.2, }}
-                >
-                    Back to Home Page
-                </motion.button> */}
                 <motion.div animate = {{scale: 1}} initial = {{scale: 0.25}}>
                     <Draggable
                         axis="x"
