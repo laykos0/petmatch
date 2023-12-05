@@ -1,7 +1,7 @@
 import {React, useState } from "react";
 import './Navbar.css'; 
 
-function Navigation(){
+function Navbar(){
     const [isDropDownOpen, setDropDownOpen] = useState(false);
     return (
             <nav className="navbar">
@@ -20,6 +20,6 @@ function Navigation(){
           );
 }
 
-export default Navigation;
+export default Navbar;
 
 

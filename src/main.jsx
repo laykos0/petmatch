@@ -2,7 +2,7 @@ import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import ReactRoot from "./presenter/ReactRoot.jsx";
-import Navigation from './Components/NavigationBar';
+import NavBar from './Components/NavigationBar';
 
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
@@ -17,7 +17,7 @@ const provider = new GoogleAuthProvider();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <div>
-        <Navigation/>
+        <NavBar/>
         <ReactRoot/>
     </div>
 )
