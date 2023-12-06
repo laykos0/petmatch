@@ -18,10 +18,10 @@ export default {
     async updateUserInformation(data) {
         try {
             // Retrieve current user
-            //const user = await auth.getCurrentUser();
+            const user = await auth.getCurrentUser();
             
-            // Save the updated data
-            await db.saveToDatabase("dinnerModel42", data);
+            if (user)
+                await db.saveToDatabase(user.uid, data);
             
             // Retrieve the updated user data if needed
             //const new_data = await db.readFromDatabase(user.uid);
@@ -33,4 +33,10 @@ export default {
             throw error;
         }
     },
+
+    async retrieveUserInformation() {
+        const user = await auth.getCurrentUser();
+        if (user)
+            return await db.readFromDatabase(user.uid);
+    }
 }
