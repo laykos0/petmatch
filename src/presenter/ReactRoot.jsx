@@ -5,6 +5,7 @@ import Welcome from "./welcomePresenter.jsx";
 import {observer} from "mobx-react-lite"
 
 import { createHashRouter, RouterProvider } from "react-router-dom";
+import Signup from "./signupPresenter.jsx";
 
 
 export default observer (function ReactRoot(){
@@ -12,7 +13,8 @@ export default observer (function ReactRoot(){
         return createHashRouter([
         {
             path: "/",
-            element: <Welcome/>,
+            //element: <Welcome/>,
+            element: <Signup/>,
         },
         {
             path: "/browsing",
