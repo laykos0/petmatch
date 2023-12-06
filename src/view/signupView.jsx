@@ -19,12 +19,16 @@ function SignupView(props){
       setPassword(event.target.value);
     }
   
+    function handleSignInEmailPassword() {
+      props.onSignInEmail(email, password)
+    }
+
+    function handleSignInGoogle() {
+      props.onSignInGoogle()
+    }
+
     function handleSignUp() {
-      // Perform signup logic using captured data (name, email, password)
-      //console.log('Name:', name);
-      console.log('Email:', email);
-      console.log('Password:', password);
-      // Add further logic here like API calls, form validation, etc.
+      props.onSignUpEmail(email, password)
     }
   
     return (
@@ -60,6 +64,8 @@ function SignupView(props){
             className="form-input"
           />
         </div>
+        <button onClick={handleSignInEmailPassword} className="sign-in-btn">Sign In</button>
+        <button onClick={handleSignInGoogle} className="sign-in-btn">Sign In Google</button>
         <button onClick={handleSignUp} className="sign-up-btn">Sign Up</button>
       </div>
     );
