@@ -8,7 +8,6 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 
 
 export default observer (function ReactRoot(){
-
     function makeRouter(){
         return createHashRouter([
         {
