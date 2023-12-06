@@ -1,9 +1,9 @@
+// LoginView.jsx
 import React, { useState } from 'react';
 
-function SignupView(props) {
+function LoginView(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
   function handleEmailChange(event) {
     setEmail(event.target.value);
@@ -13,16 +13,12 @@ function SignupView(props) {
     setPassword(event.target.value);
   }
 
-  function handleConfirmPasswordChange(event) {
-    setConfirmPassword(event.target.value);
+  function handleSignInEmailPassword() {
+    props.onSignInEmail(email, password);
   }
 
   function handleSignInGoogle() {
     props.onSignInGoogle();
-  }
-
-  function handleSignUp() {
-    props.onSignUpEmail(email, password);
   }
 
   function handleToggleView() {
@@ -30,8 +26,8 @@ function SignupView(props) {
   }
 
   return (
-    <div className="signup-form">
-      <h2>Sign Up</h2>
+    <div className="login-form">
+      <h2>Login</h2>
       <div className="form-group">
         <label htmlFor="email" className="form-label">
           Email:
@@ -44,29 +40,17 @@ function SignupView(props) {
         </label>
         <input type="password" id="password" value={password} onChange={handlePasswordChange} className="form-input" />
       </div>
-      <div className="form-group">
-        <label htmlFor="confirmPassword" className="form-label">
-          Confirm Password:
-        </label>
-        <input
-          type="password"
-          id="confirmPassword"
-          value={confirmPassword}
-          onChange={handleConfirmPasswordChange}
-          className="form-input"
-        />
-      </div>
-      <button onClick={handleSignUp} className="sign-up-btn">
-        Sign Up
-      </button> 
+      <button onClick={handleSignInEmailPassword} className="sign-in-btn">
+        Sign In
+      </button>
       <button onClick={handleSignInGoogle} className="sign-in-btn">
-        Sign Up Google
+        Sign In Google
       </button>
       <span style={{ textDecoration: 'underline', cursor: 'pointer', color: 'blue' }} onClick={handleToggleView}>
-        {'Already have an account? Log in'}
-        </span>
+        {"Don't have an account? Click here"}
+      </span>
     </div>
   );
 }
 
-export default SignupView;
+export default LoginView;
