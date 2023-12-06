@@ -47,11 +47,16 @@ function BrowsingView(props){
                         onStop={handleStop}
                     >
                         <div className="swipe-card handle">
+                            <motion.button className='like' onClick={handleSwipe}>
+                                👍 
+                            </motion.button>
                             <div className="profile-content">
-                                {/* Card content goes here */}
                                 <img src={profile.image} alt={profile.name} />
                                 <h3>{profile.name}</h3>
                             </div>
+                            <motion.button className='dislike' onClick={handleSwipe}>
+                                👎
+                            </motion.button>
                         </div>
                     </Draggable>
                 </motion.div>
