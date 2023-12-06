@@ -29,7 +29,8 @@ function ResultsSummaryView(props){
             console.log("selected dog: " + dog.name);
         }
         function dogRemoveACB(evt){
-            console.log("tried to remove dog")
+            console.log("removing a dog from recommendations")
+            props.removeDogCustomACB(dog);
             evt.stopPropagation();
         }
         function renderPersonalityAttributes(personality){
