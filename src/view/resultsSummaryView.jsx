@@ -1,4 +1,5 @@
-import Dog from "../dog.js";
+import Dog from "../model/dog.js";
+
 import "../style.css";
 function ResultsSummaryView(props){
     let dogs = props.dogRecommendations;
