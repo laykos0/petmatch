@@ -9,7 +9,6 @@ import Signup from "./signupPresenter.jsx";
 
 
 export default observer (function ReactRoot(){
-
     function makeRouter(){
         return createHashRouter([
         {
@@ -32,7 +31,9 @@ export default observer (function ReactRoot(){
         
     ])
     }
-    return ( <div><RouterProvider router={makeRouter()} /></div> );
+    return ( <div>
+        <RouterProvider router={makeRouter()} />
+        </div> );
 }
 )
 
