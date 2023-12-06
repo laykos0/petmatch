@@ -6,10 +6,10 @@ function ResultsSummaryView(props){
     return(
         <div>
             <h1> Your Recommended Dogs </h1>
-            <div class="DogResults">
+            {/* <div className="DogResults">
                 <button onClick={(evt) => console.log("going back to search")}>Back to search</button>
                 <button onClick={(evt) => console.log("logging out")}>Log out</button>
-            </div>
+            </div> */}
             {dogs.map(individualDogCB)}
         </div>
     );
@@ -19,7 +19,7 @@ function ResultsSummaryView(props){
         return (
             <div key = {dog.name} onClick = {dogSelectACB} class="dogResults">
             <img src= {dog.image_link} height = "100"></img>
-            <div class="dogResultsMainPart">
+            <div className="dogResultsMainPart">
                 <h3>{dog.name}</h3>
                 <p>{renderPersonalityAttributes(dog.personality)}</p>
             </div>
@@ -30,7 +30,8 @@ function ResultsSummaryView(props){
             console.log("selected dog: " + dog.name);
         }
         function dogRemoveACB(evt){
-            console.log("tried to remove dog")
+            console.log("removing a dog from recommendations")
+            props.removeDogCustomACB(dog);
             evt.stopPropagation();
         }
         function renderPersonalityAttributes(personality){
