@@ -5,10 +5,10 @@ function ResultsSummaryView(props){
     return(
         <div>
             <h1> Your Recommended Dogs </h1>
-            <div className="DogResults">
+            {/* <div className="DogResults">
                 <button onClick={(evt) => console.log("going back to search")}>Back to search</button>
                 <button onClick={(evt) => console.log("logging out")}>Log out</button>
-            </div>
+            </div> */}
             {dogs.map(individualDogCB)}
         </div>
     );
