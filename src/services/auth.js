@@ -1,10 +1,10 @@
 import { 
     getAuth, 
-    signInWithEmailAndPassword, 
-    signInWithPopup, 
-    createUserWithEmailAndPassword, 
     signOut, 
-    onAuthStateChanged,
+    signInWithEmailAndPassword, 
+    signInWithPopup,
+    onAuthStateChanged, 
+    createUserWithEmailAndPassword, 
     GoogleAuthProvider,
 } from 'firebase/auth';  
 
