@@ -1,11 +1,11 @@
+import Welcome from "./welcomePresenter.jsx";
 import Browsing from "./browsingPresenter.jsx"
 import ResultDetails from "./resultDetailsPresenter.jsx"
 import ResultsSummary from "./resultsSummaryPresenter.jsx";
-import Welcome from "./welcomePresenter.jsx";
+
 import {observer} from "mobx-react-lite"
 
 import { createHashRouter, RouterProvider } from "react-router-dom";
-import Signup from "./signupPresenter.jsx";
 
 
 export default observer (function ReactRoot(){
@@ -13,8 +13,7 @@ export default observer (function ReactRoot(){
         return createHashRouter([
         {
             path: "/",
-            //element: <Welcome/>,
-            element: <Signup/>,
+            element: <Welcome/>,
         },
         {
             path: "/browsing",
@@ -31,9 +30,9 @@ export default observer (function ReactRoot(){
         
     ])
     }
-    return ( <div>
-        <RouterProvider router={makeRouter()} />
-        </div> );
+    return (<div>
+                <RouterProvider router={makeRouter()} />
+            </div>);
 }
 )
 
