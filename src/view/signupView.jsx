@@ -7,9 +7,9 @@ function SignupView(props){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
-    function handleNameChange(event) {
-      setName(event.target.value);
-    }
+    // function handleNameChange(event) {
+    //   setName(event.target.value);
+    // }
   
     function handleEmailChange(event) {
       setEmail(event.target.value);
@@ -21,7 +21,7 @@ function SignupView(props){
   
     function handleSignUp() {
       // Perform signup logic using captured data (name, email, password)
-      console.log('Name:', name);
+      //console.log('Name:', name);
       console.log('Email:', email);
       console.log('Password:', password);
       // Add further logic here like API calls, form validation, etc.
@@ -30,7 +30,7 @@ function SignupView(props){
     return (
       <div className="signup-form">
         <h2>Sign Up</h2>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="name" className="form-label">Name:</label>
           <input
             type="text"
@@ -39,7 +39,7 @@ function SignupView(props){
             onChange={handleNameChange}
             className="form-input"
           />
-        </div>
+        </div> */}
         <div className="form-group">
           <label htmlFor="email" className="form-label">Email:</label>
           <input

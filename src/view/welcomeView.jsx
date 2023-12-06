@@ -17,15 +17,16 @@ function WelcomeView(props){
     </div>
 
     );
+    
 
     
-    function SignUpACB(evt){
-        console.log("Sign up button");
-    }
+    // function SignUpACB(evt){
+    //     console.log("Sign up button");
+    // }
 
-    function LogInACB(evt){
-        console.log("Log In button");
-    }
+    // function LogInACB(evt){
+    //     console.log("Log In button");
+    // }
 }
 
 export default WelcomeView;
