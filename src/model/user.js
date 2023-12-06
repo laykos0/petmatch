@@ -23,10 +23,6 @@ export default {
             if (user)
                 await db.saveToDatabase(user.uid, data);
             
-            // Retrieve the updated user data if needed
-            //const new_data = await db.readFromDatabase(user.uid);
-            
-            //return new_data;
             return
         } catch (error) {
             console.error('Error updating user information:', error.message);
