@@ -2,14 +2,20 @@ import { React, useState } from 'react';
 import {motion} from "framer-motion"
 import Draggable from 'react-draggable';
 import "../browsing.css"
+import { useObserver } from "mobx-react-lite";
 
+
+// if currently displayed dog is null: loading
+// whenever you swipe, update user preferences, and call generateDisplayDog
 function BrowsingView(props){
-    const [profiles, setProfiles] = useState([
-        { id: 1, name: 'John Doe', image: 'john.jpg' },
-        { id: 2, name: 'ohn oe', image: 'ohn.jpg' },
-        { id: 3, name: 'h oe', image: 'hn.jpg' },
-        { id: 4, name: 'n Doe', image: 'n.jpg' },
-    ]);
+    // const [profiles, setProfiles] = useState([
+    //     // { id: 1, name: 'John Doe', image: 'john.jpg' },
+    //     // { id: 2, name: 'ohn oe', image: 'ohn.jpg' },
+    //     // { id: 3, name: 'h oe', image: 'hn.jpg' },
+    //     // { id: 4, name: 'n Doe', image: 'n.jpg' },
+
+    // ]);
+    console.log(props)
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -59,7 +65,7 @@ function BrowsingView(props){
         );
     }
 
-    return (
+    return useObserver(() => (
         <div className="app">
             {profiles.slice(currentIndex, currentIndex + 1).map((profile) => (
                 <SwipeCard
@@ -69,7 +75,7 @@ function BrowsingView(props){
                 />
             ))}
         </div>
-    );
+    ));
 }
 
 export default BrowsingView;

@@ -27,7 +27,7 @@ export default observer( function App(props){
         },
         {
             path: "/results-summary",
-            element: <ResultsSummary/>,
+            element: <ResultsSummary model={props.model}/>,
         },
         
     ])
