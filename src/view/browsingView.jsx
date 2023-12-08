@@ -24,12 +24,12 @@ function BrowsingView(props){
         
         if (direction === 'right') {
             console.log('Swiped right!');
-            props.generateDog()
+            props.x(false)
             console.log(props.model.currentlyDisplayedDog.name)
         } 
         else if (direction === 'left') {
             console.log('Swiped left!');
-            props.generateDog()
+            props.x(true)
             console.log(props.model.currentlyDisplayedDog.name)
         }
 
@@ -41,8 +41,7 @@ function BrowsingView(props){
             const threshold = 50;
 
             if (Math.abs(data.x) > threshold) {
-                const direction = data.x > 0 ? 'right' : 'left';
-                onSwipe(direction);
+                onSwipe(data.x > 0);
             }
         };
 

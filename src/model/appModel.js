@@ -28,5 +28,6 @@ export default{
             this.currentlyDisplayedDog = this.dogsToDisplay.pop();
             console.log(this.currentlyDisplayedDog);
         }
-    }
+    },
+
 }

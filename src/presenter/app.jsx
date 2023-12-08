@@ -12,7 +12,6 @@ import { observable, configure } from "mobx";
 
 configure({ enforceActions: "never", });  // we don't use Mobx actions
 const model = observable(Model);
-model.generateDisplayDog();
 
 export default observer( function App(props){
 

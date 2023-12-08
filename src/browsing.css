@@ -69,4 +69,10 @@ swipe-card handle .dislike{
   border: solid white;
 }
 
+img {
+  pointer-events: none;
+  width: 200px;
+  height: 200px;
+}
+
 
