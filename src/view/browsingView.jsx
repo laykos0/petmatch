@@ -22,12 +22,12 @@ function BrowsingView(props){
 
     function handleSwipe(direction){
         
-        if (direction === 'right') {
+        if (direction === true) {
             console.log('Swiped right!');
             props.x(false)
             console.log(props.model.currentlyDisplayedDog.name)
         } 
-        else if (direction === 'left') {
+        else if (direction === false) {
             console.log('Swiped left!');
             props.x(true)
             console.log(props.model.currentlyDisplayedDog.name)
