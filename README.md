@@ -5,24 +5,25 @@ This repository contains the code for the WIP web application **PetMatch**. PetM
 ## Current Progress
 - Created the basic views containing all necessary information and user actions, such as buttons, input fields, etc. for the following pages: 
     - Browsing
-    - ResultsDetails
-    - ResultsSummary
+    - ResultDetails
+    - ResultSummary
     - Welcome
 - Created a shared navigation bar rendered at the top of each of the views.
 - Implemented router and defined routes used by the navigation bar to access different views. 
 - Implemented the API function calls necessary to be able to fetch dogs to display and recommend using the dog API.
 - Initialized Firebase SDK and deploy the app.
-- Implemented module responsible for user authentication through Firebase Authenticaion.
-- Implemented module responsible for data persistence through Firebase RealtimeDatabas.
+- Implemented module responsible for user authentication through Firebase Authentication.
+- Implemented module responsible for data persistence through Firebase Realtime Database.
 
 
 ## Further Plans
 
 - Implement the `ResultDetailsView` which displays in depth details about a selected dog, as well as displaying the adoption centers near the user which hold the selected dog. This view is reached by clicking on a dog in the `ResultsSummaryView`
-- Integrate the application with the petFinders API, which will provide the `ResultDetailsView` with data about nearby adoption centers
+- Integrate the application with the PetFinder API, which will provide the `ResultDetailsView` with data about nearby adoption centers
 - Design a more sophisticated dog matching algorithm. Currently it doesn't remember the dogs already seen and unseen, and recommends dogs by finding dogs closest in personality to the average of the personality attributes of all selected
 - Make the application persistent. Save all user information, including personality preferences and recommended dogs. 
 - Improve style and user experience. Design logo, get user feedback and improve design. 
+- Testing of the application and gathering user feedback to improve usability of the app.
 
 
 ## Project structure
