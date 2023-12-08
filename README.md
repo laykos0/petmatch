@@ -1,5 +1,4 @@
 # PetMatch
-## Description
 This repository contains the code for the WIP web application **PetMatch**. PetMatch allows users to browse through different dog breeds, and say if they like or dislike the dog as a potential pet (in a similar fashion to most online dating apps). Then, the user can view a list of generated dog breed recommendations. These are dogs closely match the preference profile that the website builds up based on user activity in the browsing page. The user can then select certain dogs and view more  details about these particular breeds. The user can even be given a list of adoption centers nearest the user which contain their preferred dog breeds.
 
 
