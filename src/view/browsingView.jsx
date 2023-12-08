@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import {motion} from "framer-motion"
 import Draggable from 'react-draggable';
 import { useObserver } from "mobx-react-lite";
-import "../browsing.css"
+import "../styles/browsing.css"
 
 
 // if currently displayed dog is null: loading

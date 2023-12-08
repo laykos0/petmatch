@@ -1,6 +1,6 @@
 // LoginView.jsx
 import React, { useState } from 'react';
-import "../login.css"
+import "../styles/login.css"
 
 function LoginView(props) {
   const [email, setEmail] = useState('');
