@@ -1,32 +1,33 @@
 import { React, useState } from 'react';
 import {motion} from "framer-motion"
 import Draggable from 'react-draggable';
+import { useObserver } from "mobx-react-lite";
 import "../browsing.css"
 
 function BrowsingView(props){
-    const [profiles, setProfiles] = useState([
-        { id: 1, name: 'John Doe', image: 'john.jpg' },
-        { id: 2, name: 'ohn oe', image: 'ohn.jpg' },
-        { id: 3, name: 'h oe', image: 'hn.jpg' },
-        { id: 4, name: 'n Doe', image: 'n.jpg' },
-    ]);
+
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
     function handleSwipe(direction){
+        
         if (direction === 'right') {
             console.log('Swiped right!');
+            props.generateDog()
+            console.log(props.model.currentlyDisplayedDog.name)
         } 
         else if (direction === 'left') {
             console.log('Swiped left!');
+            props.generateDog()
+            console.log(props.model.currentlyDisplayedDog.name)
         }
 
         setCurrentIndex((prevIndex) => prevIndex + 1);
     };
 
-    function SwipeCard({ profile, onSwipe }) {
+    function SwipeCard({ onSwipe }) {
         function handleStop(event, data){
-            const threshold = 100;
+            const threshold = 50;
 
             if (Math.abs(data.x) > threshold) {
                 const direction = data.x > 0 ? 'right' : 'left';
@@ -47,14 +48,14 @@ function BrowsingView(props){
                         onStop={handleStop}
                     >
                         <div className="swipe-card handle">
-                            <motion.button className='like' onClick={handleSwipe}>
+                            <motion.button className='like' onClick={(() => {handleSwipe("right")})}>
                                 👍 
                             </motion.button>
                             <div className="profile-content">
-                                <img src={profile.image} alt={profile.name} />
-                                <h3>{profile.name}</h3>
+                                <img src={props.model.currentlyDisplayedDog.image_link} />
+                                <h3>{props.model.currentlyDisplayedDog.name}</h3>
                             </div>
-                            <motion.button className='dislike' onClick={handleSwipe}>
+                            <motion.button className='dislike' onClick={(() => {handleSwipe("left")})}>
                                 👎
                             </motion.button>
                         </div>
@@ -64,17 +65,7 @@ function BrowsingView(props){
         );
     }
 
-    return (
-        <div className="app">
-            {profiles.slice(currentIndex, currentIndex + 1).map((profile) => (
-                <SwipeCard
-                    key={profile.id}
-                    profile={profile}
-                    onSwipe={handleSwipe}
-                />
-            ))}
-        </div>
-    );
+    return useObserver(() => (<div className="app"> <SwipeCard onSwipe={handleSwipe} /> </div>));
 }
 
 export default BrowsingView;
