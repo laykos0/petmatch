@@ -9,18 +9,20 @@ import "../styles/browsing.css"
 // whenever you swipe, update user preferences, and call generateDisplayDog
 function BrowsingView(props){
 
-    const [currentIndex, setCurrentIndex] = useState(0);
-
+    //const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 });
 
     function rateDog(liked) {
         props.rate(liked)
-        setCurrentIndex((prevIndex) => prevIndex + 1);
+        //setCurrentIndex((prevIndex) => prevIndex + 1);
     }
 
     function SwipeCard({ onSwipe }) {
         function handleStop(event, data){
             if (Math.abs(data.x) > 50) {
                 onSwipe(data.x < 0);
+            } else {
+                //setCurrentPosition({ x: 0, y: 0 });
             }
         };
 
@@ -31,7 +33,7 @@ function BrowsingView(props){
                         axis="x"
                         handle=".handle"
                         defaultPosition={{ x: 0, y: 0 }}
-                        position={null}
+                        position={currentPosition}
                         grid={[25, 25]}
                         scale={1}
                         onStop={handleStop}
