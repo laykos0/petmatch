@@ -4,12 +4,17 @@ This repository contains the code for the WIP web application **PetMatch**. PetM
 
 
 ## Current Progress
-- Created a basic view containing all necessary information and user actions (buttons etc) for the results summary view, home page, and browsing view. 
-- Also created a navigation bar at the top of each view, and implemented a router to be able to move between each view using the navigation bar. 
+- Created the basic views containing all necessary information and user actions, such as buttons, input fields, etc. for the following pages: 
+    - Browsing
+    - ResultsDetails
+    - ResultsSummary
+    - Welcome
+- Created a shared navigation bar rendered at the top of each of the views.
+- Implemented router and defined routes used by the navigation bar to access different views. 
 - Implemented the API function calls necessary to be able to fetch dogs to display and recommend using the dog API.
-- Deploy app 
-- Firebase Auth
-- Firebase db
+- Initialized Firebase SDK and deploy the app.
+- Implemented module responsible for user authentication through Firebase Authenticaion.
+- Implemented module responsible for data persistence through Firebase RealtimeDatabas.
 
 
 ## Further Plans
