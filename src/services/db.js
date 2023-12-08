@@ -3,7 +3,6 @@ import {
     ref,
     get, 
     set,
-    update 
 } from 'firebase/database';
 
 import {app} from "./firebase"
