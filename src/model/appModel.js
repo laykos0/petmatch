@@ -26,7 +26,8 @@ export default{
         else {
             this.dogsToDisplay = await getNewDogs(this.user);
             this.currentlyDisplayedDog = this.dogsToDisplay.pop();
-            console.log(this.currentlyDisplayedDog);
+            console.log("New Dogs fetched", this.currentlyDisplayedDog);
         }
-    }
+    },
+
 }

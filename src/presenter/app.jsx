@@ -7,7 +7,11 @@ import NavBar from '../components/navbar.jsx';
 import {observer} from "mobx-react-lite"
 
 import { createHashRouter, RouterProvider } from "react-router-dom";
+import Model from "../model/appModel.js";
+import { observable, configure } from "mobx";
 
+configure({ enforceActions: "never", });  // we don't use Mobx actions
+const model = observable(Model);
 
 export default observer( function App(props){
 
@@ -19,7 +23,7 @@ export default observer( function App(props){
         },
         {
             path: "/browsing",
-            element: <Browsing/>,
+            element: <Browsing model={model} />,
         },
         {
             path: "/result-details",
