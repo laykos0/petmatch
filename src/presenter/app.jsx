@@ -9,9 +9,9 @@ import {observer} from "mobx-react-lite"
 import { createHashRouter, RouterProvider } from "react-router-dom";
 
 
-export default observer (function App(){
+export default observer( function App(props){
 
-    function makeRouter(){
+    function makeRouter(props){
         return createHashRouter([
         {
             path: "/",
@@ -23,18 +23,18 @@ export default observer (function App(){
         },
         {
             path: "/result-details",
-            element: <ResultDetails/>,
+            element: <ResultDetails model={props.model}/>,
         },
         {
             path: "/results-summary",
-            element: <ResultsSummary/>,
+            element: <ResultsSummary model={props.model}/>,
         },
         
     ])
     }
     return (<div> 
                 <NavBar/>
-                <RouterProvider router={makeRouter()} />
+                <RouterProvider router={makeRouter(props)} />
             </div>
     );
 }
