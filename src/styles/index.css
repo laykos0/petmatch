@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --bg: purple;
   --nav-size: 60px;
@@ -11,12 +15,13 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply bg-indigo-300
 }
 
 a {
@@ -70,5 +75,4 @@ button:focus-visible {
 .welcome{
   text-align: center;
 }
-
 

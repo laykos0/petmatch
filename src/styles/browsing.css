@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body .swipe-card {
     display: flex;
     width: 375px;
@@ -72,8 +76,8 @@ swipe-card handle .dislike{
 
 img {
   pointer-events: none;
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
 }
 
 

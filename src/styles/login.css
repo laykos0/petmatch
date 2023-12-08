@@ -1,10 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .login-form {
-    max-width: 300px;
+    display: flexbox;
+    max-width: 350px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    @apply inline-grid bg-indigo-100 text-purple-600
   }
   
   .form-group {
@@ -24,10 +30,11 @@
     border: 1px solid #ccc;
     border-radius: 3px;
     outline: none;
+    @apply bg-violet-400
   }
   
   .sign-in-btn {
-    background-color: #007bff;
+    /* background-color: #007bff; */
     color: #fff;
     padding: 10px;
     border: none;
@@ -36,10 +43,11 @@
     font-size: 16px;
     margin-bottom: 10px;
     margin: 10px;
+    @apply bg-indigo-300
   }
   
   .sign-in-btn:hover {
-    background-color: #0056b3;
+    /* background-color: #0056b3; */
   }
 
   .no-acnt{ 
@@ -48,7 +56,7 @@
     text-align: center;
     margin: 15px;
     cursor: pointer; 
-    color: blue 
+    /* color: blue  */
 }
   
   

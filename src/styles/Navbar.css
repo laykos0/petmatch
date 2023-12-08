@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -5,7 +9,7 @@
     background-color: #333;
     color: white;
     height: 50px;
-    /* margin-bottom: 5px; */
+    margin-bottom: 20px;
 }
   
 .nav-item {
@@ -17,6 +21,7 @@
     top: 0px;
     right: 51px;
     cursor: pointer;
+
 }
   
 .dropdown-menu {
@@ -30,9 +35,9 @@
 }
   
 .dropdown-menu a {
-    color: white;
     text-decoration: none;
     padding: 5px;
+    @apply text-purple-100
 }
   
 .dropdown-menu a:hover {
