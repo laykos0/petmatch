@@ -1,5 +1,5 @@
 import Dog from "../model/dog.js";
-import "../style.css";
+import "../styles/style.css";
 import { useObserver } from "mobx-react-lite";
 
 function ResultsSummaryView(props){
