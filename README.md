@@ -1,12 +1,18 @@
 # PetMatch
+## Description
 This repository contains the code for the WIP web application **PetMatch**. PetMatch allows users to browse through different dog breeds, and say if they like or dislike the dog as a potential pet (in a similar fashion to most online dating apps). Then, the user can view a list of generated dog breed recommendations. These are dogs closely match the preference profile that the website builds up based on user activity in the browsing page. The user can then select certain dogs and view more  details about these particular breeds. The user can even be given a list of adoption centers nearest the user which contain their preferred dog breeds.
 
 
-## Progress so far
-progress
+## Current Progress
+- Created a basic view containing all necessary information and user actions (buttons etc) for the results summary view, home page, and browsing view. 
+- Also created a navigation bar at the top of each view, and implemented a router to be able to move between each view using the navigation bar. 
+- Implemented the API function calls necessary to be able to fetch dogs to display and recommend using the dog API.
+- Deploy app 
+- Firebase Auth
+- Firebase db
 
-## Plans
-Further work includes:
+
+## Further Plans
 
 - Implement the `ResultDetailsView` which displays in depth details about a selected dog, as well as displaying the adoption centers near the user which hold the selected dog. This view is reached by clicking on a dog in the `ResultsSummaryView`
 - Integrate the application with the petFinders API, which will provide the `ResultDetailsView` with data about nearby adoption centers
