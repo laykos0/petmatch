@@ -38,18 +38,19 @@ function BrowsingView(props){
                         grid={[25, 25]}
                         scale={1}
                         onStop={handleStop}
+                        cancel=".like, .dislike" 
                     >
                         <div className="swipe-card handle">
                         <motion.button className='dislike' onClick={() => {onSwipe(false)}}>
-                             👎
+                            👎
                         </motion.button>
-                            <div className="profile-content">
-                                <img src={props?.model?.currentlyDisplayedDog?.image_link} />
-                                <h3>{props?.model?.currentlyDisplayedDog?.name}</h3>
-                            </div>
-                            <motion.button className='like' onClick={() => {onSwipe(true)}}>
-                                👍 
-                            </motion.button>
+                        <div className="profile-content">
+                            <img src={props?.model?.currentlyDisplayedDog?.image_link} />
+                            <h3>{props?.model?.currentlyDisplayedDog?.name}</h3>
+                        </div>
+                        <motion.button className='like' onClick={() => {onSwipe(true)}}>
+                            👍 
+                        </motion.button>
                         </div>
                     </Draggable>
                 </motion.div>
