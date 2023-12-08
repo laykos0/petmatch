@@ -1,11 +1,14 @@
 import User from "./user.js";
 import Dog from "./dog.js";
 import { getNewDogs } from "../services/dogApi.js";
-export default{
+
+export default{  
     user: User,
-    currentlyDisplayedDog: Dog,
+    
+    currentlyDisplayedDog: null,
     dogsToDisplay: [],
     currentlyRecommendedDogs: [],
+    number: 10,
     removeDog(dog){
         let indexToRemove = this.currentlyRecommendedDogs.indexOf(dog)
         if (indexToRemove !== -1) {
