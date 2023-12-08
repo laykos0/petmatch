@@ -9,26 +9,27 @@ import "../styles/browsing.css"
 // whenever you swipe, update user preferences, and call generateDisplayDog
 function BrowsingView(props){
 
-    //const [currentIndex, setCurrentIndex] = useState(0);
+    const [shouldAnimate, setShouldAnimate] = useState(true);
     const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 });
 
     function rateDog(liked) {
         props.rate(liked)
-        //setCurrentIndex((prevIndex) => prevIndex + 1);
+        setShouldAnimate(true); // Disable animation after swiping
     }
 
     function SwipeCard({ onSwipe }) {
         function handleStop(event, data){
-            if (Math.abs(data.x) > 50) {
+            if (Math.abs(data.x) > 150) {
                 onSwipe(data.x < 0);
             } else {
-                //setCurrentPosition({ x: 0, y: 0 });
+                setCurrentPosition({ x: 0, y: 0 });
+                setShouldAnimate(false); // Disable animation after swiping
             }
         };
 
         return (
             <div>
-                <motion.div animate = {{scale: 1}} initial = {{scale: 0.25}}>
+                <motion.div animate={{ scale: 1 }} initial={{ scale: shouldAnimate ? 0.25 : 1 }}>
                     <Draggable
                         axis="x"
                         handle=".handle"
