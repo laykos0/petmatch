@@ -9,6 +9,15 @@ function BrowsingView(props){
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
+
+    function like() {
+        props.x(true)
+    }
+
+    function dislike() {
+        props.x(false)
+    }
+
     function handleSwipe(direction){
         
         if (direction === 'right') {
