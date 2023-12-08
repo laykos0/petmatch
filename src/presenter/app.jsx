@@ -7,7 +7,12 @@ import NavBar from '../components/navbar.jsx';
 import {observer} from "mobx-react-lite"
 
 import { createHashRouter, RouterProvider } from "react-router-dom";
+import Model from "../model/appModel.js";
+import { observable, configure } from "mobx";
 
+configure({ enforceActions: "never", });  // we don't use Mobx actions
+const model = observable(Model);
+model.generateDisplayDog();
 
 export default observer (function App(){
 
@@ -19,7 +24,7 @@ export default observer (function App(){
         },
         {
             path: "/browsing",
-            element: <Browsing/>,
+            element: <Browsing model={model} />,
         },
         {
             path: "/result-details",
