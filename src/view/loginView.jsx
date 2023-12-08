@@ -1,5 +1,6 @@
 // LoginView.jsx
 import React, { useState } from 'react';
+import "../login.css"
 
 function LoginView(props) {
   const [email, setEmail] = useState('');
@@ -46,7 +47,7 @@ function LoginView(props) {
       <button onClick={handleSignInGoogle} className="sign-in-btn">
         Sign In Google
       </button>
-      <span style={{ textDecoration: 'underline', cursor: 'pointer', color: 'blue' }} onClick={handleToggleView}>
+      <span className='no-acnt' style={{textDecoration: 'underline'}} onClick={handleToggleView}>
         {"Don't have an account? Click here"}
       </span>
     </div>
