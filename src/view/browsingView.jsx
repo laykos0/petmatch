@@ -21,7 +21,6 @@ function BrowsingView(props){
     }
 
     function handleSwipe(direction){
-        
         if (direction === true) {
             console.log('Swiped right!');
             props.x(false)
@@ -32,9 +31,20 @@ function BrowsingView(props){
             props.x(true)
             console.log(props.model.currentlyDisplayedDog.name)
         }
-
         setCurrentIndex((prevIndex) => prevIndex + 1);
     };
+
+    function likeACB() {
+        console.log('Like button pressed!');
+        props.x(true);
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+    }
+
+    function dislikeACB() {
+        console.log('Dislike button pressed!');
+        props.x(false);
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+    }
 
     function SwipeCard({ onSwipe }) {
         function handleStop(event, data){
@@ -58,14 +68,14 @@ function BrowsingView(props){
                         onStop={handleStop}
                     >
                         <div className="swipe-card handle">
-                            <motion.button className='like' onClick={(() => {handleSwipe("right")})}>
+                            <motion.button className='like' onClick={likeACB}>
                                 👍 
                             </motion.button>
                             <div className="profile-content">
                                 <img src={props.model.currentlyDisplayedDog.image_link} />
                                 <h3>{props.model.currentlyDisplayedDog.name}</h3>
                             </div>
-                            <motion.button className='dislike' onClick={(() => {handleSwipe("left")})}>
+                            <motion.button className='dislike' onClick={dislikeACB}>
                                 👎
                             </motion.button>
                         </div>

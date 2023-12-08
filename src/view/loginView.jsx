@@ -28,16 +28,16 @@ function LoginView(props) {
 
   return (
     <div className="login-form">
-      <h2>Login</h2>
+      <h2 className='text-2xl font-thin py-5'>Login</h2>
       <div className="form-group">
         <label htmlFor="email" className="form-label">
-          Email:
+          Email
         </label>
         <input type="email" id="email" value={email} onChange={handleEmailChange} className="form-input" />
       </div>
       <div className="form-group">
         <label htmlFor="password" className="form-label">
-          Password:
+          Password
         </label>
         <input type="password" id="password" value={password} onChange={handlePasswordChange} className="form-input" />
       </div>
