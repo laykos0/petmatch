@@ -1,18 +1,18 @@
 import Dog from "../model/dog.js";
-
 import "../style.css";
+import { useObserver } from "mobx-react-lite";
+
 function ResultsSummaryView(props){
-    let dogs = props.dogRecommendations;
-    return(
+    return useObserver(() => (
         <div>
             <h1> Your Recommended Dogs </h1>
             {/* <div className="DogResults">
                 <button onClick={(evt) => console.log("going back to search")}>Back to search</button>
                 <button onClick={(evt) => console.log("logging out")}>Log out</button>
             </div> */}
-            {dogs.map(individualDogCB)}
+            {props.dogRecommendations.map(individualDogCB)}
         </div>
-    );
+    ));
 
     function individualDogCB(dog){
 
@@ -21,9 +21,9 @@ function ResultsSummaryView(props){
             <img src= {dog.image_link} height = "100"></img>
             <div className="dogResultsMainPart">
                 <h3>{dog.name}</h3>
-                <p>{renderPersonalityAttributes(dog.personality)}</p>
+                {/* <p>{renderPersonalityAttributes(dog.personality)}</p> */}
             </div>
-            <button onClick={dogRemoveACB} class="dogResultsMoveButton">x</button>
+            <button onClick={dogRemoveACB} class="dogResultsRemoveButton">x</button>
             </div>
         );
         function dogSelectACB(){

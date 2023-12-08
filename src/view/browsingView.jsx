@@ -4,8 +4,10 @@ import Draggable from 'react-draggable';
 import { useObserver } from "mobx-react-lite";
 import "../browsing.css"
 
-function BrowsingView(props){
 
+// if currently displayed dog is null: loading
+// whenever you swipe, update user preferences, and call generateDisplayDog
+function BrowsingView(props){
 
     const [currentIndex, setCurrentIndex] = useState(0);
 

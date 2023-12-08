@@ -1,9 +1,16 @@
 import ResultsSummaryView from "../view/resultsSummaryView.jsx";
+import { observer } from "mobx-react-lite";
 
-export default
+export default observer(
 function ResultsSummary(props){
     function removeDogCustomACB(dog){
-        props.model.removeDog(dog);
+        props.model.removeDogFromRecommendations(dog);
     }
-    return (<ResultsSummaryView dogRecommendations={[]} removeDogCustomACB={removeDogCustomACB}/>);
+
+    if(props.model.currentlyRecommendedDogs.length == 0){
+        props.model.getDogRecommendations();
+    }
+
+    return (<ResultsSummaryView dogRecommendations={props.model.currentlyRecommendedDogs} removeDogCustomACB={removeDogCustomACB}/>);
 }
+)

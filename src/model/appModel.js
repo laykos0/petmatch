@@ -1,12 +1,18 @@
 import User from "./user.js";
 import Dog from "./dog.js";
 import { getNewDogs } from "../services/dogApi.js";
-export default{
+
+export default{  
     user: User,
-    currentlyDisplayedDog: Dog,
+    currentlyDisplayedDog: {},
     dogsToDisplay: [],
     currentlyRecommendedDogs: [],
-    removeDog(dog){
+
+    async getDogRecommendations(){
+        this.currentlyRecommendedDogs = await getNewDogs(this.user); 
+    },
+
+    removeDogFromRecommendations(dog){
         let indexToRemove = this.currentlyRecommendedDogs.indexOf(dog)
         if (indexToRemove !== -1) {
             // Remove the element using splice
