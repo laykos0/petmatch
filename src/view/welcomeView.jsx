@@ -10,7 +10,7 @@ function WelcomeView(props) {
   }
 
   return (
-    <div>
+    <div className='welcome'>
       {showLogin ? (
         <LoginView onSignInEmail={props.onSignInEmail} onSignInGoogle={props.onSignInGoogle} onToggleView={handleToggleView} />
       ) : (
