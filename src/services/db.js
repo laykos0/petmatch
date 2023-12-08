@@ -2,7 +2,8 @@ import {
     getDatabase, 
     ref,
     get, 
-    set 
+    set,
+    update 
 } from 'firebase/database';
 
 import {app} from "./firebase"
@@ -10,8 +11,8 @@ import {app} from "./firebase"
 const db = getDatabase(app);
 
 export default {
-    async saveToDatabase(userId, data) {
-        set(ref(db, userId), {data});
+    async saveToDatabase(userId, data) {;
+        set(ref(db, userId), data);
     },
 
     async readFromDatabase(userId) {
