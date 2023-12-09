@@ -17,10 +17,6 @@ function BrowsingView(props){
         setShouldAnimate(true); // Disable animation after swiping
     }
 
-    function dislike() {
-        props.x(false)
-    }
-
     function handleSwipe(direction){
         if (direction === true) {
             console.log('Swiped right!');
@@ -34,18 +30,6 @@ function BrowsingView(props){
         }
         setCurrentIndex((prevIndex) => prevIndex + 1);
     };
-
-    function likeACB() {
-        console.log('Like button pressed!');
-        props.x(true);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-    }
-
-    function dislikeACB() {
-        console.log('Dislike button pressed!');
-        props.x(false);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-    }
 
     function SwipeCard({ onSwipe }) {
         function handleStop(event, data){
@@ -71,26 +55,16 @@ function BrowsingView(props){
                         cancel=".like, .dislike" 
                     >
                         <div className="swipe-card handle">
-                            <motion.button className='like' onClick={likeACB}>
-                                👍 
-                            </motion.button>
-                            <div className="profile-content">
-                                <img src={props.model.currentlyDisplayedDog.image_link} />
-                                <h3>{props.model.currentlyDisplayedDog.name}</h3>
-                            </div>
-                            <motion.button className='dislike' onClick={dislikeACB}>
+                            <motion.button className='dislike' onClick={() => {onSwipe(false)}}>
                                 👎
                             </motion.button>
-                        <motion.button className='dislike' onClick={() => {onSwipe(false)}}>
-                            👎
-                        </motion.button>
-                        <div className="profile-content">
-                            <img src={props?.model?.currentlyDisplayedDog?.image_link} />
-                            <h3>{props?.model?.currentlyDisplayedDog?.name}</h3>
-                        </div>
-                        <motion.button className='like' onClick={() => {onSwipe(true)}}>
-                            👍 
-                        </motion.button>
+                            <div className="profile-content">
+                                <img src={props?.model?.currentlyDisplayedDog?.image_link} />
+                                <h3>{props?.model?.currentlyDisplayedDog?.name}</h3>
+                            </div>
+                            <motion.button className='like' onClick={() => {onSwipe(true)}}>
+                                👍 
+                            </motion.button>
                         </div>
                     </Draggable>
                 </motion.div>
