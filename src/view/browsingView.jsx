@@ -9,65 +9,48 @@ import "../styles/browsing.css"
 // whenever you swipe, update user preferences, and call generateDisplayDog
 function BrowsingView(props){
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [shouldAnimate, setShouldAnimate] = useState(true);
+    const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 });
 
-
-    function like() {
-        props.x(true)
+    function rateDog(liked) {
+        props.rate(liked)
+        setShouldAnimate(true); // Disable animation after swiping
     }
-
-    function dislike() {
-        props.x(false)
-    }
-
-    function handleSwipe(direction){
-        
-        if (direction === true) {
-            console.log('Swiped right!');
-            props.x(false)
-            console.log(props.model.currentlyDisplayedDog.name)
-        } 
-        else if (direction === false) {
-            console.log('Swiped left!');
-            props.x(true)
-            console.log(props.model.currentlyDisplayedDog.name)
-        }
-
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-    };
 
     function SwipeCard({ onSwipe }) {
         function handleStop(event, data){
-            const threshold = 50;
-
-            if (Math.abs(data.x) > threshold) {
-                onSwipe(data.x > 0);
+            if (Math.abs(data.x) > 150) {
+                onSwipe(data.x < 0);
+            } else {
+                setCurrentPosition({ x: 0, y: 0 });
+                setShouldAnimate(false); // Disable animation after swiping
             }
         };
 
         return (
             <div>
-                <motion.div animate = {{scale: 1}} initial = {{scale: 0.25}}>
+                <motion.div animate={{ scale: 1 }} initial={{ scale: shouldAnimate ? 0.25 : 1 }}>
                     <Draggable
                         axis="x"
                         handle=".handle"
                         defaultPosition={{ x: 0, y: 0 }}
-                        position={null}
+                        position={currentPosition}
                         grid={[25, 25]}
                         scale={1}
                         onStop={handleStop}
+                        cancel=".like, .dislike" 
                     >
                         <div className="swipe-card handle">
-                            <motion.button className='like' onClick={(() => {handleSwipe("right")})}>
-                                👍 
-                            </motion.button>
-                            <div className="profile-content">
-                                <img src={props.model.currentlyDisplayedDog.image_link} />
-                                <h3>{props.model.currentlyDisplayedDog.name}</h3>
-                            </div>
-                            <motion.button className='dislike' onClick={(() => {handleSwipe("left")})}>
-                                👎
-                            </motion.button>
+                        <motion.button className='dislike' onClick={() => {onSwipe(false)}}>
+                            👎
+                        </motion.button>
+                        <div className="profile-content">
+                            <img src={props?.model?.currentlyDisplayedDog?.image_link} />
+                            <h3>{props?.model?.currentlyDisplayedDog?.name}</h3>
+                        </div>
+                        <motion.button className='like' onClick={() => {onSwipe(true)}}>
+                            👍 
+                        </motion.button>
                         </div>
                     </Draggable>
                 </motion.div>
@@ -75,7 +58,7 @@ function BrowsingView(props){
         );
     }
 
-    return useObserver(() => (<div className="app"> <SwipeCard onSwipe={handleSwipe} /> </div>));
+    return useObserver(() => (<div className="app"> <SwipeCard onSwipe={rateDog} /> </div>));
 }
 
 export default BrowsingView;

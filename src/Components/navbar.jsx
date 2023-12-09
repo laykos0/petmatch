@@ -1,5 +1,7 @@
 import {React, useState } from "react";
 import '../styles/navbar.css'; 
+import auth from "../services/auth"
+
 
 function Navbar(){
     const [isDropDownOpen, setDropDownOpen] = useState(false);
@@ -13,6 +15,7 @@ function Navbar(){
                     <a href="#/browsing">Browsing Page</a>
                     <a href="#/results-summary">Results Summary Page</a>
                     <a href="#/result-details">Result Details Page</a>
+                    <a onClick={() => auth.signOut()}>Log Out</a>
                   </div>
                 )}
               </div>
