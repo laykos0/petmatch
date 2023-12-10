@@ -6,7 +6,7 @@ import auth from "../services/auth"
 function Navbar(){
     const [isDropDownOpen, setDropDownOpen] = useState(false);
     return (
-            <nav className="navbar">
+            <nav className="navbar fixed top-0 w-full">
               <div className="nav-item dropdown" onClick={()=>{setDropDownOpen(!isDropDownOpen)}}>
                 <span>
                   <button className="text-xl font-bold text-purple-300 w-20 rounded hover:rounded-lg">
