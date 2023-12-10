@@ -8,6 +8,7 @@ body .swipe-card {
     height: 500px;
     overflow: hidden;
     border: solid;
+    @apply bg-slate-600 placeholder-opacity-100
 }
 
 .profile-content {
@@ -36,30 +37,12 @@ body .swipe-card {
   height: 100vh;
 }
 
-.browsing-results-btn{
-  table-layout: fixed;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-.welcome-btn{
-  table-layout: fixed;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 80px;
-  left: 20px;
-}
-
 ul{
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
+/* 
 swipe-card handle .like{
   display: inline-block;
   padding: 20px 20px;
@@ -72,12 +55,13 @@ swipe-card handle .dislike{
   padding: 20px 20px;
   border-radius: 50%;
   border: solid white;
-}
+} */
 
-img {
+.profile-content img{
   pointer-events: none;
   width: 350px;
   height: 350px;
+  @apply opacity-100
 }
 
 

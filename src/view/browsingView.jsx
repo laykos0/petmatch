@@ -27,7 +27,7 @@ function BrowsingView(props){
             }
         };
 return (
-            <div>
+            <div className='rounded my-20'>
                 <motion.div animate={{ scale: 1 }} initial={{ scale: shouldAnimate ? 0.25 : 1 }}>
                     <Draggable
                         axis="x"
@@ -40,14 +40,14 @@ return (
                         cancel=".like, .dislike" 
                     >
                         <div className="swipe-card handle">
-                        <motion.button className='dislike' onClick={() => {onSwipe(false)}}>
+                        <motion.button className='dislike absolute bottom-3 left-5 bg-white p-5 rounded-full hover:scale-125 hover:bg-red-600' onClick={() => {onSwipe(false)}}>
                             👎
                         </motion.button>
                         <div className="profile-content">
                             <img src={props?.model?.currentlyDisplayedDog?.image_link} />
                             <h3>{props?.model?.currentlyDisplayedDog?.name}</h3>
                         </div>
-                        <motion.button className='like' onClick={() => {onSwipe(true)}}>
+                        <motion.button className='like absolute bottom-3 right-5 bg-white p-5 rounded-full hover:scale-125 hover:bg-green-400' onClick={() => {onSwipe(true)}}>
                             👍 
                         </motion.button>
                         </div>
