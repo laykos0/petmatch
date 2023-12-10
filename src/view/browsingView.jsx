@@ -27,7 +27,7 @@ function BrowsingView(props){
             }
         };
 return (
-            <div className='rounded my-20'>
+            <div className='rounded'>
                 <motion.div animate={{ scale: 1 }} initial={{ scale: shouldAnimate ? 0.25 : 1 }}>
                     <Draggable
                         axis="x"
@@ -40,16 +40,16 @@ return (
                         cancel=".like, .dislike" 
                     >
                         <div className="swipe-card handle">
-                        <motion.button className='dislike absolute bottom-3 left-5 bg-white p-5 rounded-full hover:scale-125 hover:bg-red-600' onClick={() => {onSwipe(false)}}>
-                            👎
-                        </motion.button>
-                        <div className="profile-content">
-                            <img src={props?.model?.currentlyDisplayedDog?.image_link} />
-                            <h3>{props?.model?.currentlyDisplayedDog?.name}</h3>
-                        </div>
-                        <motion.button className='like absolute bottom-3 right-5 bg-white p-5 rounded-full hover:scale-125 hover:bg-green-400' onClick={() => {onSwipe(true)}}>
-                            👍 
-                        </motion.button>
+                            <motion.button className='dislike absolute bottom-5 left-5 bg-white p-5 rounded-full hover:scale-125 hover:bg-red-600' onClick={() => {onSwipe(false)}}>
+                                👎
+                            </motion.button>
+                            <div className="profile-content">
+                                <img className = "rounded-lg mb-16" src={props?.model?.currentlyDisplayedDog?.image_link} />
+                                <button className=' font-bold  bg-indigo-500 mb-5 p-5 rounded-full'>{props?.model?.currentlyDisplayedDog?.name}</button>
+                            </div>
+                            <motion.button className='like absolute bottom-5 right-5 bg-white p-5 rounded-full hover:scale-125 hover:bg-green-400' onClick={() => {onSwipe(true)}}>
+                                👍 
+                            </motion.button>
                         </div>
                     </Draggable>
                 </motion.div>

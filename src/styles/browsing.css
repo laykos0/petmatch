@@ -4,11 +4,11 @@
 
 body .swipe-card {
     display: flex;
-    width: 375px;
-    height: 500px;
+    width: 400px;
+    height: 600px;
     overflow: hidden;
     border: solid;
-    @apply bg-slate-600 placeholder-opacity-100
+    @apply bg-gradient-to-b from-violet-100 to-orange-400
 }
 
 .profile-content {
@@ -42,26 +42,10 @@ ul{
   margin: 0;
   padding: 0;
 }
-/* 
-swipe-card handle .like{
-  display: inline-block;
-  padding: 20px 20px;
-  border-radius: 50%;
-  border: solid white;
-}
-
-swipe-card handle .dislike{
-  display: inline-block;
-  padding: 20px 20px;
-  border-radius: 50%;
-  border: solid white;
-} */
 
 .profile-content img{
   pointer-events: none;
   width: 350px;
   height: 350px;
-  @apply opacity-100
+  /* filter: hue-rotate(-180deg); */
 }
-
-
