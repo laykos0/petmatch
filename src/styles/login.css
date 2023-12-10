@@ -47,7 +47,7 @@
 }
 
 .sign-in-btn:hover {
-  @apply bg-gradient-to-tl from-blue-400 to-blue-900
+  @apply bg-gradient-to-t from-blue-400 to-blue-900
 }
 
 .no-acnt{ 

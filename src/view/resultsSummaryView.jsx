@@ -17,7 +17,7 @@ function ResultsSummaryView(props){
     function individualDogCB(dog){
 
         return (
-            <div key = {dog.name} onClick = {dogSelectACB} class="dogResults">
+            <div key = {dog.name} onClick = {dogSelectACB} className="dogResults">
             <img src= {dog.image_link} height = "100"></img>
             <div className="dogResultsMainPart">
                 <h3>{dog.name}</h3>
