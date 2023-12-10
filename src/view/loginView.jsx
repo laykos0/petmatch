@@ -27,7 +27,7 @@ function LoginView(props) {
   }
 
   return (
-    <div className="login-form">
+    <div className="login-form my-20">
       <h2 className='text-2xl font-thin py-5'>Login</h2>
       <div className="form-group">
         <label htmlFor="email" className="form-label">
