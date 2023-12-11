@@ -15,6 +15,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
+  scrollbar-width: none;
   /* background-color: #242424; */
 
   font-synthesis: none;
@@ -79,20 +80,11 @@ button:focus-visible {
 body{
   background: linear-gradient(rgba(173, 216, 230, .5), rgba(173, 216, 230, 0.5)),
               url("https://img.freepik.com/premium-vector/seamless-pattern-cute-dog-puppy-cartoon-funny-happy-dog-character-with-simple-shape-style-illustration-background-wallpaper-textile-fabric_253081-198.jpg?w=2000");
-  /* background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0.5)), url("https://i.pinimg.com/736x/73/15/e5/7315e50639d18253343362636de52430.jpg"); */
-  background-size: 100%;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   /* filter: hue-rotate(180deg); */
   @apply bg-cover bg-center h-screen
 }
-
-body::before {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  background-size: 100%;
-  @apply bg-cover bg-center;
-}
-

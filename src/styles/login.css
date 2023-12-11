@@ -34,7 +34,6 @@
 }
 
 .sign-in-btn {
-  /* background-color: #007bff; */
   color: #fff;
   padding: 10px;
   border: none;
@@ -56,5 +55,4 @@
   text-align: center;
   margin: 15px;
   cursor: pointer; 
-  /* color: blue  */
 }
