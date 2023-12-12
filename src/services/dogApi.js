@@ -30,8 +30,8 @@ export async function getNewDogs(user) {
           };
       output.push(dogToDisplay);
   });
-  console.log(dogs)
-  return dogs;
+  console.log(output)
+  return output;
   } catch (error) {
       console.error('Error fetching data:', error);
   }
