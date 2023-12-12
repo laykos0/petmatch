@@ -1,31 +1,16 @@
-import Dog from "../model/dog.js";
-import "../styles/style.css";
+import "../styles/summary.css";
+import "../styles/index.css"
 import { useObserver } from "mobx-react-lite";
 
 function ResultsSummaryView(props){
     return useObserver(() => (
         <div>
             <h1> Your Recommended Dogs </h1>
-            {/* <div className="DogResults">
-                <button onClick={(evt) => console.log("going back to search")}>Back to search</button>
-                <button onClick={(evt) => console.log("logging out")}>Log out</button>
-            </div> */}
             {props.dogRecommendations.map(individualDogCB)}
         </div>
     ));
 
     function individualDogCB(dog){
-
-        return (
-            <div key = {dog.name} onClick = {dogSelectACB} class="dogResults">
-            <img src= {dog.image_link} height = "100"></img>
-            <div className="dogResultsMainPart">
-                <h3>{dog.name}</h3>
-                {/* <p>{renderPersonalityAttributes(dog.personality)}</p> */}
-            </div>
-            <button onClick={dogRemoveACB} class="dogResultsRemoveButton">x</button>
-            </div>
-        );
         function dogSelectACB(){
             console.log("selected dog: " + dog.name);
         }
@@ -34,9 +19,17 @@ function ResultsSummaryView(props){
             props.removeDogCustomACB(dog);
             evt.stopPropagation();
         }
-        function renderPersonalityAttributes(personality){
-            return <p>Good with other dogs: {personality.good_with_other_dogs}</p>
-        }
+        return (
+            <div key = {dog.name + "-1"}>
+                <div key = {dog.name} onClick = {dogSelectACB} className="dogResults border-solid border-4 border-violet-100 my-10 rounded-lg bg-gradient-to-tl from-violet-100 to-orange-400 bg-opacity-50 font-mono font-extrabold text-xl">
+                    <img key = {dog.name + "0"} src= {dog.image_link} height = "100"></img>
+                    <div key = {dog.name + "1"} className="dogResultsMainPart">
+                    <button key = {dog.name + "2"} className=' font-bold  bg-indigo-500 mb-5 p-5 rounded-full'>{dog.name}</button>
+                    </div>
+                    <button key = {dog.name + "3"} onClick={dogRemoveACB} className="dogResultsRemoveButton font-bold  bg-indigo-500 mb-5 p-5 rounded-full">x</button>
+                </div>
+            </div>
+        );
     }
 }
 

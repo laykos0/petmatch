@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -5,7 +9,7 @@
     background-color: #333;
     color: white;
     height: 50px;
-    /* margin-bottom: 5px; */
+    @apply bg-gradient-to-r from-slate-700 to-slate-900
 }
   
 .nav-item {
@@ -27,12 +31,13 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    @apply bg-gradient-to-r from-slate-700 to-slate-900
 }
   
 .dropdown-menu a {
-    color: white;
     text-decoration: none;
     padding: 5px;
+    @apply text-purple-100
 }
   
 .dropdown-menu a:hover {
