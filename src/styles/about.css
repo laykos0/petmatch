@@ -2,60 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 .page-container {
-    min-height: 100vh; /* Set maximum height to viewport height */
-    overflow-y: auto; /* Enable vertical scrolling when content overflows */
-    padding: 20px; /* Add padding if needed */
+  min-height: 100vh;  
+  padding: 20px;
 }
 
 .section {
-    background-color: #f0f0f0;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
-    
-  }
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  @apply bg-gradient-to-tl from-orange-200 to-indigo-400 border-yellow-50;
+}
   
 .section-title {
-    color: rgb(145, 22, 145);
-    margin-top: 0;
-  }
+  color: white;
+  margin-top: 0;
+  font-size: 30px;
+}
   
 .user-evaluation-images {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  @apply inline-block;
+}
   
 .user-evaluation-images img {
-    width: 30%;
-    border-radius: 10px;
-  }
-
-
+  width:  425px;
+  height: 600px;
+  border-radius: 10px;
+  @apply inline-block;
+}
   
 .evaluation-content {
-    display: flex;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  @apply inline-block;
+}
   
 .sub-section {
-    flex: 1 1 calc(50% - 10px); /* Two boxes side by side with space */
-    margin-bottom: 20px;
-    margin-right: 20px; /* Space between boxes */
-  }
+  flex: 1 1 calc(50% - 10px);
+  margin-bottom: 20px;
+  margin-right: 20px;
+  @apply inline-block;
+}
   
-.purple-box {
-    background-color: purple;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-  }
+.box {
+  width: 425px;
+  height: 600px;
+  color: orange;
+  padding: 10px;
+  border-radius: 10px;
+  @apply bg-indigo-500 inline-block;
+}
+
+.box .user-evaluation-images >div{
+  flex: 1; 
+  margin: 10px; 
+  border: 1px solid #ddd; 
+  padding: 10px; 
+}
   
 .sub-section-title {
-    margin-top: 0;
-    font-size: 1.2em;
-  }
+  color: orange;
+  margin-top: 0;
+  font-size: 2em;
+}
+
+.row-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  align-items: stretch; 
+  margin: -10px; 
+}
+
+.user-evaluation-images,
+.sub-section,
+.box {
+  flex: 1 1 calc(33.33% - 20px); 
+  margin: 10px; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  align-self: stretch; 
+}
+
+.user-evaluation-images img {
+  width: 100%; 
+  height: 100%;
+  object-fit: cover
+}
 
