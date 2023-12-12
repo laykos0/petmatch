@@ -10,10 +10,17 @@ body {
     background-size: cover;
     background-attachment: fixed;
     min-height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
 }
 
-#content-container {
-    @apply p-5; 
+body::-webkit-scrollbar {
+    width: 0px;
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: transparent;
 }
 
 .dogResults {

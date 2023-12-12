@@ -19,6 +19,7 @@ function Navbar(){
                     <a href="#/browsing">Browse</a>
                     <a href="#/results-summary">Results</a>
                     <a href="#/result-details">Details</a>
+                    <a href="#/about">About</a>
                     <a onClick={() => auth.signOut()}>Log Out</a>
                   </div>
                 )}
