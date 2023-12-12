@@ -9,7 +9,6 @@ function ResultDetailsView(props){
             protectiveness: 1,
             good_with_strangers: 3,
             playfulness: 2, 
-            protectiveness: 3,
             trainability: 4,
             energy: 5,
             barking: 1,
