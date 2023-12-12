@@ -6,6 +6,7 @@ import Browsing from './browsingPresenter.jsx';
 import ResultDetails from './resultDetailsPresenter.jsx';
 import ResultsSummary from './resultsSummaryPresenter.jsx';
 import NavBar from '../components/navbar.jsx';
+import Footer from '../components/footer.jsx';
 import Auth from '../services/auth.js';
 import Model from "../model/appModel.js";
 import { observable, configure } from "mobx";
@@ -56,6 +57,7 @@ export default observer( function App(props){
     <div>
       <NavBar />
       <RouterProvider router={makeRouter()} />
+
     </div>
   );
 })

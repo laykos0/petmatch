@@ -1,0 +1,25 @@
+.footer {
+    background-color: #333;
+    color: white;
+    @apply bg-gradient-to-r from-slate-700 to-slate-900;
+    padding: 10px; /* Adjust padding as needed */
+    /* Add any additional styling needed for your footer */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .contact-info {
+    padding: 10px;
+  }
+  
+  .about-link {
+    color: #a29bfe; /* Same lilac color as the navbar */
+    padding: 10px;
+    text-decoration: none;
+    @apply text-purple-100; /* Apply the same text color style as the navbar */
+  }
+  
+  .about-link:hover {
+    background-color: #777;
+  }
