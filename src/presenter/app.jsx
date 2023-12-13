@@ -50,6 +50,10 @@ export default observer( function App(props){
         element: <About/>,
 
       },
+      {
+        path: '*',
+        element: <Navigate to="/" replace />,
+      },
     ]);
   }
 
