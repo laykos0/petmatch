@@ -1,4 +1,5 @@
 import { useObserver } from "mobx-react-lite";
+import "../styles/details.css"
 
 function ResultDetailsView(props){
     let currentlyDisplayedDog = {
@@ -103,10 +104,6 @@ function ResultDetailsView(props){
         <div>
             <div>
                 <h1> {currentlyDisplayedDog.name} </h1>
-                {/* <div className="DogResults">
-                    <button onClick={(evt) => console.log("going back to search")}>Back to search</button>
-                    <button onClick={(evt) => console.log("logging out")}>Log out</button>
-                </div> */}
                 <div key = {currentlyDisplayedDog.name} class="dogResults">
                 <img src= {currentlyDisplayedDog.image_link} height = "100"></img>
                 <div className="dogResultsMainPart">
@@ -147,7 +144,7 @@ function ResultDetailsView(props){
     
     function renderPersonalityAttributes(attributes){
         return (
-        <div>
+        <div className="personality"> 
             <div>Good with other dogs: {renderStars(attributes.good_with_other_dogs)}</div>
             <div>Good with strangers: {renderStars(attributes.good_with_strangers)}</div>
             <div>Playfulness: {renderStars(attributes.playfulness)}</div>

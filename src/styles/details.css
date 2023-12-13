@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dog-atr {
+    width: 800px;
+    height: 600px;
+    margin: 45px auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    @apply border border-solid border-violet-100 rounded-lg shadow-md bg-gradient-to-b from-violet-100 to-orange-400;
+}
+
+.dogResults {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    height: 300px;
+    width: 100%; 
+    @apply my-20
+}
+
+.dogResults img {
+    height: 120px;
+    border-radius: 10px;
+}
+
+.dogResultsMainPart {
+    flex: 1;
+    padding-left: 1.5rem;
+}
+
+.dogResultsRemoveButton {
+    margin-left: auto;
+    padding: 0.75rem 1.5rem;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.personality {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+.personality > div {
+    color: #555;
+    font-size: 1rem;
+}
+
+.personality > div:last-child {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
