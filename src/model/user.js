@@ -4,9 +4,10 @@ import db from '../services/db.js';
 import personalityAttributes from "./personalityAttributes"
 
 export default {
-    userID: "", // string
-    name: "", // string
-    location: "", //string
+    location: {
+        zip: "02421",
+        state: "MA"
+    }, //string
     personalityPreferences: personalityAttributes, //personalityAttributes object
     seenDogs: [], // array of dog objects
     
@@ -17,7 +18,18 @@ export default {
     },
 
     userToPersistance() {
-        return JSON.stringify(this)  
+        return {
+            location: this.location,
+            personalityPreferences: this.personalityPreferences,
+            seenDogs: this.seenDogs
+        };
+    },
+
+    userInformationToPersistance() {
+        return {
+            personalityPreferences: this.personalityPreferences,
+            seenDogs: this.seenDogs
+        };
     },
   
     async saveUserToDatabase(userDataToStore) {
@@ -32,11 +44,36 @@ export default {
           }
     },
 
+    async updateUserInDatabase(userDataToUpdate) {
+        try {
+            const user = await auth.getCurrentUser();
+            if (user) 
+              return await db.updateInDatabase(user.uid, userDataToUpdate);
+            return
+        } catch (error) {
+            console.error('Error updating user information:', error.message);
+            throw error;
+        }
+    },
 
     async retrieveUserInformation() {
         const user = await auth.getCurrentUser();
         if (user)
             return await db.readFromDatabase(user.uid);
+    },
+
+    async persistenceToUser() {
+        const user = await auth.getCurrentUser();
+        if (user) {
+            const {location, personalityPreferences, seenDogs } = await db.readFromDatabase(user.uid);
+            this.user = {location, personalityPreferences, seenDogs}
+        }
+    },
+
+    async setLocation(location) {
+        const user = await auth.getCurrentUser();
+        if (user) 
+            await db.updateInDatabase(user.uid, {location: location})
     },
 
     updatePreferences(pA, liked) {
