@@ -23,7 +23,6 @@ export default observer( function App(props){
 
   useEffect(() => {
     const unsubscribe = Auth.onAuthStateChanged((user) => {
-      // model.user.persistenceToUser()
       setIsAuthenticated(!!user);
     });
 
@@ -64,7 +63,6 @@ export default observer( function App(props){
     <div>
       <NavBar />
       <RouterProvider router={makeRouter()} />
-
     </div>
   );
 })

@@ -1,10 +1,29 @@
-import {React, useState } from "react";
+import Auth from "../services/auth"
+import React, { useState, useEffect } from 'react';
 import '../styles/navbar.css'; 
-import auth from "../services/auth"
-
 
 function Navbar(){
     const [isDropDownOpen, setDropDownOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+      const unsubscribe = Auth.onAuthStateChanged((user) => {
+        setIsLoggedIn(!!user);
+      });
+      return () => unsubscribe();
+    }, []);
+
+    const options = (
+      <div className="dropdown-menu font-sans text-purple-200">
+        {isLoggedIn ? <a href="#/">Profile</a> : <a href="#/">Home</a>}
+        {isLoggedIn && <a href="#/browsing">Browse</a>}
+        {isLoggedIn && <a href="#/results-summary">Results</a>}
+        {isLoggedIn && <a href="#/result-details">Details</a>}
+        <a href="#/about">About</a>
+        {isLoggedIn && <a onClick={() => Auth.signOut()}>Log Out</a>}
+  </div>
+);
+
     return (
             <nav className="navbar fixed top-0 w-full">
               <div className="nav-item dropdown" onClick={()=>{setDropDownOpen(!isDropDownOpen)}}>
@@ -13,16 +32,7 @@ function Navbar(){
                       Menu
                   </button>
                 </span>
-                {isDropDownOpen && (
-                  <div className="dropdown-menu font-sans text-purple-200">
-                    <a href="#/">Home</a>
-                    <a href="#/browsing">Browse</a>
-                    <a href="#/results-summary">Results</a>
-                    <a href="#/result-details">Details</a>
-                    <a href="#/about">About</a>
-                    <a onClick={() => auth.signOut()}>Log Out</a>
-                  </div>
-                )}
+                {isDropDownOpen && options}
               </div>
             </nav>
           );
