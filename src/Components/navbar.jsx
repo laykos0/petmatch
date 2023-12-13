@@ -18,7 +18,6 @@ function Navbar(){
         {isLoggedIn ? <a href="#/">Profile</a> : <a href="#/">Home</a>}
         {isLoggedIn && <a href="#/browsing">Browse</a>}
         {isLoggedIn && <a href="#/results-summary">Results</a>}
-        {isLoggedIn && <a href="#/result-details">Details</a>}
         <a href="#/about">About</a>
         {isLoggedIn && <a onClick={() => Auth.signOut()}>Log Out</a>}
   </div>
