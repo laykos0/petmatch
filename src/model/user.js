@@ -45,8 +45,7 @@ export default  {
         const num_seen = this.seenDogs.length;
 
         for (let attribute in attributes) {
-            if (this.personalityPreferences.hasOwnProperty(attribute)) {
-                const current = this.personalityPreferences[attribute];
+            if (this.personalityPreferences.hasOwnProperty(attribute) && this.personalityPreferences[attribute] !== null) {                const current = this.personalityPreferences[attribute];
                 this.personalityPreferences[attribute] = this.updatePreferenceAttribute(current, attributes[attribute], liked, num_seen);
             }
         }
