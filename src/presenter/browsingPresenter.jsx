@@ -20,7 +20,7 @@ export default function Browsing(props){
     }, []); 
 
     async function rateACB(like) {
-        props?.model?.user?.updateUserInformation(props.model.currentlyDisplayedDog, like)
+        props?.model?.user?.updateUserPreferences(props.model.currentlyDisplayedDog, like)
         setIsLoading(true); 
         props?.model?.generateDisplayDog()
         await sleep(1000); 
