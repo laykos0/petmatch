@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --bg: purple;
   --nav-size: 60px;
@@ -11,12 +15,14 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  scrollbar-width: none;
+  /* background-color: #242424; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply bg-indigo-300
 }
 
 a {
@@ -71,4 +77,14 @@ button:focus-visible {
   text-align: center;
 }
 
-
+body{
+  background: linear-gradient(rgba(173, 216, 230, .5), rgba(173, 216, 230, 0.5)),
+              url("https://img.freepik.com/premium-vector/seamless-pattern-cute-dog-puppy-cartoon-funny-happy-dog-character-with-simple-shape-style-illustration-background-wallpaper-textile-fabric_253081-198.jpg?w=2000");
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* filter: hue-rotate(180deg); */
+  @apply bg-cover bg-center h-screen
+}

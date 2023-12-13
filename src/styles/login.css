@@ -1,57 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .login-form {
-    max-width: 300px;
+    display: flexbox;
+    max-width: 350px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 25px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    outline: none;
-  }
-  
-  .sign-in-btn {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 10px;
-    margin: 10px;
-  }
-  
-  .sign-in-btn:hover {
-    background-color: #0056b3;
-  }
-
-  .no-acnt{ 
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    margin: 15px;
-    cursor: pointer; 
-    color: blue 
+    @apply inline-grid bg-indigo-100 text-purple-600
 }
-  
-  
-  /* Add more styles as needed */
-  
-  
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  @apply bg-violet-400
+}
+
+.sign-in-btn {
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin: 10px;
+  @apply bg-indigo-300
+}
+
+.sign-in-btn:hover {
+  @apply bg-gradient-to-t from-blue-400 to-blue-900
+}
+
+.no-acnt{ 
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin: 15px;
+  cursor: pointer; 
+}

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Welcome from './welcomePresenter.jsx';
+import About from './aboutPresenter.jsx';
 import Browsing from './browsingPresenter.jsx';
 import ResultDetails from './resultDetailsPresenter.jsx';
 import ResultsSummary from './resultsSummaryPresenter.jsx';
 import NavBar from '../components/navbar.jsx';
+import Footer from '../components/footer.jsx';
 import Auth from '../services/auth.js';
 import Model from "../model/appModel.js";
 import { observable, configure } from "mobx";
@@ -43,6 +45,11 @@ export default observer( function App(props){
         path: '/results-summary',
         element: isAuthenticated ? <ResultsSummary model={props.model} /> : <Navigate to="/" replace />,
       },
+      {
+        path: '/about',
+        element: <About/>,
+
+      },
     ]);
   }
 
@@ -50,6 +57,7 @@ export default observer( function App(props){
     <div>
       <NavBar />
       <RouterProvider router={makeRouter()} />
+
     </div>
   );
 })

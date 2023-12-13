@@ -1,9 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body .swipe-card {
     display: flex;
-    width: 375px;
-    height: 500px;
+    width: 400px;
+    height: 600px;
     overflow: hidden;
     border: solid;
+    border-radius: 50px;
+    @apply bg-gradient-to-b from-violet-100 to-orange-400
 }
 
 .profile-content {
@@ -32,48 +38,16 @@ body .swipe-card {
   height: 100vh;
 }
 
-.browsing-results-btn{
-  table-layout: fixed;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-.welcome-btn{
-  table-layout: fixed;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 80px;
-  left: 20px;
-}
-
 ul{
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-swipe-card handle .like{
-  display: inline-block;
-  padding: 20px 20px;
-  border-radius: 50%;
-  border: solid white;
-}
-
-swipe-card handle .dislike{
-  display: inline-block;
-  padding: 20px 20px;
-  border-radius: 50%;
-  border: solid white;
-}
-
-img {
+.profile-content img{
   pointer-events: none;
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 350px;
+  border-radius: 20px;
+  /* filter: hue-rotate(-180deg); */
 }
-
-

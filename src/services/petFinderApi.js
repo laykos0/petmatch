@@ -1,6 +1,4 @@
-import axios from 'axios'; 
-const key =  "jwcuKn9I8paFY2RJ67eTdYhbOT40HmAh8f4Dhk95L1bi3xg1d1";
-const secret =  "d1nApfIL9VRkrQGXTr09np0OqPmxAvGYMy4Sl31e";
+import axios from 'axios';
 
 export async function getPetFinderData(model){
     let token;
@@ -8,9 +6,9 @@ export async function getPetFinderData(model){
         method: "POST",
         body:
         "grant_type=client_credentials&client_id=" +
-        key +
+        import.meta.env.VITE_PETFINDER_API_KEY +
         "&client_secret=" +
-        secret,
+        import.meta.env.VITE_PETFINDER_API_SECRET,
         headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         },
