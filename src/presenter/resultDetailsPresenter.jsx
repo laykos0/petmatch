@@ -3,6 +3,9 @@ import { observer } from "mobx-react-lite";
 
 export default observer(
 function ResultDetails(props){
-    return (<ResultDetailsView displayedDog={props.model.detailsDisplayedDog} organizations={props.model.organizations}/>);
+    function removeDogCustomACB(){
+        props.model.removeDogFromRecommendations(props.model.detailsDisplayedDog);
+    }
+    return (<ResultDetailsView removeDogCustomACB={removeDogCustomACB} displayedDog={props.model.detailsDisplayedDog} organizations={props.model.organizations}/>);
 }
 )

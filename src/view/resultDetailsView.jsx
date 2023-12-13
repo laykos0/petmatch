@@ -16,7 +16,10 @@ function ResultDetailsView(props){
                 <div className="dogResultsMainPart">
                     <p>{renderPersonalityAttributes(props.displayedDog.personalityPreferences)}</p>
                 </div>
-                <button onClick={console.log(props)} class="dogResultsRemoveButton">x</button>
+                <a href="#/results-summary">
+                <button onClick={removeDogACB} class="dogResultsRemoveButton">x</button>
+                <button onClick={console.log("going back")}>  Go back! </button>
+                </a>
                 </div>
             </div>
 
@@ -56,6 +59,10 @@ function ResultDetailsView(props){
         </div>
     ));
     
+    function removeDogACB(){
+        props.removeDogCustomACB();
+    }
+
     function renderPersonalityAttributes(attributes){
         return (
         <div>
