@@ -6,12 +6,15 @@ import {
     onAuthStateChanged, 
     createUserWithEmailAndPassword, 
     GoogleAuthProvider,
+    setPersistence,
+    browserSessionPersistence
 } from 'firebase/auth';  
 
 import {app} from "./firebase"
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+setPersistence(auth, browserSessionPersistence)
 
 export default {
     async signInEmailPassword(email, password) {
