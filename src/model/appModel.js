@@ -28,6 +28,12 @@ export default{
         console.log("new dog descriptions: ", this.dogDescriptions[name])
     },
 
+    async updateUserLocation(zipCode, stateCode){
+        this.location.zip = zipCode;
+        this.location.state = stateCode;
+        console.log("new user location: ", this.location);
+    },
+
     removeDogFromRecommendations(dog){
         let indexToRemove = this.currentlyRecommendedDogs.indexOf(dog)
         if (indexToRemove !== -1) {

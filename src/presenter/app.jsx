@@ -34,7 +34,7 @@ export default observer( function App(props){
     return createHashRouter([
       {
         path: '/',
-        element:  isAuthenticated ? <Profile /> : <Welcome />,
+        element:  isAuthenticated ? <Profile model={model}/> : <Welcome />,
       },
       {
         path: '/browsing',

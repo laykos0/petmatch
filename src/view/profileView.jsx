@@ -1,52 +1,46 @@
 import React, { useState } from 'react';
+import { useObserver } from "mobx-react-lite";
 import "../styles/login.css";
 
-function ProfileView() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function ProfileView(props) {
+  const [zipCode, setZipCode] = useState('');
+  const [stateCode, setStateCode] = useState('');
 
-  function handleEmailChange(event) {
-    setEmail(event.target.value);
+  function handleZipCodeChange(event) {
+    setZipCode(event.target.value);
   }
 
-  function handlePasswordChange(event) {
-    setPassword(event.target.value);
+  function handleStateCodeChange(event) {
+    setStateCode(event.target.value);
   }
 
-  function handleSignInEmailPassword() {
-    props.onSignInEmail(email, password);
+  function handleUpdateLocation() {
+    props.updateLocation(zipCode, stateCode);
   }
 
-  function handleSignInGoogle() {
-    props.onSignInGoogle();
-  }
-
-  return (
+  return useObserver(() => (
     <div className="login-form my-20">
       <h2 className='text-2xl font-thin py-5'>Update Your Location</h2>
       <div className="form-group">
-        <label htmlFor="email" className="form-label">
+        <label htmlFor="zipCode" className="form-label">
           Zip Code
         </label>
-        <input type="email" id="email" value={email} onChange={handleEmailChange} className="form-input" />
+        <input type="zipCode" id="zipCode" value={zipCode} onChange={handleZipCodeChange} className="form-input" />
       </div>
-
-      <button onClick={handleSignInEmailPassword} className="sign-in-btn">
-        Update Zip Code
-      </button>
 
       <div className="form-group">
-        <label htmlFor="password" className="form-label">
+        <label htmlFor="stateCode" className="form-label">
           State Code (e.g 'MA')
         </label>
-        <input type="password" id="password" value={password} onChange={handlePasswordChange} className="form-input" />
+        <input type="stateCode" id="stateCode" value={stateCode} onChange={handleStateCodeChange} className="form-input" />
       </div>
 
-      <button onClick={handleSignInGoogle} className="sign-in-btn">
-        Update State Code
+      <button onClick={handleUpdateLocation} className="sign-in-btn">
+        Update Location
       </button>
+     
     </div>
-  );
+  ));
 }
 
 
