@@ -71,8 +71,14 @@ export default  {
     async retrieveUserFromDatabase() {
         const user = await auth.getCurrentUser();
         if (user) {
-            const {location, personalityPreferences, seenDogs} = await db.readFromDatabase(user.uid);      
-            this.user = {location, personalityPreferences, seenDogs};
+            let userData = await db.readFromDatabase(user.uid);
+            if (!userData) {
+                await this. updateUserLocation({location: {zip: "", state: ""}});
+                await this.updateUserInDatabase({personalityPreferences: personalityAttributes, seenDogs: []});
+                userData = await db.readFromDatabase(user.uid);
+            }
+            const { location, personalityPreferences, seenDogs } = userData;
+            this.user = { location, personalityPreferences, seenDogs };
         }
     },
 

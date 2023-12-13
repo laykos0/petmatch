@@ -23,7 +23,8 @@ export default observer( function App(props){
 
   useEffect(() => {
     const unsubscribe = Auth.onAuthStateChanged((user) => {
-      setIsAuthenticated(!!user);
+        model.user.retrieveUserFromDatabase()
+        setIsAuthenticated(!!user);
     });
 
     return () => unsubscribe();
