@@ -11,6 +11,7 @@ export default{
     organizations: [],
     dogDescriptions: {},
     currentlyDisplayedDog: {},
+    detailsDisplayedDog: {},
     dogsToDisplay: [],
     currentlyRecommendedDogs: [],
 
@@ -19,7 +20,7 @@ export default{
     },
 
     selectDog(dog){
-        this.currentlyDisplayedDog = dog;
+        this.detailsDisplayedDog = dog;
     },
 
     removeDogFromRecommendations(dog){
