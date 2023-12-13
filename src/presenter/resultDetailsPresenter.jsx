@@ -6,6 +6,7 @@ function ResultDetails(props){
     function removeDogCustomACB(){
         props.model.removeDogFromRecommendations(props.model.detailsDisplayedDog);
     }
-    return (<ResultDetailsView removeDogCustomACB={removeDogCustomACB} displayedDog={props.model.detailsDisplayedDog} organizations={props.model.organizations}/>);
+    let name = props.model.detailsDisplayedDog.name;
+    return (<ResultDetailsView dogDescription={props.model.dogDescriptions[name]} removeDogCustomACB={removeDogCustomACB} displayedDog={props.model.detailsDisplayedDog} organizations={props.model.organizations}/>);
 }
 )
