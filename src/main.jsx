@@ -11,3 +11,4 @@ const model = observable(Model);
 ReactDOM.createRoot(document.getElementById('root')).render(<App model={model}/>);
 window.myModel = model;
 model.generateDisplayDog();
+model.getNearbyOrganizations();

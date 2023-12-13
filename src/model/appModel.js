@@ -1,8 +1,10 @@
 import User from "./user.js";
 import { getNewDogs } from "../services/dogApi.js";
+import { getPetFinderData } from "../services/petFinderApi.js";
 
 export default{  
     user: User,
+    organizations: [],
     currentlyDisplayedDog: {},
     dogsToDisplay: [],
     currentlyRecommendedDogs: [],
@@ -28,4 +30,7 @@ export default{
         }
     },
 
+    async getNearbyOrganizations(){
+        await getPetFinderData(this);
+    }
 }

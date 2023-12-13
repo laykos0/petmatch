@@ -3,6 +3,6 @@ import { observer } from "mobx-react-lite";
 
 export default observer(
 function ResultDetails(props){
-    return (<ResultDetailsView />);
+    return (<ResultDetailsView organizations={props.model.organizations}/>);
 }
 )
