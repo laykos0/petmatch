@@ -35,15 +35,15 @@ export default observer( function App(props){
       },
       {
         path: '/browsing',
-        element: isAuthenticated ? <Browsing model={props.model} /> : <Navigate to="/" replace />,
+        element: isAuthenticated ? <Browsing model={model} /> : <Navigate to="/" replace />,
       },
       {
         path: '/result-details',
-        element: isAuthenticated ? <ResultDetails model={props.model} /> : <Navigate to="/" replace />,
+        element: isAuthenticated ? <ResultDetails model={model} /> : <Navigate to="/" replace />,
       },
       {
         path: '/results-summary',
-        element: isAuthenticated ? <ResultsSummary model={props.model} /> : <Navigate to="/" replace />,
+        element: isAuthenticated ? <ResultsSummary model={model} /> : <Navigate to="/" replace />,
       },
       {
         path: '/about',
