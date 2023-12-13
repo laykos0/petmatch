@@ -14,6 +14,7 @@ import {observer} from "mobx-react-lite"
 
 configure({ enforceActions: "never", });  // we don't use Mobx actions
 const model = observable(Model);
+model.getNearbyOrganizations(); // Maybe remove
 
 export default observer( function App(props){
 
