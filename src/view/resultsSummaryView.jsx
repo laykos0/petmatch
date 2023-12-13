@@ -4,10 +4,12 @@ import { useObserver } from "mobx-react-lite";
 
 function ResultsSummaryView(props){
     return useObserver(() => (
-        <div>
-            <h1> Your Recommended Dogs </h1>
-            {props.dogRecommendations.map(individualDogCB)}
-        </div>
+       <div>
+            <div className="outline-text font-bold text-5xl mt-10 text-violet-600"> Your Recommended Dogs </div>
+            <div className="dogResultsContainer mt-15">
+                {props.dogRecommendations.map(individualDogCB)}
+            </div>
+       </div>
     ));
 
     function individualDogCB(dog){
@@ -22,11 +24,11 @@ function ResultsSummaryView(props){
         return (
             <div key = {dog.name + "-1"}>
                 <div key = {dog.name} onClick = {dogSelectACB} className="dogResults border-solid border-4 border-violet-100 my-10 rounded-lg bg-gradient-to-tl from-violet-100 to-orange-400 bg-opacity-50 font-mono font-extrabold text-xl">
-                    <img key = {dog.name + "0"} src= {dog.image_link} height = "100"></img>
+                    <img key = {dog.name + "0"} className="ml-4" src= {dog.image_link} height = "100"></img>
                     <div key = {dog.name + "1"} className="dogResultsMainPart">
-                    <button key = {dog.name + "2"} className=' font-bold  bg-indigo-500 mb-5 p-5 rounded-full'>{dog.name}</button>
+                        <button key = {dog.name + "2"} className=' font-bold  bg-indigo-500 mb-5 p-5 rounded-full mt-4 mr-20'>{dog.name}</button>
                     </div>
-                    <button key = {dog.name + "3"} onClick={dogRemoveACB} className="dogResultsRemoveButton font-bold  bg-indigo-500 mb-5 p-5 rounded-full">x</button>
+                    <button key = {dog.name + "3"} onClick={dogRemoveACB} className="font-bold bg-indigo-500 mb-5 p-5 rounded-full">x</button>
                 </div>
             </div>
         );
