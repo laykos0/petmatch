@@ -29,7 +29,7 @@ export default function Browsing(props){
 
     return (
         <div>
-            <BrowsingView model={modelToPass} rate={rateACB} />
+            <BrowsingView model={modelToPass} rate={rateACB} isLoading={isLoading}/>
         </div>
     );
 }

@@ -19,8 +19,8 @@ export async function getNewDogs(user) {
               image_link: element.image_link,
               personalityPreferences: {
                   good_with_other_dogs: element.good_with_other_dogs,
-                  good_with_strangers: element.good_with_stranger,
-                  playfulness: element.playfullness,
+                  good_with_strangers: element.good_with_strangers,
+                  playfulness: element.playfulness,
                   protectiveness: element.protectiveness,
                   trainability: element.trainability,
                   energy: element.energy,

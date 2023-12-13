@@ -45,8 +45,7 @@ export default  {
         const num_seen = this.seenDogs.length;
 
         for (let attribute in attributes) {
-            if (this.personalityPreferences.hasOwnProperty(attribute)) {
-                const current = this.personalityPreferences[attribute];
+            if (attributes[attribute] !== undefined && this.personalityPreferences.hasOwnProperty(attribute) && this.personalityPreferences[attribute] !== null) {                const current = this.personalityPreferences[attribute];
                 this.personalityPreferences[attribute] = this.updatePreferenceAttribute(current, attributes[attribute], liked, num_seen);
             }
         }
@@ -72,8 +71,14 @@ export default  {
     async retrieveUserFromDatabase() {
         const user = await auth.getCurrentUser();
         if (user) {
-            const {location, personalityPreferences, seenDogs} = await db.readFromDatabase(user.uid);      
-            this.user = {location, personalityPreferences, seenDogs};
+            let userData = await db.readFromDatabase(user.uid);
+            if (!userData) {
+                await this. updateUserLocation({location: {zip: "", state: ""}});
+                await this.updateUserInDatabase({personalityPreferences: personalityAttributes, seenDogs: []});
+                userData = await db.readFromDatabase(user.uid);
+            }
+            const { location, personalityPreferences, seenDogs } = userData;
+            this.user = { location, personalityPreferences, seenDogs };
         }
     },
 
