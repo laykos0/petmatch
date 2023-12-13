@@ -3,6 +3,7 @@ import { createHashRouter, RouterProvider, Navigate } from 'react-router-dom';
 import Welcome from './welcomePresenter.jsx';
 import About from './aboutPresenter.jsx';
 import Browsing from './browsingPresenter.jsx';
+import Profile from './profilePresenter.jsx'
 import ResultDetails from './resultDetailsPresenter.jsx';
 import ResultsSummary from './resultsSummaryPresenter.jsx';
 import NavBar from '../components/navbar.jsx';
@@ -22,6 +23,7 @@ export default observer( function App(props){
 
   useEffect(() => {
     const unsubscribe = Auth.onAuthStateChanged((user) => {
+      // model.user.persistenceToUser()
       setIsAuthenticated(!!user);
     });
 
@@ -32,7 +34,7 @@ export default observer( function App(props){
     return createHashRouter([
       {
         path: '/',
-        element: <Welcome />,
+        element:  isAuthenticated ? <Profile /> : <Welcome />,
       },
       {
         path: '/browsing',
