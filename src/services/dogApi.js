@@ -8,7 +8,7 @@ export async function getNewDogs(user) {
       //const response = await axios.get(`https://api.api-ninjas.com/v1/dogs?name=${name}`, {
       const response = await axios.get(
           `https://api.api-ninjas.com/v1/dogs?good_with_other_dogs=${user.personalityPreferences.good_with_other_dogs}&good_with_strangers=${user.personalityPreferences.good_with_strangers}&playfullness=${user.personalityPreferences.playfullness}&protectiveness=${user.personalityPreferences.protectiveness}&trainability=${user.personalityPreferences.trainability}&energy=${user.personalityPreferences.energy}&barking=${user.personalityPreferences.barking}`, {
-      headers: { 'X-Api-Key': 'byYycketCXubdw6W++wK9A==5QRtGUUW9F3mu4qm' },
+      headers: { 'X-Api-Key': import.meta.env.VITE_DOGS_API_KEY },
       });
       console.log(response.data);
       let dogToDisplay;
