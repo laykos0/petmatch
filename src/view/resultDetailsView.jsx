@@ -24,7 +24,7 @@ function ResultDetailsView(props){
             </div>
 
             <div>
-            {props.dogDescription || "Loading"}
+            {props.dogDescription || <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"/>}
             </div>
 
             <div>
