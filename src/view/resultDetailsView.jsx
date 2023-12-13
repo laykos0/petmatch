@@ -1,33 +1,20 @@
 import { useObserver } from "mobx-react-lite";
 
 function ResultDetailsView(props){
-    // let currentlyDisplayedDog = {
-    //     name: "Affenpinscher",
-    //     image_link: "https://api-ninjas.com/images/dogs/affenpinscher.jpg",
-    //     personalityPreferences: {
-    //         good_with_other_dogs: 3,
-    //         protectiveness: 1,
-    //         good_with_strangers: 3,
-    //         playfulness: 2, 
-    //         trainability: 4,
-    //         energy: 5,
-    //         barking: 1,
-    //         average_height: 10.25
-    //     }
-    // }
-
     return useObserver(() => (
         <div>
+        {props.displayedDog.name ?
+        <div>
             <div>
-                <h1> {props.currentlyDisplayedDog.name} </h1>
+                <h1> {props.displayedDog.name} </h1>
                 {/* <div className="DogResults">
                     <button onClick={(evt) => console.log("going back to search")}>Back to search</button>
                     <button onClick={(evt) => console.log("logging out")}>Log out</button>
                 </div> */}
-                <div key = {props.currentlyDisplayedDog.name} class="dogResults">
-                <img src= {props.currentlyDisplayedDog.image_link} height = "100"></img>
+                <div key = {props.displayedDog.name} class="dogResults">
+                <img src= {props.displayedDog.image_link} height = "100"></img>
                 <div className="dogResultsMainPart">
-                    <p>{renderPersonalityAttributes(props.currentlyDisplayedDog.personalityPreferences)}</p>
+                    <p>{renderPersonalityAttributes(props.displayedDog.personalityPreferences)}</p>
                 </div>
                 <button onClick={console.log(props)} class="dogResultsRemoveButton">x</button>
                 </div>
@@ -63,6 +50,8 @@ function ResultDetailsView(props){
                 </tbody>
             </table>
             </div>
+
+        </div> : <h1>Please select a dog!</h1>}
 
         </div>
     ));
