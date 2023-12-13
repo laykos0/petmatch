@@ -1,7 +1,7 @@
 import User from "./user.js";
 import { getNewDogs } from "../services/dogApi.js";
 import { getPetFinderData } from "../services/petFinderApi.js";
-
+import { generateDogDescription } from "../services/llmApi.js";
 export default{  
     user: User,
     location:{
@@ -19,8 +19,13 @@ export default{
         this.currentlyRecommendedDogs = await getNewDogs(this.user); 
     },
 
-    selectDog(dog){
+    async selectDog(dog){
+        let name = dog.name
         this.detailsDisplayedDog = dog;
+        if(!(name in this.dogDescriptions)){
+            this.dogDescriptions[name] = await generateDogDescription(name);
+        }
+        console.log("new dog descriptions: ", this.dogDescriptions[name])
     },
 
     removeDogFromRecommendations(dog){
