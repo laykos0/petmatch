@@ -31,7 +31,7 @@ export default{
     async updateUserLocation(zipCode, stateCode){
         this.location.zip = zipCode;
         this.location.state = stateCode;
-        console.log("new user location: ", this.location);
+        await this.getNearbyOrganizations();
     },
 
     removeDogFromRecommendations(dog){
