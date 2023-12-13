@@ -27,7 +27,7 @@ function BrowsingView(props){
             }
         };
 return (
-            <div className='rounded'>
+            <div className='rounded mt-12'>
                 <motion.div animate={{ scale: 1 }} initial={{ scale: shouldAnimate ? 0.25 : 1 }}>
                     <Draggable
                         axis="x"
@@ -45,7 +45,7 @@ return (
                             </motion.button>
                             <div className="profile-content">
                                 <img className = "rounded-lg mb-16" src={props?.model?.currentlyDisplayedDog?.image_link} />
-                                <button className=' font-bold  bg-indigo-500 mb-5 p-5 rounded-full'>{props?.model?.currentlyDisplayedDog?.name}</button>
+                                <button className=' font-bold bg-indigo-500 mb-5 p-5 rounded-full'>{props?.model?.currentlyDisplayedDog?.name}</button>
                             </div>
                             <motion.button className='like absolute bottom-5 right-5 bg-white p-5 rounded-full hover:scale-125 hover:bg-green-400' onClick={() => {onSwipe(true)}}>
                                 👍 
