@@ -9,12 +9,17 @@ export default{
         state:"MA"
     },
     organizations: [],
+    dogDescriptions: {},
     currentlyDisplayedDog: {},
     dogsToDisplay: [],
     currentlyRecommendedDogs: [],
 
     async getDogRecommendations(){
         this.currentlyRecommendedDogs = await getNewDogs(this.user); 
+    },
+
+    selectDog(dog){
+        this.currentlyDisplayedDog = dog;
     },
 
     removeDogFromRecommendations(dog){
