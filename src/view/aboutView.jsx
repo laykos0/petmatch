@@ -6,8 +6,14 @@ function AboutView() {
   return (
     <div className="page-container">
       <div className="section">
-        <h2 className="section-title">Who are we?</h2>
-        <p>Add your content about who you are here...</p>
+        <h2 className="section-title">What is Woof Finder?</h2>
+        <p>Woof Finder is an App dedicated to helping you find a 
+            dog that will be your perfect match! Simply create an account and 
+            find your dream dog! Our goal is to match you with dogs most compatible 
+            with the personality and location you prefer. Our team, Kuba, Adi, Anthony and Maia thought, 
+            what better way to do this than the same way we all look for love - by swiping! 
+            And most importantly, since the dogs we match you with are all shelter dogs, you will 
+            be able to give your perfect dog its forever home.</p>
       </div>
 
       <div className="section">
