@@ -69,14 +69,12 @@ export default  {
         }
     },
 
-    async retrieveUserInformation() {
+    async retrieveUserFromDatabase() {
         const user = await auth.getCurrentUser();
-        if (user)
-            return await db.readFromDatabase(user.uid);
+        if (user) {
+            const {location, personalityPreferences, seenDogs} = await db.readFromDatabase(user.uid);      
+            this.user = {location, personalityPreferences, seenDogs};
+        }
     },
 
-    async persistenceToUser() {
-        const {location, personalityPreferences, seenDogs } = await this.retrieveUserInformation();
-        this.user = {location, personalityPreferences, seenDogs}
-    },
 }
