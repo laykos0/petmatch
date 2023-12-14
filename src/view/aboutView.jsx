@@ -38,13 +38,11 @@ function AboutView() {
                 <li>Point two about the method...</li>
                 <li>Point three about the method...</li>
               </ul>
-            </div>
-            <div className="sub-section box">
               <h4 className="sub-section-title">Insights</h4>
               <ul>
-                <li>Insight one...</li>
-                <li>Insight two...</li>
-                <li>Insight three...</li>
+                <li>Point one about the method...</li>
+                <li>Point two about the method...</li>
+                <li>Point three about the method...</li>
               </ul>
             </div>
           </div>
