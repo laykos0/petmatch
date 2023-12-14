@@ -1,7 +1,8 @@
 import "../styles/about.css";
 import UserEvalImage1 from '../images/LoFi_User_Eval.jpg';
 import UserEvalImage2 from '../images/Pointing_Image_Lofi_Eval.jpg';
-
+import UserEvalImage3 from '../images/Pointing_Image_Lofi_Eval.jpg';
+import UserEvalImage4 from '../images/Pointing_Image_Lofi_Eval.jpg';
 function AboutView() {
   return (
     <div className="page-container my-10">
@@ -22,7 +23,12 @@ function AboutView() {
           <div className="evaluation-content row-container">
             <div className="sub-section">
               <div className="user-evaluation-images">
-                <img src={UserEvalImage1} alt="User Evaluation Image 1" />
+                <div className="image-grid">
+                    <img src={UserEvalImage1} alt="User Evaluation Image 1" />
+                    <img src={UserEvalImage2} alt="User Evaluation Image 2" />
+                    <img src={UserEvalImage3} alt="User Evaluation Image 3" />
+                    <img src={UserEvalImage4} alt="User Evaluation Image 4" />
+                  </div>
               </div>
             </div>
             <div className="sub-section box">
