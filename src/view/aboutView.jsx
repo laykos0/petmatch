@@ -69,9 +69,13 @@ function AboutView() {
 
       </div>
 
-      <div className="section">
+      <div className="section contact-detailss">
         <h2 className="section-title">Contact us</h2>
-        <p>Include contact details or a contact form here...</p>
+        <div className="contact-details-container">
+          <p className="contact-item">Email: example@example.com</p>
+          <p className="contact-item">Phone: +1234567890</p>
+          <p className="contact-item">Address: 123 Example Street, City, Country</p>
+        </div>
       </div>
     </div>
   );
