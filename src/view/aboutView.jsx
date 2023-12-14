@@ -37,6 +37,7 @@ function AboutView() {
                 <li>Point one about the method...</li>
                 <li>Point two about the method...</li>
                 <li>Point three about the method...</li>
+                <li>TESTING COMMIT</li>
               </ul>
               <h4 className="sub-section-title">Insights</h4>
               <ul>
