@@ -51,7 +51,8 @@ function ResultDetailsView(props){
             </table>
             </div>
 
-        </div> : <h1>Please select a dog!</h1>}
+        </div> : <h1>Please select a dog!</h1>
+    }
 
         </div>
     ));

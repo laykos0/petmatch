@@ -1,85 +1,61 @@
 import auth from '../services/auth.js';
 import db from '../services/db.js';
-import personalityAttributes from "./personalityAttributes";
 
-export default  {
-    location: {
-        zip: "02421",
-        state: "MA"
-    },
-    personalityPreferences: personalityAttributes,
-    seenDogs: [], 
+import personalityAttributes from "./personalityAttributes"
 
-    async updateUserLocation(location) {
-        this.setLocation(location)
-        return this.updateUserInDatabase(this.userLocationToPersistence());
-    },
-
-    async updateUserPreferences(dog, liked) {
-        this.updateSeenDogs(dog)
-        this.updatePreferences(dog.personalityPreferences, liked)
-        return this.updateUserInDatabase(this.userPreferencesToPersistance());
-    },
-
-    userLocationToPersistence() {
-        return {location: this.location};
-    },
+export default {
+    userID: "", // string
+    name: "", // string
+    location: "", //string
+    personalityPreferences: personalityAttributes, //personalityAttributes object
+    seenDogs: [], // array of dog objects
     
-    userPreferencesToPersistance() {
-        return {
-            personalityPreferences: this.personalityPreferences,
-            seenDogs: this.seenDogs
-        };
+    async updateUserInformation(dog, likedOrDisliked) {
+        this.updateSeenDogs(dog)
+        this.updatePreferences(dog.personalityPreferences, likedOrDisliked)
+        await this.saveUserToDatabase(this.userToPersistance())
     },
 
-    setLocation(location) {
-        this.location = location
+    userToPersistance() {
+        return JSON.stringify(this)  
+    },
+  
+    async saveUserToDatabase(userDataToStore) {
+          try {
+              const user = await auth.getCurrentUser();
+              if (user) 
+                return await db.saveToDatabase(user.uid, userDataToStore);
+              return
+          } catch (error) {
+              console.error('Error updating user information:', error.message);
+              throw error;
+          }
     },
 
-    updateSeenDogs(dog) {
-        if (!this.seenDogs.includes(dog.name)) 
-            this.seenDogs = [...this.seenDogs, dog.name];
+
+    async retrieveUserInformation() {
+        const user = await auth.getCurrentUser();
+        if (user)
+            return await db.readFromDatabase(user.uid);
     },
 
-    updatePreferences(attributes, liked) {
+    updatePreferences(pA, liked) {
         const num_seen = this.seenDogs.length;
 
-        for (let attribute in attributes) {
-            if (attributes[attribute] !== undefined && this.personalityPreferences.hasOwnProperty(attribute) && this.personalityPreferences[attribute] !== null) {                const current = this.personalityPreferences[attribute];
-                this.personalityPreferences[attribute] = this.updatePreferenceAttribute(current, attributes[attribute], liked, num_seen);
+        for (let attribute in pA) {
+            if (this.personalityPreferences.hasOwnProperty(attribute)) {
+                const current = this.personalityPreferences[attribute];
+                if (liked) {
+                    this.personalityPreferences[attribute] = Math.min(5, Math.max(0, ((current * num_seen) + pA[attribute]) / (num_seen + 1))); // 5 is the maximum value (e.g., out of 5)
+                } else {
+                    this.personalityPreferences[attribute] = Math.min(5, Math.max(0, ((current * num_seen) - pA[attribute]) / (num_seen + 1))); // 0 is the minimum value
+                }
             }
         }
     },
 
-    updatePreferenceAttribute(current, attribute, liked, num_seen) {
-        return liked ? 
-            Math.min(5, Math.max(0, ((current * num_seen) + attribute) / (num_seen + 1))) :
-            Math.min(5, Math.max(0, ((current * num_seen) - attribute) / (num_seen + 1)));
-    },
-
-    async updateUserInDatabase(data) {
-        try {
-            const user = await auth.getCurrentUser();
-            if (user) 
-                return await db.updateInDatabase(user.uid, data);
-        } catch (error) {
-            console.error('Error updating user information:', error.message);
-            return { error: true, message: error.message };
-        }
-    },
-
-    async retrieveUserFromDatabase() {
-        const user = await auth.getCurrentUser();
-        if (user) {
-            let userData = await db.readFromDatabase(user.uid);
-            if (!userData) {
-                await this. updateUserLocation({location: {zip: "", state: ""}});
-                await this.updateUserInDatabase({personalityPreferences: personalityAttributes, seenDogs: []});
-                userData = await db.readFromDatabase(user.uid);
-            }
-            const { location, personalityPreferences, seenDogs } = userData;
-            this.user = { location, personalityPreferences, seenDogs };
-        }
-    },
-
+    updateSeenDogs(dog){
+        this.seenDogs = this.seenDogs ? [dog.name] :  [...this.seenDogs, dog.name];
+    }
+    
 }
