@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -75,17 +75,109 @@ table {
   width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
-  @apply bg-orange-300
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  @apply bg-orange-300 rounded-full
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+.outlineText {
+  -webkit-text-stroke: 2px white;
+} */
+
+/* details.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.details-container {
+  max-width: 1000px;
+  margin: 45px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  @apply rounded-lg
+}
+
+.dog-details-container {
+  display: flex;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  margin-top: 20px;
+  @apply bg-white text-slate-900;
+}
+
+.dog-image {
+  flex: 1; 
+  overflow: hidden;
+  height: 450px;
+}
+
+.dog-image img {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  @apply rounded-3xl
+}
+
+.dog-details-info {
+  flex: 1; 
+  padding: 20px;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.dog-details-container .dog-details-info .personality-attributes {
+  font-size: 18px;
+  max-height: 300px;
+  padding: 15px;
+  border-radius: 0 0 10px 10px; 
+  /* background: linear-gradient(to right, #EE82EE, #9400D3); */
+  @apply bg-gradient-to-r from-indigo-200 to-orange-300 rounded-lg;
+}
+
+.remove-button,
+.back-button {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-button {
+  background-color: red;
+  color: white;
+}
+
+.back-button {
+  background-color: green;
+  color: white;
+}
+
+.info {
+  border-radius: 10px;
+}
+
+table {
+  width: 100%; 
+  /* margin: 20px auto;  */
+  border-collapse: collapse;
+  border-radius: 10px;
+  @apply bg-orange-300 rounded-lg;
 }
 
 th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
-}
-
-th {
-  background-color: #f2f2f2;
+  border-radius: 10px; 
+  @apply rounded-lg bg-slate-200;
 }
 
 .outlineText {
