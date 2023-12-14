@@ -2,66 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
-.dog-atr {
-    width: 800px;
-    height: 600px;
-    margin: 45px auto 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    @apply border border-solid border-violet-100 rounded-lg shadow-md bg-gradient-to-b from-violet-100 to-orange-400;
+.details-container {
+  max-width: 1200px;
+  margin: 45px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
-.dogResults {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    height: 300px;
-    width: 100%; 
-    @apply my-20
+.dog-details-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 85%;
+  margin-top: 20px; 
+  @apply bg-orange-300
 }
 
-.dogResults img {
-    height: 120px;
+.dog-image {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  @apply rounded-lg;
+}
+
+.dog-image img {
+  width: 100%; 
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.dog-details-info {
+  padding: 20px;
+}
+
+.dog-details-container .dog-details-info .personality-attributes{
+    font-size: 18px;
+    max-height: 300px;
+    padding: 15px;
+    @apply rounded-lg bg-gradient-to-tr from-violet-400 border-orange-400;
+}
+
+.remove-button,
+.back-button {
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-button {
+  background-color: red;
+  color: white;
+}
+
+.back-button {
+  background-color: green;
+  color: white;
+}
+
+.info{
     border-radius: 10px;
+    padding: 10px;
 }
 
-.dogResultsMainPart {
-    flex: 1;
-    padding-left: 1.5rem;
+.h3 {
+  margin-top: 20px;
 }
 
-.dogResultsRemoveButton {
-    margin-left: auto;
-    padding: 0.75rem 1.5rem;
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    font-size: 1rem;
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  @apply bg-orange-300
 }
 
-.personality {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 20px;
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }
 
-.personality > div {
-    color: #555;
-    font-size: 1rem;
+th {
+  background-color: #f2f2f2;
 }
 
-.personality > div:last-child {
-    font-weight: bold;
-    font-size: 1.1rem;
+.outlineText {
+  -webkit-text-stroke: 2px white;
 }
