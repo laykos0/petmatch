@@ -110,7 +110,7 @@
 .image-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns */
-  gap: 10px;
+  gap: 0px;
   border-radius: 10px; /* Rounded edges for the grid */
   overflow: hidden; /* Hide overflow to prevent images extending outside */
 }
