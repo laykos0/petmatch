@@ -2,62 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* .dogResultsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
-    gap: 20px;
-}
-
-.dogResults {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
-    overflow: hidden;
-    width: 80%;
-    margin: 0 auto;
-}
-
-.dogResults:hover {
-    transform: scale(1.05);
-}
-
-.dogResults img {
-    width: 280px; 
-    height: 280px;
-    object-fit: cover;
-    margin-right: 20px;
-    @apply rounded-lg
-}
-
-.dogResultsMainPart {
-    flex-grow: 1;
-}
-
-.dogResultsButtons {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.dogResults button {
-    margin-bottom: 10px;
-    padding: 10px;
-    color: #fff;
-    text-align: center;
-    cursor: pointer;
-}
-
-.dogResultsRemoveButton {
-    background-color: #ff4500; 
-    border: none;
-}
-*/
-
 .outline-text {
     text-align: center;
     -webkit-text-stroke: 2px white;
@@ -117,7 +61,7 @@
 }
 
 .dogResults .dogResultsRemoveButton {
-    width: 100%; /* Set the width to 100% */
+    width: 100%;
     margin-bottom: 10px;
     margin-right: 25%;
 }

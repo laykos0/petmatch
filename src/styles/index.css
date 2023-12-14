@@ -86,7 +86,6 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   object-fit: cover;
-  min-height: 100vh;
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;

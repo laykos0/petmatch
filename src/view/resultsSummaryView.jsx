@@ -5,7 +5,7 @@ import { useObserver } from "mobx-react-lite";
 function ResultsSummaryView(props){
     return useObserver(() => (
        <div>
-            <div className="outline-text font-bold text-5xl mt-10 text-violet-600"> Your Recommended Dogs </div>
+            <div className="outline-text font-bold text-5xl mt-12 text-violet-600"> Your Recommended Dogs </div>
             <div className="dogResultsContainer mt-15">
                 {props.dogRecommendations.map(individualDogCB)}
             </div>
