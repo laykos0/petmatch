@@ -9,6 +9,10 @@
     background-color: #333;
     color: white;
     height: 50px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
     @apply bg-gradient-to-r from-slate-700 to-slate-900
 }
   
@@ -47,16 +51,13 @@
 .logo-link {
     display: block;
     padding: 10px;
-  }
+}
   
 .logo {
-    width: 120px; /* Adjust the width as needed */
-    height: auto; /* To maintain aspect ratio */
-    filter: brightness(0.8); /* Adjust brightness for desired effect */
-    /* Add styles for lilac color and fun font */
-    /* Example styles */
+    width: 120px;
+    height: auto;
+    filter: brightness(0.8);
     font-family: 'YourFunFont', sans-serif;
-    color: #a29bfe; /* Lilac color */
-    /* Additional styles */
-  }
+    color: #a29bfe;
+}
   

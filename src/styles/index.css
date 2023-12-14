@@ -85,6 +85,17 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* filter: hue-rotate(180deg); */
-  @apply bg-cover bg-center h-screen
+  object-fit: cover;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  @apply bg-cover bg-center min-h-screen
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }

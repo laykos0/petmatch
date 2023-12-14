@@ -4,11 +4,11 @@
 
 body .swipe-card {
     display: flex;
-    width: 400px;
-    height: 600px;
+    width: 380px;
+    height: 570px;
     overflow: hidden;
     border: solid;
-    border-radius: 50px;
+    border-radius: 10%;
     @apply bg-gradient-to-b from-violet-100 to-orange-400
 }
 
@@ -48,6 +48,5 @@ ul{
   pointer-events: none;
   width: 350px;
   height: 350px;
-  border-radius: 20px;
-  /* filter: hue-rotate(-180deg); */
+  border-radius: 10%;
 }

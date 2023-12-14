@@ -2,47 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(rgba(173, 216, 230, .5), rgba(173, 216, 230, 0.5)),
-        url("https://img.freepik.com/premium-vector/seamless-pattern-cute-dog-puppy-cartoon-funny-happy-dog-character-with-simple-shape-style-illustration-background-wallpaper-textile-fabric_253081-198.jpg?w=2000");
-    background-size: cover;
-    background-attachment: fixed;
-    min-height: 100vh;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
+.outline-text {
+    text-align: center;
+    -webkit-text-stroke: 2px white;
+    @apply bg-blue-950
 }
 
-body::-webkit-scrollbar {
-    width: 0px;
-}
-  
-body::-webkit-scrollbar-thumb {
-    background-color: transparent;
+.dogResultsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
+    gap: 20px;
+    margin: 0;
 }
 
 .dogResults {
-    @apply flex flex-row text-center items-center w-full;
-}
-
-.dogResultsImage {
-    width: 600px;
-    @apply flex-shrink-0;
-}
-
-.dogResultsMainPart {
-    @apply flex-1;
-}
-
-.dogResultsRemoveButton {
-    width : 200px;
-    @apply flex-shrink-0 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    width: 97%; 
+    height: 85%; 
+    box-sizing: border-box; 
+    text-align: center;
 }
 
 .dogResults img {
-    width: 400px;
-    height: 400px;
-    @apply rounded-full;
+    flex: 1;
+    height: auto;
+    margin-right: 20px;
+    @apply rounded-lg items-center
 }
+
+.dogResults:hover {
+    transform: scale(1.05);
+}
+
+.dogResultsButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.dogResults button {
+    margin-bottom: 10px;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.dogResults .dogResultsRemoveButton {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 25%;
+}
+
+
