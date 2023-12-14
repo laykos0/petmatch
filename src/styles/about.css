@@ -96,7 +96,7 @@
  */
 
 
- @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -109,7 +109,7 @@
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
-  @apply bg-gradient-to-tl from-orange-200 to-indigo-400 border-yellow-50;
+  @apply bg-gradient-to-br from-indigo-400 to-orange-200 border-yellow-50;
 }
 
 .section-title {
@@ -148,10 +148,9 @@
 .box {
   width: 425px;
   height: 600px;
-  color: orange;
   padding: 10px;
   border-radius: 10px;
-  @apply bg-indigo-500 inline-block;
+  @apply bg-indigo-500 inline-block text-slate-950;
 }
 
 .box .user-evaluation-images >div{
@@ -162,9 +161,9 @@
 }
 
 .sub-section-title {
-  color: orange;
   margin-top: 0;
   font-size: 2em;
+  @apply text-slate-950
 }
 
 .row-container {
