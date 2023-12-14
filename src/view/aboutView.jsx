@@ -72,9 +72,9 @@ function AboutView() {
       <div className="section contact-detailss">
         <h2 className="section-title">Contact us</h2>
         <div className="contact-details-container">
-          <p className="contact-item">Email: example@example.com</p>
-          <p className="contact-item">Phone: +1234567890</p>
-          <p className="contact-item">Address: 123 Example Street, City, Country</p>
+          <p className="contact-item">Email: petmatchpetmatch@gmail.com</p>
+          <p className="contact-item">Phone: (307) 555-0261</p>
+          <p className="contact-item">Address: 1600 Muskogee Loop CHeyenne WY 82001-7073 USA</p>
         </div>
       </div>
     </div>
