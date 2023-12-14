@@ -13,10 +13,8 @@ function BrowsingView(props){
     const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 });
 
     function rateDog(liked) {
-        if (!props.isLoading) {
-            props.rate(liked)
-            setShouldAnimate(true); // Disable animation after swiping
-        }
+        props.rate(liked)
+        setShouldAnimate(true); // Disable animation after swiping
     }
 
     function SwipeCard({ onSwipe }) {
@@ -28,7 +26,7 @@ function BrowsingView(props){
                 setShouldAnimate(false); // Disable animation after swiping
             }
         };
-        return (
+return (
             <div className='rounded'>
                 <motion.div animate={{ scale: 1 }} initial={{ scale: shouldAnimate ? 0.25 : 1 }}>
                     <Draggable
