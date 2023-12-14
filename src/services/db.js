@@ -3,6 +3,7 @@ import {
     ref,
     get, 
     set,
+    update
 } from 'firebase/database';
 
 import {app} from "./firebase"
@@ -14,17 +15,14 @@ export default {
         set(ref(db, userId), data);
     },
 
+    async updateInDatabase(userId, data) {;
+        update(ref(db, userId), data);
+    },
+
     async readFromDatabase(userId) {
         try {
             const snapshot = await get(ref(db, userId));
-
-            if (snapshot.exists()) {
-                const userData = snapshot.val();
-                return userData;
-            } else {
-                console.log('No data found in the database for userId:', userId);
-                return null;
-            }
+            return snapshot.exists() ? snapshot.val() : null;
         } catch (error) {
             console.error('Error reading from the database:', error.message);
             throw error;

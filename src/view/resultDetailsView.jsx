@@ -1,38 +1,68 @@
 import { useObserver } from "mobx-react-lite";
 
 function ResultDetailsView(props){
-    let currentlyDisplayedDog = {
-        name: "Affenpinscher",
-        image_link: "https://api-ninjas.com/images/dogs/affenpinscher.jpg",
-        personalityPreferences: {
-            good_with_other_dogs: 3,
-            protectiveness: 1,
-            good_with_strangers: 3,
-            playfulness: 2, 
-            trainability: 4,
-            energy: 5,
-            barking: 1,
-            average_height: 10.25
-        }
-    }
-
     return useObserver(() => (
         <div>
-            <h1> {currentlyDisplayedDog.name} </h1>
-            {/* <div className="DogResults">
-                <button onClick={(evt) => console.log("going back to search")}>Back to search</button>
-                <button onClick={(evt) => console.log("logging out")}>Log out</button>
-            </div> */}
-            <div key = {currentlyDisplayedDog.name} class="dogResults">
-            <img src= {currentlyDisplayedDog.image_link} height = "100"></img>
-            <div className="dogResultsMainPart">
-                <p>{renderPersonalityAttributes(currentlyDisplayedDog.personalityPreferences)}</p>
+        {props.displayedDog.name ?
+        <div>
+            <div>
+                <h1> {props.displayedDog.name} </h1>
+                {/* <div className="DogResults">
+                    <button onClick={(evt) => console.log("going back to search")}>Back to search</button>
+                    <button onClick={(evt) => console.log("logging out")}>Log out</button>
+                </div> */}
+                <div key = {props.displayedDog.name} class="dogResults">
+                <img src= {props.displayedDog.image_link} height = "100"></img>
+                <div className="dogResultsMainPart">
+                    <p>{renderPersonalityAttributes(props.displayedDog.personalityPreferences)}</p>
+                </div>
+                <a href="#/results-summary">
+                <button onClick={removeDogACB} class="dogResultsRemoveButton">x</button>
+                <button onClick={console.log("going back")}>  Go back! </button>
+                </a>
+                </div>
             </div>
-            <button onClick={console.log("trying to remove dog")} class="dogResultsRemoveButton">x</button>
+
+            <div>
+            {props.dogDescription || <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"/>}
             </div>
+
+            <div>
+                <h3> Adoption shelters near you:</h3>
+            </div>
+            <div>
+            <table>
+                <thead>
+                  <tr>
+                    <th>Organization Name</th>
+                    <th>Distance From You</th>
+                    <th>Phone Number</th>
+                    <th>Website Link</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  { 
+                  props.organizations ? props.organizations.map(renderOrganization) : <tr key={11}>
+                  <td></td>
+                  <td>loading </td>
+                  <td>loading</td>
+                  <td>loading</td>
+                  </tr>
+                  }
+                </tbody>
+            </table>
+            </div>
+
+        </div> : <h1>Please select a dog!</h1>}
+
         </div>
     ));
     
+    function removeDogACB(){
+        props.removeDogCustomACB();
+    }
+
     function renderPersonalityAttributes(attributes){
         return (
         <div>
@@ -47,6 +77,17 @@ function ResultDetailsView(props){
         </div>
         );
     }
+
+
+    function renderOrganization(organization){
+        return <tr key={organization.id } >
+                 <td>{organization.name}</td>
+                 <td>{organization.distance} miles </td>
+                 <td>{organization.phone}</td>
+                 <td>{organization.website}</td>
+               </tr>;
+    }
+
     function renderStars(numberOfStars){
         let stars = Array.from({ length: numberOfStars }, (_, index) => (
             <span key={index}>&#9733;</span>

@@ -7,10 +7,14 @@ function ResultsSummary(props){
         props.model.removeDogFromRecommendations(dog);
     }
 
+    function selectDogCustomACB(dog){
+        props.model.selectDog(dog);
+    }
+
     if(props.model.currentlyRecommendedDogs.length == 0){
         props.model.getDogRecommendations();
     }
 
-    return (<ResultsSummaryView dogRecommendations={props.model.currentlyRecommendedDogs} removeDogCustomACB={removeDogCustomACB}/>);
+    return (<ResultsSummaryView selectDogCustomACB={selectDogCustomACB} dogRecommendations={props.model.currentlyRecommendedDogs} removeDogCustomACB={removeDogCustomACB}/>);
 }
 )
