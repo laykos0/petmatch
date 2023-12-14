@@ -3,6 +3,7 @@ import UserEvalImage1 from '../images/LoFi_User_Eval.jpg';
 import UserEvalImage2 from '../images/Pointing_Image_Lofi_Eval.jpg';
 import UserEvalImage3 from '../images/Pointing_Image_Lofi_Eval.jpg';
 import UserEvalImage4 from '../images/Pointing_Image_Lofi_Eval.jpg';
+
 function AboutView() {
   return (
     <div className="page-container my-10">
@@ -18,63 +19,54 @@ function AboutView() {
       </div>
 
       <div className="section">
-        <h2 className="section-title">User Evaluation</h2>
+        <h2 className="section-title">Evaluation</h2>
         <div className="evaluation-section">
           <div className="evaluation-content row-container">
             <div className="sub-section">
               <div className="user-evaluation-images">
                 <div className="image-grid">
-                    <img src={UserEvalImage1} alt="User Evaluation Image 1" />
-                    <img src={UserEvalImage2} alt="User Evaluation Image 2" />
-                    <img src={UserEvalImage3} alt="User Evaluation Image 3" />
-                    <img src={UserEvalImage4} alt="User Evaluation Image 4" />
-                  </div>
+                  <img src={UserEvalImage1} alt="User Evaluation Image 1" />
+                  <img src={UserEvalImage2} alt="User Evaluation Image 2" />
+                  <img src={UserEvalImage3} alt="User Evaluation Image 3" />
+                  <img src={UserEvalImage4} alt="User Evaluation Image 4" />
+                </div>
               </div>
             </div>
-            <div className="sub-section box">
-              <h4 className="sub-section-title">Method</h4>
-              <ul>
-                <li>Point one about the method...</li>
-                <li>Point two about the method...</li>
-                <li>Point three about the method...</li>
-                <li>TESTING COMMIT</li>
-              </ul>
-              <h4 className="sub-section-title">Insights</h4>
-              <ul>
-                <li>Point one about the method...</li>
-                <li>Point two about the method...</li>
-                <li>Point three about the method...</li>
-              </ul>
+            <div className="sub-section">
+              <h4 className="sub-section-title">Formative Evaluation</h4>
+              <p>
+                Here, you can provide your evaluation text that accompanies the images.
+                <br />
+                This content will appear alongside the images.
+                {/* Add more paragraphs as needed */}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="evaluation-section">
+          <div className="evaluation-content row-container">
+            <div className="sub-section">
+              <div className="user-evaluation-images">
+                <div className="image-grid">
+                  <img src={UserEvalImage1} alt="User Evaluation Image 1" />
+                  <img src={UserEvalImage2} alt="User Evaluation Image 2" />
+                  <img src={UserEvalImage3} alt="User Evaluation Image 3" />
+                  <img src={UserEvalImage4} alt="User Evaluation Image 4" />
+                </div>
+              </div>
+            </div>
+            <div className="sub-section">
+              <h4 className="sub-section-title">Summative Evaluation</h4>
+              <p>
+                Here, you can provide your evaluation text that accompanies the images.
+                <br />
+                This content will appear alongside the images.
+                {/* Add more paragraphs as needed */}
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="evaluation-section">
-          <h3 className="section-title">Summative Evaluation</h3>
-          <div className="evaluation-content row-container">
-            <div className="sub-section">
-                <div className="user-evaluation-images">
-                  <img src={UserEvalImage2} alt="User Evaluation Image 2" />
-                </div>
-            </div>
-            <div className="sub-section box">
-              <h4 className="sub-section-title">Method</h4>
-              <ul>
-                <li>Point one about the method...</li>
-                <li>Point two about the method...</li>
-                <li>Point three about the method...</li>
-              </ul>
-            </div>
-            <div className="sub-section box">
-              <h4 className="sub-section-title">Insights</h4>
-              <ul>
-                <li>Insight one...</li>
-                <li>Insight two...</li>
-                <li>Insight three...</li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div className="section">
