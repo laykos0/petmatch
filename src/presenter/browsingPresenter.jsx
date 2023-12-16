@@ -23,7 +23,7 @@ export default function Browsing(props){
         props?.model?.user?.updateUserPreferences(props.model.currentlyDisplayedDog, like)
         setIsLoading(true); 
         props?.model?.generateDisplayDog()
-        await sleep(1000); 
+        // await sleep(1000); 
         setIsLoading(false); 
     }
 
