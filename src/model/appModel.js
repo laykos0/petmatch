@@ -41,16 +41,32 @@ export default{
           }
     },
 
-    async generateDisplayDog(){
-        if (this.dogsToDisplay.length > 0){
-            this.currentlyDisplayedDog = this.dogsToDisplay.pop();
-        }
-        else {
+    async generateDisplayDog() {
+        if (this.dogsToDisplay.length > 0) {
+          this.currentlyDisplayedDog = this.dogsToDisplay.pop();
+        } else {
+          try {
+            // Assume getNewDogs returns a Promise
             this.dogsToDisplay = await getNewDogs(this.user);
-            this.currentlyDisplayedDog = this.dogsToDisplay.pop();
+      
+            this.dogsToDisplay = this.dogsToDisplay.filter(dog =>
+              !this.user.seenDogs.some(seenDog => seenDog === dog.name)
+            );
+      
+            console.log(this.dogsToDisplay.length);
+      
+            if (this.dogsToDisplay.length > 0) {
+              this.currentlyDisplayedDog = this.dogsToDisplay.pop();
+            } else {
+              console.log("No more dogs to display.");
+            }
+          } catch (error) {
+            console.error("Error fetching new dogs:", error);
+            // Handle error appropriately
+          }
         }
-    },
-
+      },
+      
     async getNearbyOrganizations(){
         await getPetFinderData(this);
     }
