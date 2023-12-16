@@ -47,6 +47,7 @@ function generateRandomAttributes() {
     'trainability',
     'energy',
     'barking',
+    'shedding',
   ];
 
   const randomAttributes = {};
