@@ -1,15 +1,18 @@
 import axios from 'axios'; 
+
+
 export async function getNewDogs(user) {
-  if (import.meta.env.VITE_ENV == 'dev') {
-    console.log("mocking dog api");
+  if (import.meta.env.VITE_ENV == 'dev') 
     return mockDogs;
-  }
+  
   try {
-      //const response = await axios.get(`https://api.api-ninjas.com/v1/dogs?name=${name}`, {
+      const dogApiUrl = "https://api.api-ninjas.com/v1/dogs?"
+      const queryParams = queryParamString(generateRandomAttributes())
+
       const response = await axios.get(
-          `https://api.api-ninjas.com/v1/dogs?good_with_other_dogs=${user.personalityPreferences.good_with_other_dogs}&good_with_strangers=${user.personalityPreferences.good_with_strangers}&playfullness=${user.personalityPreferences.playfullness}&protectiveness=${user.personalityPreferences.protectiveness}&trainability=${user.personalityPreferences.trainability}&energy=${user.personalityPreferences.energy}&barking=${user.personalityPreferences.barking}`, {
-      headers: { 'X-Api-Key': import.meta.env.VITE_DOGS_API_KEY },
-      });
+          dogApiUrl + queryParams,
+          //dogApiUrl + `good_with_other_dogs=${user.personalityPreferences.good_with_other_dogs}&good_with_strangers=${user.personalityPreferences.good_with_strangers}&playfullness=${user.personalityPreferences.playfullness}&protectiveness=${user.personalityPreferences.protectiveness}&trainability=${user.personalityPreferences.trainability}&energy=${user.personalityPreferences.energy}&barking=${user.personalityPreferences.barking}`, 
+          {headers: { 'X-Api-Key': import.meta.env.VITE_DOGS_API_KEY },});
       console.log(response.data);
       let dogToDisplay;
       let output = []
@@ -36,6 +39,35 @@ export async function getNewDogs(user) {
       console.error('Error fetching data:', error);
   }
 }
+
+
+function generateRandomAttributes() {
+  const attributes = [
+    'protectiveness',
+    'trainability',
+    'energy',
+    'barking',
+  ];
+
+  const randomAttributes = {};
+  const randomIndex = Math.floor(Math.random() * attributes.length);
+  const attributeName = attributes[randomIndex];
+  randomAttributes[attributeName] = Math.floor(Math.random() * 5) + 1;
+  randomAttributes['offset'] = Math.floor(Math.random() * 16);
+
+  return randomAttributes;
+}
+
+
+
+function queryParamString(attributes) {
+  const queryParams = Object.entries(attributes)
+      .map(([key, value]) => `${key}=${value}`)
+      .join('&');
+
+  return queryParams;
+}
+
 
 const mockDogs = [
     {
