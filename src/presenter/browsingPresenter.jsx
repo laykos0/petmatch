@@ -20,10 +20,9 @@ export default function Browsing(props){
     }, []); 
 
     async function rateACB(like) {
-        props?.model?.user?.updateUserPreferences(props.model.currentlyDisplayedDog, like)
         setIsLoading(true); 
-        props?.model?.generateDisplayDog()
-        // await sleep(1000); 
+        await props?.model?.user?.updateUserPreferences(props.model.currentlyDisplayedDog, like)
+        await props?.model?.generateDisplayDog()
         setIsLoading(false); 
     }
 
@@ -33,5 +32,3 @@ export default function Browsing(props){
         </div>
     );
 }
-
-function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
