@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.signup-form {
+    display: inline-grid;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+.no-acnt {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: 15px;
+    cursor: pointer;
+}

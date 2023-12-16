@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../styles/signup.css";
 
 function SignupView(props) {
   const [email, setEmail] = useState('');
@@ -30,19 +31,19 @@ function SignupView(props) {
   }
 
   return (
-    <div className="signup-form">
-      <h2>Sign Up</h2>
+    <div className="signup-form bg-indigo-100 text-purple-600 inline-grid my-20">
+      <h2 className='text-2xl font-thin py-5'>Sign Up</h2>
       <div className="form-group">
         <label htmlFor="email" className="form-label">
           Email:
         </label>
-        <input type="email" id="email" value={email} onChange={handleEmailChange} className="form-input" />
+        <input type="email" id="email" value={email} onChange={handleEmailChange} className="form-input bg-violet-400" />
       </div>
       <div className="form-group">
         <label htmlFor="password" className="form-label">
           Password:
         </label>
-        <input type="password" id="password" value={password} onChange={handlePasswordChange} className="form-input" />
+        <input type="password" id="password" value={password} onChange={handlePasswordChange} className="form-input bg-violet-400" />
       </div>
       <div className="form-group">
         <label htmlFor="confirmPassword" className="form-label">
@@ -53,18 +54,18 @@ function SignupView(props) {
           id="confirmPassword"
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
-          className="form-input"
+          className="form-input bg-violet-400"
         />
       </div>
-      <button onClick={handleSignUp} className="sign-up-btn">
+      <button onClick={handleSignUp} className="sign-in-btn bg-indigo-300">
         Sign Up
-      </button> 
-      <button onClick={handleSignInGoogle} className="sign-in-btn">
+      </button>
+      <button onClick={handleSignInGoogle} className="sign-in-btn bg-indigo-300">
         Sign Up Google
       </button>
-      <span style={{ textDecoration: 'underline', cursor: 'pointer', color: 'blue' }} onClick={handleToggleView}>
+      <span onClick={handleToggleView} className='no-acnt' style={{textDecoration: 'underline'}}>
         {'Already have an account? Log in'}
-        </span>
+      </span>
     </div>
   );
 }
