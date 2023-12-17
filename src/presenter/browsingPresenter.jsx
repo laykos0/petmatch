@@ -24,6 +24,7 @@ export default observer(function Browsing(props){
         setIsLoading(true); 
         await props?.model?.user?.updateUserPreferences(props.model.currentlyDisplayedDog, like)
         await props?.model?.generateDisplayDog()
+        await sleep(500); 
         setIsLoading(false); 
     }
 
@@ -33,3 +34,5 @@ export default observer(function Browsing(props){
         </div>
     );
 })
+
+function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }

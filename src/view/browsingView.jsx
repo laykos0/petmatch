@@ -16,6 +16,8 @@ function BrowsingView(props){
         }
     }
 
+
+
     function SwipeCard({ onSwipe }) {
 
         function handleStop(event, data){
@@ -29,7 +31,7 @@ function BrowsingView(props){
 
         return (
                     <div className='rounded mt-12'>
-                        <motion.div animate={{ scale: 1 }} initial={{ scale: shouldAnimate ? 0.25 : 1 }}>
+                        <motion.div animate={{ scale: 1 }} initial={{ scale: shouldAnimate ? 0.25 : 1 } }   transition={{ duration: 0.3 }} >
                             <Draggable
                                 axis="x"
                                 handle=".handle"
@@ -45,7 +47,7 @@ function BrowsingView(props){
                                         👎
                                     </motion.button>
                                     <div className="profile-content">
-                                        <img className = "rounded-lg mb-16" src={props?.model?.currentlyDisplayedDog?.image_link} />
+                                        <img className = "rounded-lg mb-16" src={props?.model?.currentlyDisplayedDog?.image_link}  loading="eager" />
                                         <button disabled={true} className=' font-bold bg-indigo-500 mb-5 p-5 rounded-full'>{props?.model?.currentlyDisplayedDog?.name}</button>
                                     </div>
                                     <motion.button className='like absolute bottom-5 right-5 bg-white p-5 rounded-full hover:scale-125 hover:bg-green-400' onClick={() => {onSwipe(true)}}>
