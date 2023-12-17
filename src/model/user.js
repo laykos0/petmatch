@@ -98,12 +98,16 @@ export default  {
         if (user) {
             let userData = await db.readFromDatabase(user.uid);
             if (!userData) {
-                await this.updateUserLocation({location: {zip: "02421", state: "MA"}});
-                await this.updateUserInDatabase({personalityPreferences: personalityAttributes, seenDogs: []});
+                await this.updateUserInDatabase({
+                    location: {zip: "02421", state: "MA"}, 
+                    personalityPreferences: personalityAttributes, 
+                    seenDogs: [], 
+                    removeDogs: []
+                });
                 userData = await db.readFromDatabase(user.uid);
             }
-            const { location, personalityPreferences, seenDogs } = userData;
-            this.user = { location, personalityPreferences, seenDogs };
+            const { location, personalityPreferences, seenDogs, removedDogs} = userData;
+            this.user = { location, personalityPreferences, seenDogs, removedDogs };
         } else {
             this.clearUser()
         }
