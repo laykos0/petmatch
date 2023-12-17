@@ -4,16 +4,21 @@ import WelcomeView from "../view/welcomeView.jsx";
 
 export default function Welcome() {
   
-  function onSignInEmail(email, password) {
-    auth.signInEmailPassword(email, password);
+  async function onSignInEmail(email, password) {
+    await auth.signInEmailPassword(email, password);
   }
 
-  function onSignInGoogle() {
-    auth.signInGoogle();
+  async function onSignInGoogle() {
+    try {
+      await auth.signInGoogle();
+    }
+    catch {
+      console.log(error)
+    }
   }
 
-  function onSignUpEmail(email, password) {
-    auth.signUpEmailPassword(email, password);
+  async function onSignUpEmail(email, password) {
+    await auth.signUpEmailPassword(email, password);
   }
 
   return <WelcomeView onSignInEmail={onSignInEmail} onSignInGoogle={onSignInGoogle} onSignUpEmail={onSignUpEmail} />;
