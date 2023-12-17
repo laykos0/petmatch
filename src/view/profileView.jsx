@@ -3,8 +3,8 @@ import { useObserver } from 'mobx-react-lite';
 import '../styles/profile.css';
 
 function ProfileView(props) {
-  const [zipCode, setZipCode] = useState('');
-  const [stateCode, setStateCode] = useState('');
+  const [zipCode, setZipCode] = useState(props.zip);
+  const [stateCode, setStateCode] = useState(props.state);
 
   function handleZipCodeChange(event) {
     setZipCode(event.target.value);

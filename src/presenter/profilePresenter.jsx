@@ -32,5 +32,7 @@ export default observer(function Profile(props) {
   return <ProfileView 
             updateLocation={(zipCode, stateCode)=>{updateLocationCustomACB(zipCode, stateCode)}} 
             startBrowsing={startBrowsingACB}
+            zip={props.model.user.location.zip}
+            state={props.model.user.location.state}
          />;
 })
