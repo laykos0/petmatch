@@ -23,7 +23,7 @@ export default  {
     },
 
     async updateUserRemovedDogs(dog) {
-        this.removedDogs = updateRemovedDogs(dog)
+        this.updateRemovedDogs(dog)
         return this.updateUserInDatabase(this.userRemovedDogsToPersistence()); 
     },
 
