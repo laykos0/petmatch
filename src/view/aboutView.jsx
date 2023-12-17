@@ -2,11 +2,10 @@ import UserEvalImage1 from '../images/LoFi_User_Eval.jpg';
 import UserEvalImage2 from '../images/Pointing_Image_Lofi_Eval.jpg';
 import "../styles/about.css";
 import React from 'react';
-import { useObserver } from "mobx-react-lite";
 
 function AboutView(props) {
 
-  return useObserver(() => (
+  return (
     <div className="page-container my-10">
       <div className="section">
         <h2 className="section-title">What is Woof Finder?</h2>
@@ -58,7 +57,7 @@ function AboutView(props) {
         </div>
       </div>
     </div>
-  ));
+  );
 }
 
 export default AboutView;
