@@ -22,10 +22,11 @@ export default observer (function App(props) {
   useEffect(() => {
     Auth.onAuthStateChanged((user) => {
       setIsAuthenticated(!!user);
-      if (user) 
+      if (!!user) {
         model.initializeModel()
-      else 
+      } else {
         model.clearModel()
+      }
     })
   }, []);
 
