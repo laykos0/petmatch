@@ -1,16 +1,10 @@
 import UserEvalImage1 from '../images/LoFi_User_Eval.jpg';
 import UserEvalImage2 from '../images/Pointing_Image_Lofi_Eval.jpg';
 import "../styles/about.css";
-import Auth from "../services/auth"
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useObserver } from "mobx-react-lite";
 
-function AboutView() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    Auth.onAuthStateChanged((user) => { setIsLoggedIn(!!user); })
-  });
+function AboutView(props) {
 
   return useObserver(() => (
     <div className="page-container my-10">
@@ -21,7 +15,7 @@ function AboutView() {
         </p>
       </div>
 
-      ({isLoggedIn &&<div className="section">
+      ({props.isAuthenticated &&<div className="section">
         <h2 className="section-title">Evaluation</h2>
         <div className="sub-section w-4/5 mx-auto">
             <div className="user-evaluation-images flex justify-center">
