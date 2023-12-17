@@ -22,12 +22,10 @@ export default observer (function App(props) {
   useEffect(() => {
     Auth.onAuthStateChanged((user) => {
       setIsAuthenticated(!!user);
-      if (user) {
-        model.user.retrieveUserFromDatabase()
-        model.getNearbyOrganizations()
-      } else {
+      if (user) 
+        model.initializeModel()
+      else 
         model.clearModel()
-      }
     })
   }, []);
 

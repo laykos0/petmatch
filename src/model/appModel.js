@@ -71,5 +71,11 @@ export default {
       this.detailsDisplayedDog = {};
       this.dogsToDisplay = [];
       this.currentlyRecommendedDogs = [];
+    },
+
+    async initializeModel() {
+      this.user.retrieveUserFromDatabase()
+      this.getNearbyOrganizations()
+      this.generateDisplayDog()
     }
 }
