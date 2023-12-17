@@ -112,7 +112,11 @@ export default  {
                 userData = await db.readFromDatabase(user.uid);
             }
             const { location, personalityPreferences, seenDogs, removedDogs} = userData;
-            this.user = { location, personalityPreferences, seenDogs, removedDogs };
+            this.location = location || {zip: "02421", state: "MA"};
+            this.personalityPreferences = personalityPreferences || personalityAttributes;
+            this.seenDogs = seenDogs || [];
+            this.removedDogs = removedDogs || [];
+            console.log(this.location)
         } else {
             this.clearUser()
         }

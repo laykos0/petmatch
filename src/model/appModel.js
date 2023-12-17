@@ -74,8 +74,8 @@ export default {
     },
 
     async initializeModel() {
-      this.user.retrieveUserFromDatabase()
-      this.getNearbyOrganizations()
-      this.generateDisplayDog()
+      await this.user.retrieveUserFromDatabase()
+      await this.getNearbyOrganizations()
+      await this.generateDisplayDog()
     }
 }
