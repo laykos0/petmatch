@@ -16,7 +16,7 @@ configure({ enforceActions: "never", });  // we don't use Mobx actions
 const model = observable(Model);
 model.getNearbyOrganizations(); // Maybe remove
 
-export default observer( function App(props){
+export default observer (function App(props) {
 
   const [isAuthenticated, setIsAuthenticated] = useState(Auth.getCurrentUser() !== null);
   useEffect(() => {

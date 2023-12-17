@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 
 export default observer(function ResultDetails(props) {
     
-    function removeDogCustomACB(){
+    function removeDogCustomACB() {
         props.model.removeDogFromRecommendations(props.model.detailsDisplayedDog);
     }
     let name = props.model.detailsDisplayedDog.name;

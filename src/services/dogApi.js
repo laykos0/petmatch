@@ -40,7 +40,6 @@ export async function getNewDogs(user) {
   }
 }
 
-
 function generateRandomAttributes() {
   const attributes = [
     'protectiveness',
@@ -51,22 +50,15 @@ function generateRandomAttributes() {
   ];
 
   const randomAttributes = {};
-  const randomIndex = Math.floor(Math.random() * attributes.length);
-  const attributeName = attributes[randomIndex];
+  const attributeName = attributes[Math.floor(Math.random() * attributes.length)];
   randomAttributes[attributeName] = Math.floor(Math.random() * 5) + 1;
   randomAttributes['offset'] = Math.floor(Math.random() * 16);
 
   return randomAttributes;
 }
 
-
-
 function queryParamString(attributes) {
-  const queryParams = Object.entries(attributes)
-      .map(([key, value]) => `${key}=${value}`)
-      .join('&');
-
-  return queryParams;
+  return Object.entries(attributes).map(([key, value]) => `${key}=${value}`).join('&');
 }
 
 

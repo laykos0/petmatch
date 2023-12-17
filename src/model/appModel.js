@@ -2,7 +2,7 @@ import User from "./user.js";
 import { getNewDogs } from "../services/dogApi.js";
 import { getPetFinderData } from "../services/petFinderApi.js";
 import { generateDogDescription } from "../services/llmApi.js";
-export default{  
+export default {  
     user: User,
     organizations: [],
     dogDescriptions: {},
@@ -11,29 +11,29 @@ export default{
     dogsToDisplay: [],
     currentlyRecommendedDogs: [],
 
-    async getDogRecommendations(){
+    async getDogRecommendations() {
         this.currentlyRecommendedDogs = await getNewDogs(this.user); 
     },
 
-    async selectDog(dog){
+    async selectDog(dog) {
         let name = dog.name
         this.detailsDisplayedDog = dog;
-        if(!(name in this.dogDescriptions)){
+        if (!(name in this.dogDescriptions)) {
             this.dogDescriptions[name] = await generateDogDescription(name);
         }
         console.log("new dog descriptions: ", this.dogDescriptions[name])
     },
 
-    async updateUserLocation(zipCode, stateCode){
+    async updateUserLocation(zipCode, stateCode) {
         this.user.updateUserLocation(zipCode, stateCode)
         await this.getNearbyOrganizations();
     },
 
-    removeDogFromRecommendations(dog){
+    removeDogFromRecommendations(dog) {
         let indexToRemove = this.currentlyRecommendedDogs.indexOf(dog)
-        if (indexToRemove !== -1) {
-            this.currentlyRecommendedDogs.splice(indexToRemove, 1);
-          }
+        
+        if (indexToRemove !== -1) 
+          this.currentlyRecommendedDogs.splice(indexToRemove, 1);
     },
 
     async generateDisplayDog() {
@@ -58,7 +58,7 @@ export default{
         }
       },
       
-    async getNearbyOrganizations(){
+    async getNearbyOrganizations() {
         await getPetFinderData(this);
     }
 }
