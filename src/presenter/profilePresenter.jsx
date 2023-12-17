@@ -1,8 +1,11 @@
 import ProfileView from "../view/profileView.jsx";
 import { observer } from "mobx-react-lite";
+import { useNavigate } from 'react-router-dom'
 
 export default observer(function Profile(props) {
   
+  const navigate = useNavigate();
+
   function updateLocationCustomACB(zipCode, stateCode) {
     function checkValidZipCode(zipCode) {
       return /^\d{5}(-\d{4})?$/.test(zipCode);
@@ -19,6 +22,7 @@ export default observer(function Profile(props) {
       return;
     }
     props.model.updateUserLocation(zipCode, stateCode);
+    navigate("/browsing")
   }
   return <ProfileView updateLocation={(zipCode, stateCode)=>{updateLocationCustomACB(zipCode, stateCode)}}/>;
 })
