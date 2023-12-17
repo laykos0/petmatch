@@ -42,6 +42,15 @@ export default  {
         return {removedDogs: this.removedDogs};
     },
 
+    userToPersistence() {
+        return {
+            location: this.location, 
+            personalityPreferences: this.personalityPreferences, 
+            seenDogs: this.seenDogs, 
+            removedDogs: this.removedDogs
+        }
+    },
+
     setLocation(location) {
         this.location = location 
     },
@@ -98,12 +107,8 @@ export default  {
         if (user) {
             let userData = await db.readFromDatabase(user.uid);
             if (!userData) {
-                await this.updateUserInDatabase({
-                    location: {zip: "02421", state: "MA"}, 
-                    personalityPreferences: personalityAttributes, 
-                    seenDogs: [], 
-                    removeDogs: []
-                });
+                this.clearUser()
+                await this.updateUserInDatabase(this.userToPersistence());
                 userData = await db.readFromDatabase(user.uid);
             }
             const { location, personalityPreferences, seenDogs, removedDogs} = userData;

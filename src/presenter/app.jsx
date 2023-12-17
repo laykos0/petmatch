@@ -21,8 +21,13 @@ export default observer (function App(props) {
   const [isAuthenticated, setIsAuthenticated] = useState(Auth.getCurrentUser() !== null);
   useEffect(() => {
     Auth.onAuthStateChanged((user) => {
+      setIsAuthenticated(!!user);
+      if (user) {
         model.user.retrieveUserFromDatabase()
-        setIsAuthenticated(!!user);
+        model.getNearbyOrganizations()
+      } else {
+        model.clearModel()
+      }
     })
   }, []);
 

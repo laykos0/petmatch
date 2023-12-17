@@ -61,5 +61,15 @@ export default {
       
     async getNearbyOrganizations() {
         await getPetFinderData(this);
+    },
+
+    clearModel() {
+      this.user.clearUser()
+      this.organizations = [];
+      this.dogDescriptions = {};
+      this.currentlyDisplayedDog = {};
+      this.detailsDisplayedDog = {};
+      this.dogsToDisplay = [];
+      this.currentlyRecommendedDogs = [];
     }
 }
