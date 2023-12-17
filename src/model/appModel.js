@@ -4,10 +4,6 @@ import { getPetFinderData } from "../services/petFinderApi.js";
 import { generateDogDescription } from "../services/llmApi.js";
 export default{  
     user: User,
-    location:{
-        zip:"02421",
-        state:"MA"
-    },
     organizations: [],
     dogDescriptions: {},
     currentlyDisplayedDog: {},
