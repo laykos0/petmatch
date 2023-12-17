@@ -3,7 +3,8 @@ import {
     ref,
     get, 
     set,
-    update
+    update,
+    runTransaction
 } from 'firebase/database';
 
 import {app} from "./firebase"
@@ -12,11 +13,17 @@ const db = getDatabase(app);
 
 export default {
     async saveToDatabase(userId, data) {;
-        set(ref(db, userId), data);
+        await set(ref(db, userId), data);
     },
 
     async updateInDatabase(userId, data) {;
-        update(ref(db, userId), data);
+        await runTransaction(ref(db, userId), (currentData) => {
+            if (currentData === null) {
+                return data;
+            } else {
+                return {...currentData, ...data};
+            }
+        });        
     },
 
     async readFromDatabase(userId) {
