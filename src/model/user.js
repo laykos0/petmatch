@@ -98,7 +98,7 @@ export default  {
         if (user) {
             let userData = await db.readFromDatabase(user.uid);
             if (!userData) {
-                await this. updateUserLocation({location: {zip: "", state: ""}});
+                await this.updateUserLocation({location: {zip: "02421", state: "MA"}});
                 await this.updateUserInDatabase({personalityPreferences: personalityAttributes, seenDogs: []});
                 userData = await db.readFromDatabase(user.uid);
             }
