@@ -47,7 +47,7 @@ export default observer( function App(props){
       },
       {
         path: '/about',
-        element: <About/>,
+        element: <About authenticated={isAuthenticated}/>,
 
       },
       {
@@ -59,7 +59,7 @@ export default observer( function App(props){
 
   return (
     <div>
-      <NavBar />
+      <NavBar isLoggedIn={isAuthenticated}/>
       <RouterProvider router={makeRouter()} />
     </div>
   );

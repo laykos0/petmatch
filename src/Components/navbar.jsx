@@ -1,25 +1,17 @@
 import Auth from "../services/auth"
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/navbar.css'; 
 
-function Navbar(){
+function Navbar(props){
     const [isDropDownOpen, setDropDownOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-      const unsubscribe = Auth.onAuthStateChanged((user) => {
-        setIsLoggedIn(!!user);
-      });
-      return () => unsubscribe();
-    }, []);
 
     const options = (
       <div className="dropdown-menu font-sans text-purple-200">
-        {isLoggedIn ? <a href="#/">Profile</a> : <a href="#/">Home</a>}
-        {isLoggedIn && <a href="#/browsing">Browse</a>}
-        {isLoggedIn && <a href="#/results-summary">Results</a>}
+        {props.isLoggedIn ? <a href="#/">Profile</a> : <a href="#/">Home</a>}
+        {props.isLoggedIn && <a href="#/browsing">Browse</a>}
+        {props.isLoggedIn && <a href="#/results-summary">Results</a>}
         <a href="#/about">About</a>
-        {isLoggedIn && <a onClick={() => Auth.signOut()}>Log Out</a>}
+        {props.isLoggedIn && <a onClick={() => Auth.signOut()}>Log Out</a>}
   </div>
 );
 
