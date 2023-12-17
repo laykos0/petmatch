@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import BrowsingView from "../view/browsingView.jsx";
+import { observer } from "mobx-react-lite";
 
-export default function Browsing(props){
+export default observer(function Browsing(props){
     const [isLoading, setIsLoading] = useState(true);
     const modelToPass = isLoading ? {
         currentlyDisplayedDog: {
@@ -31,4 +32,4 @@ export default function Browsing(props){
             <BrowsingView model={modelToPass} rate={rateACB} isLoading={isLoading}/>
         </div>
     );
-}
+})

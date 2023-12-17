@@ -1,8 +1,8 @@
 import ProfileView from "../view/profileView.jsx";
 import { observer } from "mobx-react-lite";
 
-export default observer(
-function Profile(props) {
+export default observer(function Profile(props) {
+  
   function updateLocationCustomACB(zipCode, stateCode){
     function checkValidZipCode(zipCode){
       return /^\d{5}(-\d{4})?$/.test(zipCode);
@@ -21,5 +21,4 @@ function Profile(props) {
     props.model.updateUserLocation(zipCode, stateCode);
   }
   return <ProfileView updateLocation={(zipCode, stateCode)=>{updateLocationCustomACB(zipCode, stateCode)}}/>;
-}
-)
+})
