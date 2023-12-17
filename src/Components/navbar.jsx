@@ -12,8 +12,8 @@ function Navbar(props){
         {props.isLoggedIn && <a href="#/results-summary">Results</a>}
         <a href="#/about">About</a>
         {props.isLoggedIn && <a onClick={() => Auth.signOut()}>Log Out</a>}
-  </div>
-);
+      </div>
+    );
 
     return (
             <nav className="navbar fixed top-0 w-full">
