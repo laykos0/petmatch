@@ -9,6 +9,7 @@ export default  {
     },
     personalityPreferences: personalityAttributes,
     seenDogs: [], 
+    removedDogs: [],
 
     async updateUserLocation(zip, state) {
         this.setLocation({zip: zip, state: state})
@@ -19,6 +20,10 @@ export default  {
         this.updateSeenDogs(dog)
         this.updatePreferences(dog.personalityPreferences, liked)
         return this.updateUserInDatabase(this.userPreferencesToPersistance());
+    },
+
+    async updateUserRemovedDogs() {
+        return this.updateUserInDatabase(this.userRemovedDogsToPersistence()); 
     },
 
     userLocationToPersistence() {
@@ -32,6 +37,10 @@ export default  {
         };
     },
 
+    userRemovedDogsToPersistence() {
+        return {removedDogs: this.removedDogs};
+    },
+
     setLocation(location) {
         this.location = location 
     },
@@ -39,6 +48,11 @@ export default  {
     updateSeenDogs(dog) {
         if (!this.seenDogs.includes(dog.name)) 
             this.seenDogs = [...this.seenDogs, dog.name];
+    },
+
+    updateRemovedDogs(dog) {
+        if (!this.removedDogs.includes(dog.name)) 
+            this.removedDogs = [...this.removedDogs, dog.name];
     },
 
     updatePreferences(attributes, liked) {
