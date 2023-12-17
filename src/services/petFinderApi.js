@@ -20,7 +20,7 @@ export async function getPetFinderData(model){
         .then(() => {
         // use token to fetch animals
         fetch(
-            `https://api.petfinder.com/v2/organizations?state=${model.location.state}&location=${model.location.zip}&sort=distance&limit=5`,
+            `https://api.petfinder.com/v2/organizations?state=${model.user.location.state}&location=${model.user.location.zip}&sort=distance&limit=5`,
             {
             method: "GET",
             mode: "cors",
