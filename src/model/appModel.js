@@ -29,8 +29,7 @@ export default{
     },
 
     async updateUserLocation(zipCode, stateCode){
-        this.location.zip = zipCode;
-        this.location.state = stateCode;
+        this.user.updateUserLocation(zipCode, stateCode)
         await this.getNearbyOrganizations();
     },
 

@@ -10,8 +10,8 @@ export default  {
     personalityPreferences: personalityAttributes,
     seenDogs: [], 
 
-    async updateUserLocation(location) {
-        this.setLocation(location)
+    async updateUserLocation(zip, state) {
+        this.setLocation({zip: zip, state: state})
         return this.updateUserInDatabase(this.userLocationToPersistence());
     },
 
@@ -33,7 +33,7 @@ export default  {
     },
 
     setLocation(location) {
-        this.location = location
+        this.location = location 
     },
 
     updateSeenDogs(dog) {
