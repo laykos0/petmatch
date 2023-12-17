@@ -29,9 +29,10 @@ export default {
         await this.getNearbyOrganizations();
     },
 
-    removeDogFromRecommendations(dog) {
+    async removeDogFromRecommendations(dog) {
+        await this.user.updateUserRemovedDogs(dog)
+
         let indexToRemove = this.currentlyRecommendedDogs.indexOf(dog)
-        
         if (indexToRemove !== -1) 
           this.currentlyRecommendedDogs.splice(indexToRemove, 1);
     },
