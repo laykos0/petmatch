@@ -83,6 +83,16 @@ export default  {
         }
     },
 
+    clearUser() {
+        this.location = {
+            zip: "02421",
+            state: "MA"
+        };
+        this.personalityPreferences = personalityAttributes;
+        this.seenDogs = [];
+        this.removedDogs = [];
+    },
+
     async retrieveUserFromDatabase() {
         const user = await auth.getCurrentUser();
         if (user) {
@@ -94,6 +104,8 @@ export default  {
             }
             const { location, personalityPreferences, seenDogs } = userData;
             this.user = { location, personalityPreferences, seenDogs };
+        } else {
+            this.clearUser()
         }
     },
 
