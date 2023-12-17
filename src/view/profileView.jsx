@@ -18,6 +18,10 @@ function ProfileView(props) {
     props.updateLocation(zipCode, stateCode);
   }
 
+  function handleStartBrowsing() {
+    props.startBrowsing()
+  }
+
   return useObserver(() => (
     <div className="profile-container">
       <div className="profile-form">
@@ -38,6 +42,9 @@ function ProfileView(props) {
 
         <button onClick={handleUpdateLocation} className="update-btn">
           Update Location
+        </button>
+        <button onClick={handleStartBrowsing} className="update-btn">
+          Start Browsing
         </button>
       </div>
     </div>

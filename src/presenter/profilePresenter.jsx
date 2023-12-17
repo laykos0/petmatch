@@ -6,7 +6,7 @@ export default observer(function Profile(props) {
   
   const navigate = useNavigate();
 
-  function updateLocationCustomACB(zipCode, stateCode) {
+  async function updateLocationCustomACB(zipCode, stateCode) {
     function checkValidZipCode(zipCode) {
       return /^\d{5}(-\d{4})?$/.test(zipCode);
     }
@@ -21,8 +21,16 @@ export default observer(function Profile(props) {
       alert("Invalid State Code! Please try again!");
       return;
     }
-    props.model.updateUserLocation(zipCode, stateCode);
+    await props.model.updateUserLocation(zipCode, stateCode);
+    alert("Location saved!")
+  }
+
+  function startBrowsingACB() {
     navigate("/browsing")
   }
-  return <ProfileView updateLocation={(zipCode, stateCode)=>{updateLocationCustomACB(zipCode, stateCode)}}/>;
+
+  return <ProfileView 
+            updateLocation={(zipCode, stateCode)=>{updateLocationCustomACB(zipCode, stateCode)}} 
+            startBrowsing={startBrowsingACB}
+         />;
 })
