@@ -46,23 +46,19 @@ export default{
           this.currentlyDisplayedDog = this.dogsToDisplay.pop();
         } else {
           try {
-            // Assume getNewDogs returns a Promise
             this.dogsToDisplay = await getNewDogs(this.user);
       
-            this.dogsToDisplay = this.dogsToDisplay.filter(dog =>
-              !this.user.seenDogs.some(seenDog => seenDog === dog.name)
+            this.dogsToDisplay = this.dogsToDisplay.filter(
+              dog => !this.user.seenDogs.some(seenDog => seenDog === dog.name)
             );
-      
-            console.log(this.dogsToDisplay.length);
-      
-            if (this.dogsToDisplay.length > 0) {
+
+            if (this.dogsToDisplay.length > 0) 
               this.currentlyDisplayedDog = this.dogsToDisplay.pop();
-            } else {
+            else 
               console.log("No more dogs to display.");
-            }
+            
           } catch (error) {
             console.error("Error fetching new dogs:", error);
-            // Handle error appropriately
           }
         }
       },
