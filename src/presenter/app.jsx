@@ -18,16 +18,14 @@ model.getNearbyOrganizations(); // Maybe remove
 
 export default observer( function App(props){
 
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = Auth.onAuthStateChanged((user) => {
+    Auth.onAuthStateChanged((user) => {
         model.user.retrieveUserFromDatabase()
         setIsAuthenticated(!!user);
-    });
-
-    return () => unsubscribe();
-  }, []);
+    })
+  });;
 
   function makeRouter() {
     return createHashRouter([
