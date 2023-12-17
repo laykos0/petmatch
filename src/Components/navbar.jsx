@@ -7,11 +7,11 @@ function Navbar(props){
 
     const options = (
       <div className="dropdown-menu font-sans text-purple-200">
-        {props.isLoggedIn ? <a href="#/">Profile</a> : <a href="#/">Home</a>}
-        {props.isLoggedIn && <a href="#/browsing">Browse</a>}
-        {props.isLoggedIn && <a href="#/results-summary">Results</a>}
+        {props.isAuthenticated ? <a href="#/">Profile</a> : <a href="#/">Home</a>}
+        {props.isAuthenticated && <a href="#/browsing">Browse</a>}
+        {props.isAuthenticated && <a href="#/results-summary">Results</a>}
         <a href="#/about">About</a>
-        {props.isLoggedIn && <a onClick={() => Auth.signOut()}>Log Out</a>}
+        {props.isAuthenticated && <a onClick={() => Auth.signOut()}>Log Out</a>}
       </div>
     );
 
