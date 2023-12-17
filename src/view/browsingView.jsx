@@ -16,8 +16,6 @@ function BrowsingView(props){
         }
     }
 
-
-
     function SwipeCard({ onSwipe }) {
 
         function handleStop(event, data){
