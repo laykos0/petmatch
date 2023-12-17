@@ -12,7 +12,7 @@ export default  {
     removedDogs: [],
 
     async updateUserLocation(zip, state) {
-        this.setLocation({zip: zip, state: state})
+        this.setLocation({location: {zip: zip, state: state}})
         return this.updateUserInDatabase(this.userLocationToPersistence());
     },
 
