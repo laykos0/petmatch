@@ -22,7 +22,8 @@ export default  {
         return this.updateUserInDatabase(this.userPreferencesToPersistance());
     },
 
-    async updateUserRemovedDogs() {
+    async updateUserRemovedDogs(dog) {
+        this.removedDogs = updateRemovedDogs(dog)
         return this.updateUserInDatabase(this.userRemovedDogsToPersistence()); 
     },
 
