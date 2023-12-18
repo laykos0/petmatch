@@ -9,9 +9,10 @@ export default  {
     },
     personalityPreferences: personalityAttributes,
     seenDogs: [], 
+    removedDogs: [],
 
-    async updateUserLocation(location) {
-        this.setLocation(location)
+    async updateUserLocation(zip, state) {
+        this.setLocation({zip: zip, state: state})
         return this.updateUserInDatabase(this.userLocationToPersistence());
     },
 
@@ -19,6 +20,11 @@ export default  {
         this.updateSeenDogs(dog)
         this.updatePreferences(dog.personalityPreferences, liked)
         return this.updateUserInDatabase(this.userPreferencesToPersistance());
+    },
+
+    async updateUserRemovedDogs(dog) {
+        this.updateRemovedDogs(dog)
+        return this.updateUserInDatabase(this.userRemovedDogsToPersistence()); 
     },
 
     userLocationToPersistence() {
@@ -32,13 +38,31 @@ export default  {
         };
     },
 
+    userRemovedDogsToPersistence() {
+        return {removedDogs: this.removedDogs};
+    },
+
+    userToPersistence() {
+        return {
+            location: this.location, 
+            personalityPreferences: this.personalityPreferences, 
+            seenDogs: this.seenDogs, 
+            removedDogs: this.removedDogs
+        }
+    },
+
     setLocation(location) {
-        this.location = location
+        this.location = location 
     },
 
     updateSeenDogs(dog) {
         if (!this.seenDogs.includes(dog.name)) 
             this.seenDogs = [...this.seenDogs, dog.name];
+    },
+
+    updateRemovedDogs(dog) {
+        if (!this.removedDogs.includes(dog.name)) 
+            this.removedDogs = [...this.removedDogs, dog.name];
     },
 
     updatePreferences(attributes, liked) {
@@ -68,17 +92,33 @@ export default  {
         }
     },
 
+    clearUser() {
+        this.location = {
+            zip: "02421",
+            state: "MA"
+        };
+        this.personalityPreferences = personalityAttributes;
+        this.seenDogs = [];
+        this.removedDogs = [];
+    },
+
     async retrieveUserFromDatabase() {
         const user = await auth.getCurrentUser();
         if (user) {
             let userData = await db.readFromDatabase(user.uid);
             if (!userData) {
-                await this. updateUserLocation({location: {zip: "", state: ""}});
-                await this.updateUserInDatabase({personalityPreferences: personalityAttributes, seenDogs: []});
+                this.clearUser()
+                await this.updateUserInDatabase(this.userToPersistence());
                 userData = await db.readFromDatabase(user.uid);
             }
-            const { location, personalityPreferences, seenDogs } = userData;
-            this.user = { location, personalityPreferences, seenDogs };
+            const { location, personalityPreferences, seenDogs, removedDogs} = userData;
+            this.location = location || {zip: "02421", state: "MA"};
+            this.personalityPreferences = personalityPreferences || personalityAttributes;
+            this.seenDogs = seenDogs || [];
+            this.removedDogs = removedDogs || [];
+            console.log(this.location)
+        } else {
+            this.clearUser()
         }
     },
 

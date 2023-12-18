@@ -14,26 +14,27 @@ import {observer} from "mobx-react-lite"
 
 configure({ enforceActions: "never", });  // we don't use Mobx actions
 const model = observable(Model);
-model.getNearbyOrganizations(); // Maybe remove
+// model.getNearbyOrganizations(); // Maybe remove
 
-export default observer( function App(props){
+export default observer (function App(props) {
 
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const [isAuthenticated, setIsAuthenticated] = useState(Auth.getCurrentUser() !== null);
   useEffect(() => {
-    const unsubscribe = Auth.onAuthStateChanged((user) => {
-        model.user.retrieveUserFromDatabase()
-        setIsAuthenticated(!!user);
-    });
-
-    return () => unsubscribe();
+    Auth.onAuthStateChanged((user) => {
+      setIsAuthenticated(!!user);
+      if (!!user) {
+        model.initializeModel()
+      } else {
+        model.clearModel()
+      }
+    })
   }, []);
 
   function makeRouter() {
     return createHashRouter([
       {
         path: '/',
-        element:  isAuthenticated ? <Profile model={model}/> : <Welcome />,
+        element:  isAuthenticated ? <Profile model={model}/> : <Welcome/>,
       },
       {
         path: '/browsing',
@@ -49,7 +50,7 @@ export default observer( function App(props){
       },
       {
         path: '/about',
-        element: <About/>,
+        element: <About isAuthenticated={isAuthenticated}/>,
 
       },
       {
@@ -61,7 +62,7 @@ export default observer( function App(props){
 
   return (
     <div>
-      <NavBar />
+      <NavBar isAuthenticated={isAuthenticated}/>
       <RouterProvider router={makeRouter()} />
     </div>
   );

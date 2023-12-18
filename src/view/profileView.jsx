@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useObserver } from 'mobx-react-lite';
 import '../styles/profile.css';
 
 function ProfileView(props) {
-  const [zipCode, setZipCode] = useState('');
-  const [stateCode, setStateCode] = useState('');
+  const [zipCode, setZipCode] = useState(props.zip);
+  const [stateCode, setStateCode] = useState(props.state);
+
+  useEffect(() => {
+    setZipCode(props.zip);
+    setStateCode(props.state);
+  }, [props.zip, props.state]);
 
   function handleZipCodeChange(event) {
     setZipCode(event.target.value);
@@ -16,6 +21,10 @@ function ProfileView(props) {
 
   function handleUpdateLocation() {
     props.updateLocation(zipCode, stateCode);
+  }
+
+  function handleStartBrowsing() {
+    props.startBrowsing()
   }
 
   return useObserver(() => (
@@ -38,6 +47,9 @@ function ProfileView(props) {
 
         <button onClick={handleUpdateLocation} className="update-btn">
           Update Location
+        </button>
+        <button onClick={handleStartBrowsing} className="update-btn">
+          Start Browsing
         </button>
       </div>
     </div>
