@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BrowsingView from "../view/browsingView.jsx";
-import { observer } from "mobx-react-lite";
 
-export default observer(function Browsing(props){
+export default function Browsing(props){
     const [isLoading, setIsLoading] = useState(true);
     const modelToPass = isLoading ? {
         currentlyDisplayedDog: {
@@ -21,10 +20,10 @@ export default observer(function Browsing(props){
     }, []); 
 
     async function rateACB(like) {
+        props?.model?.user?.updateUserPreferences(props.model.currentlyDisplayedDog, like)
         setIsLoading(true); 
-        await props?.model?.user?.updateUserPreferences(props.model.currentlyDisplayedDog, like)
-        await props?.model?.generateDisplayDog()
-        await sleep(200); 
+        props?.model?.generateDisplayDog()
+        await sleep(1000); 
         setIsLoading(false); 
     }
 
@@ -33,6 +32,6 @@ export default observer(function Browsing(props){
             <BrowsingView model={modelToPass} rate={rateACB} isLoading={isLoading}/>
         </div>
     );
-})
+}
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }

@@ -1,19 +1,27 @@
 import Auth from "../services/auth"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/navbar.css'; 
 
-function Navbar(props){
+function Navbar(){
     const [isDropDownOpen, setDropDownOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+      const unsubscribe = Auth.onAuthStateChanged((user) => {
+        setIsLoggedIn(!!user);
+      });
+      return () => unsubscribe();
+    }, []);
 
     const options = (
       <div className="dropdown-menu font-sans text-purple-200">
-        {props.isAuthenticated ? <a href="#/">Profile</a> : <a href="#/">Home</a>}
-        {props.isAuthenticated && <a href="#/browsing">Browse</a>}
-        {props.isAuthenticated && <a href="#/results-summary">Results</a>}
+        {isLoggedIn ? <a href="#/">Profile</a> : <a href="#/">Home</a>}
+        {isLoggedIn && <a href="#/browsing">Browse</a>}
+        {isLoggedIn && <a href="#/results-summary">Results</a>}
         <a href="#/about">About</a>
-        {props.isAuthenticated && <a onClick={() => Auth.signOut()}>Log Out</a>}
-      </div>
-    );
+        {isLoggedIn && <a onClick={() => Auth.signOut()}>Log Out</a>}
+  </div>
+);
 
     return (
             <nav className="navbar fixed top-0 w-full bg-gray-800 text-white p-4 flex items-center">
