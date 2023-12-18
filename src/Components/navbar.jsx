@@ -16,16 +16,17 @@ function Navbar(props){
     );
 
     return (
-            <nav className="navbar fixed top-0 w-full">
-              <div className="nav-item dropdown" onClick={()=>{setDropDownOpen(!isDropDownOpen)}}>
-                <span>
-                  <button className="text-xl font-bold text-purple-300 w-20 rounded hover:rounded-lg">
-                      Menu
-                  </button>
-                </span>
+            <nav className="navbar fixed top-0 w-full bg-gray-800 text-white p-4 flex items-center">
+            <button className="text-2xl hover:scale-110 px-2" onClick={() => window.location.hash = "/"}>🐶 Woof Finder</button>
+            <div className="ml-auto">
+              <div className="nav-item dropdown" onClick={() => { setDropDownOpen(!isDropDownOpen) }}>
+                <button className="text-xl font-bold text-purple-300 w-20 rounded hover:rounded-lg">
+                  Menu
+                </button>
                 {isDropDownOpen && options}
               </div>
-            </nav>
+            </div>
+          </nav>
           );
 }
 
