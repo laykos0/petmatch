@@ -8,7 +8,7 @@ function ResultDetailsView(props) {
       {props.displayedDog.name ? (
         <div className='details-container'>
             <div>
-            <div className=' text-5xl font-extrabold bg-orange-400 rounded-full w-2/3 mx-auto text-center mt-10'> {props.displayedDog.name} </div>
+            <div className=' text-5xl font-extrabold bg-orange-400 rounded-full w-7/10 mx-auto text-center mt-10'> {props.displayedDog.name} </div>
             <div className="dog-details-container flex">
                 <div className="dog-image">
                 <img src={props.displayedDog.image_link} height="100" alt={props.displayedDog.name} />
@@ -28,14 +28,14 @@ function ResultDetailsView(props) {
             </div>
 
             <div className='mt-5 mb-5 bg-white info'>
-                <div className=' bg-indigo-200 font-thin text-4xl text-slate-900 text-center'>About the Dog</div>
+                <div className=' bg-indigo-200 font-thin text-4xl text-slate-900 text-center p-4'>About the Dog</div>
                 <div className=' text-violet-950'>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, eos, eveniet fugiat commodi corporis ipsa modi dolore rem doloremque obcaecati harum voluptates fugit sapiente nihil aliquam ex quidem praesentium quas ab voluptatibus iusto. Debitis enim expedita autem ut magni, sint dolor eos accusantium atque? Temporibus eos quos distinctio porro culpa rerum soluta possimus nam ipsam! Ducimus possimus temporibus deserunt omnis consectetur libero facere rem voluptatibus voluptates aperiam, animi dicta, eveniet exercitationem natus nesciunt tenetur impedit inventore perspiciatis accusamus dolores maxime asperiores atque odit? Dolores aut libero hic dolorum similique accusantium architecto voluptates possimus distinctio delectus sint, itaque aliquam. Cupiditate, illum.
                 {/* {props.dogDescription || <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"/>} */}
                 </div> 
             </div>
 
-            <div className='bg-gray-300 rounded-lg mb-20 flex flex-col h-full rounded-lg'>
+            <div className='bg-gray-300 mb-20 flex flex-col h-full w-full rounded-lg'>
               <div className='bg-indigo-200 font-thin text-4xl text-slate-900 text-center p-4'>
                 Adoption shelters near you
               </div>

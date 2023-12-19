@@ -44,8 +44,7 @@
   font-size: 18px;
   max-height: 300px;
   padding: 15px;
-  border-radius: 0 0 10px 10px; 
-  /* background: linear-gradient(to right, #EE82EE, #9400D3); */
+  border-radius: 0 0 10px 10px;
   @apply bg-gradient-to-r from-indigo-200 to-orange-300 rounded-lg;
 }
 
@@ -72,8 +71,7 @@
 }
 
 table {
-  width: 100%; 
-  /* margin: 20px auto;  */
+  width: 100%;
   border-collapse: collapse;
   border-radius: 10px;
   @apply bg-orange-300 rounded-lg;
