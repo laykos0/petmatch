@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-const openai = new OpenAI({apiKey: "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", dangerouslyAllowBrowser: true});
+const openai = new OpenAI({apiKey: import.meta.env.VITE_GPT_API_KEY, dangerouslyAllowBrowser: true});
 export async function generateDogDescription(dogName) {
   
   let message = "Write a short description of a "+ dogName + ", around 100 words, that will make people want one as a pet.";
