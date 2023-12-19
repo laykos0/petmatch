@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import BrowsingView from "../view/browsingView.jsx";
 import { observer } from "mobx-react-lite";
 

@@ -87,6 +87,7 @@ body{
   background-attachment: fixed;
   object-fit: cover;
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   @apply bg-cover bg-center min-h-screen

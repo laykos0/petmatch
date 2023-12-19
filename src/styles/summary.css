@@ -25,10 +25,11 @@
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
-    width: 97%; 
+    width: 95%; 
     height: 85%; 
     box-sizing: border-box; 
     text-align: center;
+    @apply mx-2.5;
 }
 
 .dogResults img {
