@@ -94,22 +94,35 @@ function generateRecommendations(personal_prefs) {
   const zScores = values.map(val => (val - mean) / stdDev);
 
   // Get the top and bottom 15% threshold z-scores
-  const topThreshold = stdDev * 0.95; // Z-score for top 15%
-  const bottomThreshold = stdDev * -0.95; // Z-score for bottom 15%
+  const topThreshold = stdDev * 1.645; // Z-score for top 15%
+  const bottomThreshold = stdDev * -1.645; // Z-score for bottom 15%
 
   // Filter keys that fall within the top or bottom 15%
   const filteredKeys = Object.keys(withoutHeight).filter((_, index) => {
     return zScores[index] > topThreshold || zScores[index] < bottomThreshold;
   });
   // Create a new dictionary with the filtered keys and their values
-  const recommendations = {};
-    filteredKeys.forEach((key, index) => {
-    recommendations[key] = values[index];
-    });
+  const selectedKeys = [];
+  while (selectedKeys.length < 2 && filteredKeys.length > 0) {
+    const randomIndex = Math.floor(Math.random() * filteredKeys.length);
+    selectedKeys.push(filteredKeys.splice(randomIndex, 1)[0]);
+  }
+  const output = {};
+  selectedKeys.forEach((key, index) => {
+    const roundedValue = Math.round(values[index]);
+    if (roundedValue !== 0) {
+      output[key] = roundedValue;
+    }
+  });
+
+
+
+
+
   console.log("BEFOre RECOMENDATION");
-  console.log(recommendations);
+  console.log(output);
   
-  return recommendations;
+  return output;
 }
 
 function queryParamString(attributes) {
