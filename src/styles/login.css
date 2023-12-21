@@ -61,15 +61,12 @@
   position: relative;
 }
 
-.tagline-login {
-  
-  bottom: 20px; /* Distance from the bottom of the parent (login-box) */
-  color: #5c6bc0; /* Text color */
-  font-size: 20px; /* Adjust the font size as needed */
-  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; /* Create a black outline */
-  /* Additional styles as needed */
+.tagline-login { 
+  font-size: 20px; 
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black; 
+  @apply -mt-10 bg-indigo-100 text-violet-400
 }
 
-.white-word {
-  color: white; /* Make the word 'your' white */
+.highlighted-word {
+  color: white;
 }
