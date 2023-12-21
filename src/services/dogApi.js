@@ -115,6 +115,7 @@ function generateRecommendations(personal_prefs) {
   });
 
   console.log(output);
+  output['offset'] = Math.floor(Math.random() * 16);
   return output;
 }
 
