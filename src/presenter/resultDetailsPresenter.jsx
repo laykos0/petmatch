@@ -7,5 +7,5 @@ export default observer(function ResultDetails(props) {
         props.model.removeDogFromRecommendations(props.model.detailsDisplayedDog);
     }
     let name = props.model.detailsDisplayedDog.name;
-    return (<ResultDetailsView dogDescription={props.model.dogDescriptions[name]} removeDogCustomACB={removeDogCustomACB} displayedDog={props.model.detailsDisplayedDog} organizations={props.model.organizations}/>);
+    return (<ResultDetailsView dogDescription={props.model.dogDescriptions[name]} removeDogCustomACB={removeDogCustomACB} displayedDog={props.model.detailsDisplayedDog} stateOrganizations={props.model.stateOrganizations} organizations={props.model.organizations}/>);
 })

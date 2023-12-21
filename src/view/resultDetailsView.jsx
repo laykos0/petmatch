@@ -44,7 +44,7 @@ function ResultDetailsView(props) {
                   <thead>
                     <tr>
                       <th className='bg-violet-300'>Organization Name</th>
-                      <th className='bg-violet-300'>Distance From You</th>
+                      <th className='bg-violet-300'>Distance From You (miles)</th>
                       <th className='bg-violet-300'>Phone Number</th>
                       <th className='bg-violet-300'>Website Link</th>
                     </tr>
@@ -53,14 +53,14 @@ function ResultDetailsView(props) {
                   <tbody>
                     {props.organizations
                       ? props.organizations.map(renderOrganization)
-                      : (
+                      : (props.stateOrganizations ? props.stateOrganizations.map(renderOrganization):(
                         <tr key={11}>
-                          <td />
-                          <td>loading </td>
-                          <td>loading</td>
-                          <td>loading</td>
+                          <td>Select a state in the profile page</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
                         </tr>
-                      )}
+                      ))}
                   </tbody>
                 </table>
               </div>
@@ -96,7 +96,7 @@ function ResultDetailsView(props) {
     return (
       <tr key={organization.id}>
         <td>{organization.name}</td>
-        <td>{organization.distance} miles </td>
+        <td>{organization.distance}</td>
         <td>{organization.phone}</td>
         <td>{organization.website}</td>
       </tr>

@@ -1,10 +1,11 @@
 import User from "./user.js";
 import { getNewDogs } from "../services/dogApi.js";
-import { getPetFinderData } from "../services/petFinderApi.js";
+import { getPetFinderData, getPetFinderDataState } from "../services/petFinderApi.js";
 import { generateDogDescription } from "../services/llmApi.js";
 export default {  
     user: User,
     organizations: [],
+    stateOrganizations: [],
     dogDescriptions: {},
     currentlyDisplayedDog: {},
     detailsDisplayedDog: {},
@@ -61,11 +62,13 @@ export default {
       
     async getNearbyOrganizations() {
         await getPetFinderData(this);
+        await getPetFinderDataState(this);
     },
 
     clearModel() {
       this.user.clearUser()
       this.organizations = [];
+      this.stateOrganizations = [];
       this.dogDescriptions = {};
       this.currentlyDisplayedDog = {};
       this.detailsDisplayedDog = {};
