@@ -75,6 +75,7 @@ function generateRandomAttributes() {
 
 
 function generateRecommendations() {
+  console.log("IN REC GEN FUNC");
   const attributes = [
     'protectiveness',
     'trainability',
@@ -85,10 +86,10 @@ function generateRecommendations() {
 
   const recommendations = {};
   const attributeName = attributes[Math.floor(Math.random() * attributes.length)];
-  randomAttributes[attributeName] = Math.floor(Math.random() * 5) + 1;
-  randomAttributes['offset'] = Math.floor(Math.random() * 16);
+  recommendations[attributeName] = Math.floor(Math.random() * 5) + 1;
+  recommendations['offset'] = Math.floor(Math.random() * 16);
   console.log("random attributes are:");
-  console.log(randomAttributes);
+  console.log(recommendations);
   return recommendations;
 }
 
