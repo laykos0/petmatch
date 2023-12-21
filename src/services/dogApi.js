@@ -4,10 +4,12 @@ import axios from 'axios';
 
 export async function getNewDogs(user, rand_rec) {
   console.log("GET NEW DOG");
+  //console.log(personal_prefs);
   if (import.meta.env.VITE_ENV == 'dev') 
     return mockDogs;
   
   let queryParams;
+  
   try {
     console.log("IN TRY NEW DOG");
       const dogApiUrl = "https://api.api-ninjas.com/v1/dogs?"
@@ -20,7 +22,8 @@ export async function getNewDogs(user, rand_rec) {
       }
       else{
         console.log("IN RECOMMENDATION GENERATION");
-        queryParams = queryParamString(generateRecommendations())
+        console.log(user);
+        queryParams = queryParamString(generateRecommendations(user))
         console.log(queryParams);
       }
       
@@ -75,8 +78,9 @@ function generateRandomAttributes() {
 }
 
 
-function generateRecommendations() {
+function generateRecommendations(user) {
   console.log("IN REC GEN FUNC");
+  console.log(user);
   const attributes = [
     'protectiveness',
     'trainability',

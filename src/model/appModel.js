@@ -12,8 +12,12 @@ export default {
     currentlyRecommendedDogs: [],
 
     async getDogRecommendations() {
+        console.log("IN DOG RECS APP MODEL");
         const rec = 0;
-        this.currentlyRecommendedDogs = await getNewDogs(this.user, rec); 
+        console.log("before");
+        console.log(User.personalityPreferences);
+        console.log("after");
+        this.currentlyRecommendedDogs = await getNewDogs(User.personalityPreferences, rec); 
     },
 
     async selectDog(dog) {
