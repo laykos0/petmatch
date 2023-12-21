@@ -107,9 +107,11 @@ export default  {
         if (user) {
             let userData = await db.readFromDatabase(user.uid);
             if (!userData) {
+                console.log("NOT USER DATA");
                 this.clearUser()
                 await this.updateUserInDatabase(this.userToPersistence());
                 userData = await db.readFromDatabase(user.uid);
+                console.log(userData);
             }
             const { location, personalityPreferences, seenDogs, removedDogs} = userData;
             this.location = location || {zip: "02421", state: "MA"};

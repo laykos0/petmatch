@@ -26,30 +26,42 @@ function LoginView(props) {
   }
 
   return (
-    <div className="login-form my-20">
-      <h2 className='text-2xl font-thin py-5'>Login</h2>
-      <div className="form-group">
-        <label htmlFor="email" className="form-label">
-          Email
-        </label>
-        <input type="email" id="email" value={email} onChange={handleEmailChange} className="form-input" />
+    <div className="login-wrapper">
+        <div className="login-form my-20">
+          <h2 className='text-2xl font-thin py-5'>Login</h2>
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input type="email" id="email" value={email} onChange={handleEmailChange} className="form-input" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input type="password" id="password" value={password} onChange={handlePasswordChange} className="form-input" />
+          </div>
+          <button onClick={handleSignInEmailPassword} className="sign-in-btn">
+            Sign In
+          </button>
+          <button onClick={handleSignInGoogle} className="sign-in-btn">
+            Sign In Google
+          </button>
+          <span className='no-acnt' style={{textDecoration: 'underline'}} onClick={handleToggleView}>
+            {"Don't have an account? Click here"}
+          </span>
       </div>
-      <div className="form-group">
-        <label htmlFor="password" className="form-label">
-          Password
-        </label>
-        <input type="password" id="password" value={password} onChange={handlePasswordChange} className="form-input" />
+
+      <div className="tagline">
+    Helping you find a forever home for the dog that is your perfect match!
       </div>
-      <button onClick={handleSignInEmailPassword} className="sign-in-btn">
-        Sign In
-      </button>
-      <button onClick={handleSignInGoogle} className="sign-in-btn">
-        Sign In Google
-      </button>
-      <span className='no-acnt' style={{textDecoration: 'underline'}} onClick={handleToggleView}>
-        {"Don't have an account? Click here"}
-      </span>
+
     </div>
+
+
+
+
+    
   );
 }
 

@@ -18,7 +18,7 @@ export default {
         console.log("before");
         console.log(User.personalityPreferences);
         console.log("after");
-        this.currentlyRecommendedDogs = await getNewDogs(User.personalityPreferences, rec); 
+        this.currentlyRecommendedDogs = await getNewDogs(this.user.personalityPreferences, rec); 
     },
 
     async selectDog(dog) {

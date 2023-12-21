@@ -56,3 +56,13 @@
   margin: 15px;
   cursor: pointer; 
 }
+
+.login-wrapper {
+  position: relative;
+}
+
+.tagline {
+  
+  bottom: 20px; /* Distance from the bottom of the parent (login-box) */
+  color: black;
+}
