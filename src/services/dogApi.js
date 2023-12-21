@@ -1,8 +1,9 @@
 import axios from 'axios'; 
+import personalityAttributes from '../model/personalityAttributes';
 
 
 
-export async function getNewDogs(user, rand_rec) {
+export async function getNewDogs(personal_prefs, rand_rec) {
   console.log("GET NEW DOG");
   //console.log(personal_prefs);
   if (import.meta.env.VITE_ENV == 'dev') 
@@ -22,8 +23,9 @@ export async function getNewDogs(user, rand_rec) {
       }
       else{
         console.log("IN RECOMMENDATION GENERATION");
-        console.log(user);
-        queryParams = queryParamString(generateRecommendations(user))
+        //user.retrieveUserFromDatabase();
+        console.log(personal_prefs);
+        queryParams = queryParamString(generateRecommendations(personal_prefs))
         console.log(queryParams);
       }
       
@@ -78,23 +80,35 @@ function generateRandomAttributes() {
 }
 
 
-function generateRecommendations(user) {
+function generateRecommendations(personal_prefs) {
   console.log("IN REC GEN FUNC");
-  console.log(user);
-  const attributes = [
-    'protectiveness',
-    'trainability',
-    'energy',
-    'barking',
-    'shedding',
-  ];
+  console.log(personal_prefs);
+  const {average_height, ...withoutHeight} = personal_prefs;
+  const values = Object.values(withoutHeight);
 
+  const mean = values.reduce((acc, val) => acc + val, 0) / values.length;
+  const variance = values.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / values.length;
+  const stdDev = Math.sqrt(variance);
+
+  // Calculate z-scores for each value
+  const zScores = values.map(val => (val - mean) / stdDev);
+
+  // Get the top and bottom 15% threshold z-scores
+  const topThreshold = stdDev * 0.95; // Z-score for top 15%
+  const bottomThreshold = stdDev * -0.95; // Z-score for bottom 15%
+
+  // Filter keys that fall within the top or bottom 15%
+  const filteredKeys = Object.keys(withoutHeight).filter((_, index) => {
+    return zScores[index] > topThreshold || zScores[index] < bottomThreshold;
+  });
+  // Create a new dictionary with the filtered keys and their values
   const recommendations = {};
-  const attributeName = attributes[Math.floor(Math.random() * attributes.length)];
-  recommendations[attributeName] = Math.floor(Math.random() * 5) + 1;
-  recommendations['offset'] = Math.floor(Math.random() * 16);
-  console.log("random attributes are:");
+    filteredKeys.forEach((key, index) => {
+    recommendations[key] = values[index];
+    });
+  console.log("BEFOre RECOMENDATION");
   console.log(recommendations);
+  
   return recommendations;
 }
 
