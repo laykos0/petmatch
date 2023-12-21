@@ -1,13 +1,21 @@
 import axios from 'axios'; 
 
 
-export async function getNewDogs(user) {
+export async function getNewDogs(user, rand_rec) {
   if (import.meta.env.VITE_ENV == 'dev') 
     return mockDogs;
   
   try {
       const dogApiUrl = "https://api.api-ninjas.com/v1/dogs?"
-      const queryParams = queryParamString(generateRandomAttributes())
+      
+
+      if(rand_rec){
+        const queryParams = queryParamString(generateRandomAttributes())
+      }
+      else{
+        console.log("IN DOG API ELSE");
+      }
+      
 
       const response = await axios.get(
           dogApiUrl + queryParams,
