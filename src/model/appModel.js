@@ -12,7 +12,7 @@ export default {
     currentlyRecommendedDogs: [],
 
     async getDogRecommendations() {
-        const rec = 1;
+        const rec = 0;
         this.currentlyRecommendedDogs = await getNewDogs(this.user, rec); 
     },
 
@@ -43,7 +43,7 @@ export default {
           this.currentlyDisplayedDog = this.dogsToDisplay.pop();
         } else {
           try {
-            const rand = 0;
+            const rand = 1;
             this.dogsToDisplay = await getNewDogs(this.user, rand);
       
             this.dogsToDisplay = this.dogsToDisplay.filter(
