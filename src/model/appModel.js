@@ -13,7 +13,12 @@ export default {
     currentlyRecommendedDogs: [],
 
     async getDogRecommendations() {
-        this.currentlyRecommendedDogs = await getNewDogs(this.user); 
+        console.log("IN DOG RECS APP MODEL");
+        const rec = 0;
+        console.log("before");
+        console.log(User.personalityPreferences);
+        console.log("after");
+        this.currentlyRecommendedDogs = await getNewDogs(User.personalityPreferences, rec); 
     },
 
     async selectDog(dog) {
@@ -43,7 +48,8 @@ export default {
           this.currentlyDisplayedDog = this.dogsToDisplay.pop();
         } else {
           try {
-            this.dogsToDisplay = await getNewDogs(this.user);
+            const rand = 1;
+            this.dogsToDisplay = await getNewDogs(this.user, rand);
       
             this.dogsToDisplay = this.dogsToDisplay.filter(
               dog => !this.user.seenDogs.some(seenDog => seenDog === dog.name)

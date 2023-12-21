@@ -1,13 +1,33 @@
 import axios from 'axios'; 
+import personalityAttributes from '../model/personalityAttributes';
 
 
-export async function getNewDogs(user) {
+
+export async function getNewDogs(personal_prefs, rand_rec) {
+  console.log("GET NEW DOG");
+  //console.log(personal_prefs);
   if (import.meta.env.VITE_ENV == 'dev') 
     return mockDogs;
   
+  let queryParams;
+  
   try {
+    console.log("IN TRY NEW DOG");
       const dogApiUrl = "https://api.api-ninjas.com/v1/dogs?"
-      const queryParams = queryParamString(generateRandomAttributes())
+      
+
+      if(rand_rec){
+        console.log("IN BROWSING GENERATION");
+        queryParams = queryParamString(generateRandomAttributes())
+        console.log(queryParams);
+      }
+      else{
+        console.log("IN RECOMMENDATION GENERATION");
+        console.log(personal_prefs);
+        queryParams = queryParamString(generateRecommendations(personal_prefs))
+        console.log(queryParams);
+      }
+      
 
       const response = await axios.get(
           dogApiUrl + queryParams,
@@ -53,8 +73,50 @@ function generateRandomAttributes() {
   const attributeName = attributes[Math.floor(Math.random() * attributes.length)];
   randomAttributes[attributeName] = Math.floor(Math.random() * 5) + 1;
   randomAttributes['offset'] = Math.floor(Math.random() * 16);
-
+  console.log("random attributes are:");
+  console.log(randomAttributes);
   return randomAttributes;
+}
+
+
+function generateRecommendations(personal_prefs) {
+  console.log("IN REC GEN FUNC");
+  console.log(personal_prefs);
+  const {average_height, ...withoutHeight} = personal_prefs;
+  const values = Object.values(withoutHeight);
+
+  const mean = values.reduce((acc, val) => acc + val, 0) / values.length;
+  const variance = values.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / values.length;
+  const stdDev = Math.sqrt(variance);
+
+  //z-scores for each value
+  const zScores = values.map(val => (val - mean) / stdDev);
+
+  // Top and bottom 5%
+  const topThreshold = stdDev * 0.95; 
+  const bottomThreshold = stdDev * -0.95; 
+
+  //Keys that are in the top or bottom 5
+  const filteredKeys = Object.keys(withoutHeight).filter((_, index) => {
+    return zScores[index] > topThreshold || zScores[index] < bottomThreshold;
+  });
+  // New dict with these vals.
+  const selectedKeys = [];
+  while (selectedKeys.length < 2 && filteredKeys.length > 0) {
+    const randomIndex = Math.floor(Math.random() * filteredKeys.length);
+    selectedKeys.push(filteredKeys.splice(randomIndex, 1)[0]);
+  }
+  const output = {};
+  selectedKeys.forEach((key, index) => {
+    const roundedValue = Math.round(values[index]);
+    if (roundedValue !== 0) {
+      output[key] = roundedValue;
+    }
+  });
+
+  console.log(output);
+  output['offset'] = Math.floor(Math.random() * 16);
+  return output;
 }
 
 function queryParamString(attributes) {

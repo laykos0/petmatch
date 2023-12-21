@@ -28,10 +28,10 @@ function ResultsSummaryView(props){
                     <img key = {dog.name + "0"} className="ml-4" src= {dog.image_link} height = "100"></img>
                     <div key = {dog.name + "1"} className="dogResultsMainPart">
                     <a href="#/result-details">
-                        <button key = {dog.name + "2"} className=' font-bold  bg-indigo-300 mb-5 p-5 rounded-full mt-4 mr-20'>{dog.name}</button>
+                        <button key = {dog.name + "2"} className=' font-bold bg-indigo-300 hover:bg-green-300 mb-5 p-5 rounded-full mt-4 mr-2 min-w-max'>{dog.name}</button>
                     </a>
                     </div>
-                    <button key = {dog.name + "3"} onClick={dogRemoveACB} className="font-bold bg-indigo-300 mb-5 p-5 rounded-full">x</button>
+                    <button key = {dog.name + "3"} onClick={dogRemoveACB} className="font-bold bg-indigo-300 hover:bg-red-400 mb-5 p-5 rounded-full w-5 h-12">x</button>
                 </div>
             </div>
         );
