@@ -11,7 +11,18 @@ export default observer(function Profile(props) {
       return /^\d{5}(-\d{4})?$/.test(zipCode);
     }
     function checkValidStateCode(stateCode) {
-      return /^[a-zA-Z]{2}$/.test(stateCode);
+      const stateCodes = new Set([
+        'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+        'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+        'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+        'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+        'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+      ]);
+
+      if(/^[a-zA-Z]{2}$/.test(stateCode)){
+        return stateCodes.has(stateCode);
+      }
+      return false;
     }
     if (!checkValidZipCode(zipCode)) {
       alert("Invalid Zip Code! Please try again");
