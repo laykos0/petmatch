@@ -23,7 +23,6 @@ export async function getNewDogs(personal_prefs, rand_rec) {
       }
       else{
         console.log("IN RECOMMENDATION GENERATION");
-        //user.retrieveUserFromDatabase();
         console.log(personal_prefs);
         queryParams = queryParamString(generateRecommendations(personal_prefs))
         console.log(queryParams);
@@ -90,18 +89,18 @@ function generateRecommendations(personal_prefs) {
   const variance = values.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / values.length;
   const stdDev = Math.sqrt(variance);
 
-  // Calculate z-scores for each value
+  //z-scores for each value
   const zScores = values.map(val => (val - mean) / stdDev);
 
-  // Get the top and bottom 15% threshold z-scores
-  const topThreshold = stdDev * 1.645; // Z-score for top 15%
-  const bottomThreshold = stdDev * -1.645; // Z-score for bottom 15%
+  // Top and bottom 5%
+  const topThreshold = stdDev * 0.95; 
+  const bottomThreshold = stdDev * -0.95; 
 
-  // Filter keys that fall within the top or bottom 15%
+  //Keys that are in the top or bottom 5
   const filteredKeys = Object.keys(withoutHeight).filter((_, index) => {
     return zScores[index] > topThreshold || zScores[index] < bottomThreshold;
   });
-  // Create a new dictionary with the filtered keys and their values
+  // New dict with these vals.
   const selectedKeys = [];
   while (selectedKeys.length < 2 && filteredKeys.length > 0) {
     const randomIndex = Math.floor(Math.random() * filteredKeys.length);
@@ -115,13 +114,7 @@ function generateRecommendations(personal_prefs) {
     }
   });
 
-
-
-
-
-  console.log("BEFOre RECOMENDATION");
   console.log(output);
-  
   return output;
 }
 
