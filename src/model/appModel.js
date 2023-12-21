@@ -12,7 +12,8 @@ export default {
     currentlyRecommendedDogs: [],
 
     async getDogRecommendations() {
-        this.currentlyRecommendedDogs = await getNewDogs(this.user); 
+        const rec = 1;
+        this.currentlyRecommendedDogs = await getNewDogs(this.user, rec); 
     },
 
     async selectDog(dog) {
@@ -42,7 +43,8 @@ export default {
           this.currentlyDisplayedDog = this.dogsToDisplay.pop();
         } else {
           try {
-            this.dogsToDisplay = await getNewDogs(this.user);
+            const rand = 0;
+            this.dogsToDisplay = await getNewDogs(this.user, rand);
       
             this.dogsToDisplay = this.dogsToDisplay.filter(
               dog => !this.user.seenDogs.some(seenDog => seenDog === dog.name)
