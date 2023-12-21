@@ -7,6 +7,7 @@ export async function getNewDogs(user, rand_rec) {
   if (import.meta.env.VITE_ENV == 'dev') 
     return mockDogs;
   
+  let queryParams;
   try {
     console.log("IN TRY NEW DOG");
       const dogApiUrl = "https://api.api-ninjas.com/v1/dogs?"
@@ -14,12 +15,12 @@ export async function getNewDogs(user, rand_rec) {
 
       if(rand_rec){
         console.log("IN BROWSING GENERATION");
-        const queryParams = queryParamString(generateRandomAttributes())
+        queryParams = queryParamString(generateRandomAttributes())
         console.log(queryParams);
       }
       else{
         console.log("IN RECOMMENDATION GENERATION");
-        const queryParams = queryParamString(generateRecommendations())
+        queryParams = queryParamString(generateRecommendations())
         console.log(queryParams);
       }
       
