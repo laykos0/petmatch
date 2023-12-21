@@ -52,7 +52,7 @@ function LoginView(props) {
           </span>
       </div>
 
-      <div className="tagline">
+      <div className="tagline-login">
     Helping you find a <span class="white-word">forever home</span> for the dog that is <span class="white-word">your</span> perfect match !
       </div>
 

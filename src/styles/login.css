@@ -61,7 +61,7 @@
   position: relative;
 }
 
-.tagline {
+.tagline-login {
   
   bottom: 20px; /* Distance from the bottom of the parent (login-box) */
   color: #5c6bc0; /* Text color */
