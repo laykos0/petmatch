@@ -7,15 +7,12 @@ If users want to access/test the raw code:
 - Clone the repository
 - Go into the project folder "petmatch"
 - For testing the project use:
-    npm install
-    npm run dev 
-in the terminal (in the petmatch folder)
-
+    - npm install
+    - npm run dev 
+in the terminal (in the petmatch folder).
 - For deploying (again in the petmatch folder) use:
-    npm run build
-    firebase deploy
-
-
+    - npm run build
+    - firebase deploy
 
 
 ## Project structure
