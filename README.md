@@ -3,6 +3,8 @@ This repository contains the code for the WIP web application **WoofFinder**. Wo
 
 # How to Set Up
 The deployed website can be found at : 
+
+###
 If users want to access/test the raw code:
 - Clone the repository
 - Go into the project folder "petmatch"
