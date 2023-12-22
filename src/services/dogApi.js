@@ -82,42 +82,59 @@ function generateRandomAttributes() {
 function generateRecommendations(personal_prefs) {
   console.log("IN REC GEN FUNC");
   console.log(personal_prefs);
-  const {average_height, ...withoutHeight} = personal_prefs;
+  const { average_height, ...withoutHeight } = personal_prefs;
   const values = Object.values(withoutHeight);
 
   const mean = values.reduce((acc, val) => acc + val, 0) / values.length;
   const variance = values.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / values.length;
   const stdDev = Math.sqrt(variance);
 
-  //z-scores for each value
-  const zScores = values.map(val => (val - mean) / stdDev);
+  // z-scores for each value
+  const zScores = values.map((val) => (val - mean) / stdDev);
 
   // Top and bottom 5%
-  const topThreshold = stdDev * 0.95; 
-  const bottomThreshold = stdDev * -0.95; 
+  const topThreshold = stdDev * 0.95;
+  const bottomThreshold = stdDev * -0.95;
 
-  //Keys that are in the top or bottom 5
+  // Keys that are in the top or bottom 5
   const filteredKeys = Object.keys(withoutHeight).filter((_, index) => {
     return zScores[index] > topThreshold || zScores[index] < bottomThreshold;
   });
-  // New dict with these vals.
+
+  // New dict with these vals
   const selectedKeys = [];
   while (selectedKeys.length < 2 && filteredKeys.length > 0) {
     const randomIndex = Math.floor(Math.random() * filteredKeys.length);
     selectedKeys.push(filteredKeys.splice(randomIndex, 1)[0]);
   }
+
   const output = {};
+  const roundedValues = values.map((val) => Math.round(val)); // Round all values
+
   selectedKeys.forEach((key, index) => {
-    const roundedValue = Math.round(values[index]);
-    if (roundedValue !== 0) {
-      output[key] = roundedValue;
-    }
+    output[key] = roundedValues[index]; // Assign rounded values to selected keys
   });
 
+  // Check if the first key in the output is not from the specified list
+  const keysOfInterest = ['protectiveness', 'trainability', 'energy', 'barking', 'shedding'];
+  const firstKey = Object.keys(output)[0];
+  if (!keysOfInterest.includes(firstKey)) {
+    // Replace the first key with one of the specified keys from personal_prefs
+    for (const key of keysOfInterest) {
+      if (key in withoutHeight) {
+        output[key] = Math.round(withoutHeight[key]);
+        delete output[firstKey];
+        break;
+      }
+    }
+  }
+
+  console.log("generated attributes are");
   console.log(output);
-  output['offset'] = Math.floor(Math.random() * 5);
   return output;
 }
+
+
 
 function queryParamString(attributes) {
   return Object.entries(attributes).map(([key, value]) => `${key}=${value}`).join('&');
