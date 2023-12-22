@@ -30,8 +30,7 @@ function ResultDetailsView(props) {
             <div className='mt-5 mb-5 bg-white info'>
                 <div className=' bg-indigo-200 font-thin text-4xl text-slate-900 text-center p-4'>About the Dog</div>
                 <div className=' text-violet-950'>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate, eos, eveniet fugiat commodi corporis ipsa modi dolore rem doloremque obcaecati harum voluptates fugit sapiente nihil aliquam ex quidem praesentium quas ab voluptatibus iusto. Debitis enim expedita autem ut magni, sint dolor eos accusantium atque? Temporibus eos quos distinctio porro culpa rerum soluta possimus nam ipsam! Ducimus possimus temporibus deserunt omnis consectetur libero facere rem voluptatibus voluptates aperiam, animi dicta, eveniet exercitationem natus nesciunt tenetur impedit inventore perspiciatis accusamus dolores maxime asperiores atque odit? Dolores aut libero hic dolorum similique accusantium architecto voluptates possimus distinctio delectus sint, itaque aliquam. Cupiditate, illum.
-                {/* {props.dogDescription || <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"/>} */}
+                {props.dogDescription || <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"/>}
                 </div> 
             </div>
 
