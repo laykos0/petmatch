@@ -23,7 +23,7 @@ function SignupView(props) {
   }
 
   function handleSignUp() {
-    props.onSignUpEmail(email, password);
+    props.onSignUpEmail(email, password, confirmPassword);
   }
 
   function handleToggleView() {
@@ -43,7 +43,7 @@ function SignupView(props) {
         </div>
         <div className="form-group">
           <label htmlFor="password" className="form-label">
-            Password:
+            Password: (Passwords must be at least 6 characters long)
           </label>
           <input type="password" id="password" value={password} onChange={handlePasswordChange} className="form-input bg-violet-400" />
         </div>
