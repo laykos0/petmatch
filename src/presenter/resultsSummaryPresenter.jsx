@@ -4,7 +4,13 @@ import { React, useState, useEffect } from 'react';
 
 export default observer(function ResultsSummary(props){
 
-    console.log("HELLO SUMMARY");
+    const [isLoading, setIsLoading] = useState(true);
+    const modelToPass = isLoading ? {
+        currentlyDisplayedDog: {
+            name: "Loading",
+            image_link: "https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"
+        }
+    } : props.model;
 
     function removeDogCustomACB(dog) {
         props.model.removeDogFromRecommendations(dog);
@@ -17,6 +23,10 @@ export default observer(function ResultsSummary(props){
     if (props.model.currentlyRecommendedDogs.length == 0) {
         props.model.getDogRecommendations();
     }
+
+    useEffect(() => {
+        setIsLoading(false);
+    }, []);
 
     return (
         <div>
