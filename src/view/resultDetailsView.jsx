@@ -30,7 +30,7 @@ function ResultDetailsView(props) {
             <div className='mt-5 mb-5 bg-white info'>
                 <div className=' bg-indigo-200 font-thin text-4xl text-slate-900 text-center p-4'>About the Dog</div>
                 <div className=' text-violet-950'>
-                {props.dogDescription || <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"/>}
+                  {props.dogDescription || <img src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"/>}
                 </div> 
             </div>
 

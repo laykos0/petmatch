@@ -69,9 +69,6 @@ function SignupView(props) {
           {'Already have an account? Log in'}
         </span>
       </div>
-
-
-
     </div>
   );
 }

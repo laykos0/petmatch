@@ -57,11 +57,6 @@ function LoginView(props) {
       </div>
 
     </div>
-
-
-
-
-    
   );
 }
 
