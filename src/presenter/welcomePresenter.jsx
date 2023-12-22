@@ -17,7 +17,15 @@ export default function Welcome() {
     }
   }
 
-  async function onSignUpEmail(email, password) {
+  async function onSignUpEmail(email, password, confirmPassword) {
+    if(password.length < 6){
+      alert("Password too short!");
+      return;
+    }
+    if(password != confirmPassword){
+      alert("Two passwords given are not the same!");
+      return;
+    }
     await auth.signUpEmailPassword(email, password);
   }
 
