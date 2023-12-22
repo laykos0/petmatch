@@ -8,7 +8,7 @@ If users want to access/test the raw code:
 - Go into the project folder "petmatch"
 - For testing the project use:
     - `npm install`
-    - `npm run dev`` 
+    - `npm run dev` 
 in the terminal (in the petmatch folder).
 - For deploying (again in the petmatch folder) use:
     - `npm run build`
