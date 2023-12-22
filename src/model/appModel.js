@@ -11,6 +11,7 @@ export default {
     detailsDisplayedDog: {},
     dogsToDisplay: [],
     currentlyRecommendedDogs: [],
+    unmatchedDogs: [],
 
     async getDogRecommendations() {
         console.log("IN DOG RECS APP MODEL");
@@ -36,12 +37,17 @@ export default {
     },
 
     async removeDogFromRecommendations(dog) {
-        await this.user.updateUserRemovedDogs(dog)
-
-        let indexToRemove = this.currentlyRecommendedDogs.indexOf(dog)
-        if (indexToRemove !== -1) 
-          this.currentlyRecommendedDogs.splice(indexToRemove, 1);
+      try {
+          await this.user.updateUserRemovedDogs(dog);
+  
+          this.currentlyRecommendedDogs = this.currentlyRecommendedDogs.filter(
+              (recommendedDog) => recommendedDog.name !== dog.name
+          );
+      } catch (error) {
+          console.error('Error removing dog from recommendations:', error);
+      }
     },
+  
 
     async generateDisplayDog() {
         if (this.dogsToDisplay.length > 0) {
